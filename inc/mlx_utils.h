@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:49:06 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/23 15:53:50 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/23 17:27:46 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,22 @@ typedef struct s_img_data
 	int		endian;
 }	t_img_data;
 
+// Todo: update for Linux
 enum	e_key_codes
 {
-	KEY_A = 0,
-	KEY_S = 1,
-	KEY_D = 2,
-	KEY_Q = 12,
-	KEY_W = 13,
-	KEY_E = 14,
-	KEY_R = 15,
-	KEY_I = 34,
-	KEY_P = 35,
+	KEY_A = 97,
+	KEY_S = 115,
+	KEY_D = 100,
+	KEY_Q = 113,
+	KEY_W = 119,
+	KEY_E = 101,
+	KEY_R = 114,
+	KEY_I = 105,
+	KEY_P = 112,
 	LEFT_ANGLE_BRACKET = 43,
 	RIGHT_ANGLE_BRACKET = 47,
-	SPACE = 49,
-	ESC = 53,
+	SPACE = 32,
+	ESC = 65307,
 	KEY_1 = 18,
 	KEY_2 = 19,
 	KEY_3 = 20,
@@ -54,10 +55,10 @@ enum	e_key_codes
 	NUM_PAD_9 = 92,
 	NUM_PAD_PLUS = 69,
 	NUM_PAD_MINUS = 78,
-	ARROW_UP = 126,
-	ARROW_DOWN = 125,
-	ARROW_LEFT = 124,
-	ARROW_RIGHT = 123
+	ARROW_UP = 65362,
+	ARROW_DOWN = 65364,
+	ARROW_LEFT = 65361,
+	ARROW_RIGHT = 65363
 };
 
 enum	e_mouse_codes

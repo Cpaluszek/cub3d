@@ -21,4 +21,9 @@
 # define WIN_HEIGHT	1080
 # define WIN_NAME	"cub3D"
 
+enum e_result {
+    SUCCESS = 0,
+    ERROR = 1,
+};
+
 #endif

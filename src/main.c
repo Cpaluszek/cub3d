@@ -3,19 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 13:32:21 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/23 13:32:47 by cpalusze         ###   ########.fr       */
+/*   Created: 2023/02/23 17:08:15 by jlitaudo          #+#    #+#             */
+/*   Updated: 2023/02/23 17:23:05 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+int   printkey(int key);
+
 int	main(int argc, char **argv)
 {
 	(void) argc;
 	(void) argv;
-	printf("Cub3d\n");
-	return (0);
+    void *mlx_ptr;
+    void *win_ptr;
+    mlx_ptr = mlx_init();
+    win_ptr = mlx_new_window(mlx_ptr, 200, 200, argv[0]);
+	printf("%s\n", argv[0]);
+    mlx_key_hook(win_ptr, printkey, NULL);
+    mlx_loop(mlx_ptr);
+	return (SUCCESS);
+}
+
+int   printkey(int key)
+{
+    return (printf("%d\n", key));
 }
