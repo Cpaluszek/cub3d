@@ -11,19 +11,21 @@ HEADERS_FILES	:=	cub3d.h
 HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
 SRC_DIR			:=	src
-SRC_FILES		:=	main.c
+SRC_FILES		:=	main.c \
 
 SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
 LIB_NAMES		:=	lib/libft
-
 LIBS			=	$(subst lib,-l,$(notdir $(LIB_NAMES)))
 LIB_LD			=	$(foreach lib,$(LIB_NAMES),-L$(lib))
 LIB_PATHS		=	$(foreach lib,$(LIB_NAMES),$(lib)/$(notdir $(lib)).a)
 LIB_HEADERS		=	$(foreach lib,$(LIB_NAMES),-I$(lib)/inc/)
 
-LIB_PATHS		+= lib/minilibx-linux/limlx.a
-LIB_HEADERS		+= -I/lib/minilibx-linux/
+LIB_PATHS		+=	lib/minilibx-linux/libmlx.a \
+					lib/minilibx-linux/libmlx_Linux.a
+LIB_HEADERS		+= -Ilib/minilibx-linux/
+LIBS			+= -lm -lX11 -lXext -lz -lmlx -lmlx_Linux
+LIB_LD			+= -Llib/minilibx-linux/
 
 BUILD_DIR		:=	build
 OBJS			:=	$(SRC_FILES:%.c=$(BUILD_DIR)/%.o)
