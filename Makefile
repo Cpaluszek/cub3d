@@ -6,12 +6,14 @@
 NAME			:=	cub3D
 
 HEADERS_DIR		:=	inc
-HEADERS_FILES	:=	cub3d.h
+HEADERS_FILES	:=	cub3d.h \
+					mlx_utils.h
 
 HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
 SRC_DIR			:=	src
 SRC_FILES		:=	main.c \
+					mlx_utils.c
 
 SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
@@ -21,8 +23,8 @@ LIB_LD			=	$(foreach lib,$(LIB_NAMES),-L$(lib))
 LIB_PATHS		=	$(foreach lib,$(LIB_NAMES),$(lib)/$(notdir $(lib)).a)
 LIB_HEADERS		=	$(foreach lib,$(LIB_NAMES),-I$(lib)/inc/)
 
-LIB_PATHS		+=	lib/minilibx-linux/libmlx.a \
-					lib/minilibx-linux/libmlx_Linux.a
+LIB_PATHS		+=	lib/minilibx-linux/libmlx.a
+					#lib/minilibx-linux/libmlx_Linux.a
 LIB_HEADERS		+= -Ilib/minilibx-linux/
 LIBS			+= -lm -lX11 -lXext -lz -lmlx -lmlx_Linux
 LIB_LD			+= -Llib/minilibx-linux/
