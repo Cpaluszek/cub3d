@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:08:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/23 17:23:05 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/23 18:40:52 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ int   printkey(int key);
 int	main(int argc, char **argv)
 {
 	(void) argc;
-	(void) argv;
     void *mlx_ptr;
     void *win_ptr;
+    t_general cube;
+
+    cube->map_path = argv[1];
     mlx_ptr = mlx_init();
     win_ptr = mlx_new_window(mlx_ptr, 200, 200, argv[0]);
 	printf("%s\n", argv[0]);
