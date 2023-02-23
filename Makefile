@@ -15,13 +15,15 @@ SRC_FILES		:=	main.c
 
 SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
-LIB_NAMES		:=	lib/libft \
-					lib/minilibx_opengl/minilibx_opengl_20191021
+LIB_NAMES		:=	lib/libft
 
 LIBS			=	$(subst lib,-l,$(notdir $(LIB_NAMES)))
 LIB_LD			=	$(foreach lib,$(LIB_NAMES),-L$(lib))
 LIB_PATHS		=	$(foreach lib,$(LIB_NAMES),$(lib)/$(notdir $(lib)).a)
 LIB_HEADERS		=	$(foreach lib,$(LIB_NAMES),-I$(lib)/inc/)
+
+LIB_PATHS		+= lib/minilibx-linux/limlx.a
+LIB_HEADERS		+= -I/lib/minilibx-linux/
 
 BUILD_DIR		:=	build
 OBJS			:=	$(SRC_FILES:%.c=$(BUILD_DIR)/%.o)
@@ -59,7 +61,7 @@ all: $(NAME)
 
 $(LIB_PATHS): force
 	@$(foreach lib, $(LIB_NAMES), \
-		@$(MAKE) $(lib); \
+		$(MAKE) $(lib); \
 	)
 
 $(NAME): $(LIB_PATHS) $(OBJS)
