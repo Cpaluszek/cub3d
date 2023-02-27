@@ -21,12 +21,12 @@ int	main(int argc, char **argv)
     void *win_ptr;
     t_general cube;
 
-    cube->map_path = argv[1];
-    mlx_ptr = mlx_init();
-    win_ptr = mlx_new_window(mlx_ptr, 200, 200, argv[0]);
+    cube.map_path = argv[1];
+//    mlx_ptr = mlx_init();
+//    win_ptr = mlx_new_window(mlx_ptr, 200, 200, argv[0]);
 	printf("%s\n", argv[0]);
-    mlx_key_hook(win_ptr, printkey, NULL);
-    mlx_loop(mlx_ptr);
+//    mlx_key_hook(win_ptr, printkey, NULL);
+//    mlx_loop(mlx_ptr);
 	return (SUCCESS);
 }
 
