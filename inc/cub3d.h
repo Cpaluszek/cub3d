@@ -6,7 +6,7 @@
 /*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:32:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/27 16:57:39 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/27 17:59:16 by Teiki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,8 @@ typedef struct s_general
 
 # define ERR_MALLOC "Error with malloc(3)"
 
-# define ERR_PATH "Error opening map file : "
-# define INVALID_FILE_PARAM "Error in file : \
-	unrecognized input parameter at line : "
+# define ERR_PATH "Map file : "
+# define INVALID_FILE_PARAM "Unrecognized input parameter at line : "
 # define INVALID_TEXT_FILE_PATTERN "Invalid texture pattern at line : "
 # define EMPTY_PATTERN "Pattern is empty at line : "
 # define INVALID_COLOR "Invalid color input at line : "

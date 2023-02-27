@@ -9,6 +9,7 @@ void	test_failed_malloc(t_general *cube, void *content)
 
 void	error_exit_cube(t_general *cube, char *msg1, char *msg2)
 {
+	ft_printf_fd(2, "Error\n");
 	ft_printf_fd(2, "%s %s\n", msg1, msg2);
 	exit_cube(cube, EXIT_FAILURE);
 }
