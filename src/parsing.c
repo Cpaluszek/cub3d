@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/28 10:16:36 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/28 10:44:08 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static void	parse_map_information(t_cub3d *cube, int fd_map)
 	char	**map_information;
 
 	nb_read = read(fd_map, buffer, 1000000);
+	dprintf(2, "read: %s\n", buffer);
 	// Todo: check read return
 	(void) nb_read;
 //	empty_file_checking(read, buffer);
@@ -93,30 +94,28 @@ static void	create_maze(t_cub3d *cube, char **map_information)
 	test_failed_malloc(cube, cube->grid_maze);
 	cube->grid_maze[i] = NULL;
 	i = 0;
-	while (cube->grid_maze[i])
+	while (map_information[i])
 	{
-		cube->grid_maze[i] = malloc(sizeof(char) * len_max);
+		cube->grid_maze[i] = malloc(sizeof(char) * (len_max + 1));
 		test_failed_malloc(cube, cube->grid_maze[i]);
 		ft_memset(cube->grid_maze[i], ' ', len_max);
+		cube->grid_maze[i][len_max - 1] = '\0';
 		i++;
 	}
 }
 
 static void	fill_maze(char **grid_maze, char **map_information)
 {
-	char	*str;
 	int		line;
 	int		i;
 
 	line = 0;
-	str = map_information[line];
-	while (str)
+	while (map_information[line])
 	{
 		i = -1;
-		while (str[++i])
-			grid_maze[line][i] = str[i];
+		while (map_information[line][++i])
+			grid_maze[line][i] = map_information[line][i];
 		line++;
-		str = map_information[line];
 	}
 }
 
