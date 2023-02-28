@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 09:57:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/28 09:59:05 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:55:23 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ void	exit_cube(t_cub3d *cube, int exit_code)
 {
 	(void) cube;
 	printf("Exit\n");
-	// Todo: free all and clean exit
+	ft_free_split(cube->map_information);
+	ft_free_split(cube->grid_maze);
+	ft_free(cube->map_display.north_texture);
+	ft_free(cube->map_display.south_texture);
+	ft_free(cube->map_display.east_texture);
+	ft_free(cube->map_display.west_texture);
+
 	exit(exit_code);
 }
