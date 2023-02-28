@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/28 14:36:10 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/28 15:19:01 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,15 @@ static void	fill_maze(t_cub3d *cube, char **grid_maze, char **map_information);
 
 void	central_parsing(t_cub3d *cube)
 {
-	int	fd_map;
+	int		fd_map;
+	char	*extension;
 
-	//todo: checker le .cub a la fin du path du fichier
+	extension = ft_strnstr(cube->map_path, ".cub", ft_strlen(cube->map_path));
+	if (!extension || extension[4] != '\0')
+		error_exit_cube(cube, ERR_FORMAT, "");
     fd_map = open(cube->map_path, O_RDONLY);
 	if (fd_map == -1)
-		error_exit_cube(cube, ERR_PATH, strerror(errno));
+		error_exit_cube(cube, cube->map_path, strerror(errno));
 	cube->map_display.north_texture = NULL;
 	cube->map_display.south_texture = NULL;
 	cube->map_display.west_texture = NULL;
@@ -40,7 +43,6 @@ void	central_parsing(t_cub3d *cube)
 	cube->map_display.ceiling_color.color = 0x01000000;
 	cube->map_display.floor_color.color = 0x01000000;
 	parse_map_information(cube, fd_map);
-//    map_information_checking(cube);
 }
 
 static void	parse_map_information(t_cub3d *cube, int fd_map)
@@ -52,9 +54,7 @@ static void	parse_map_information(t_cub3d *cube, int fd_map)
 	nb_read = read(fd_map, buffer, BUF_SIZE);
 	if (nb_read == -1)
 		error_exit_cube(cube, ERR_READ, "");
-	// Todo: check read return
 	(void) nb_read;
-//	empty_file_checking(read, buffer);
 	map_information = ft_split(buffer, '\n');
 	test_failed_malloc(cube, map_information);
 	interpret_map_information(cube, map_information);

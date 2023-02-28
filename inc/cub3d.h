@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:32:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/28 14:36:38 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/28 15:20:05 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,13 @@ typedef struct s_cub3d
 # define ERR_MALLOC "Error with malloc(3)"
 # define ERR_READ "Error reading file"
 
-# define ERR_PATH "Map file : "
 # define ERR_FORMAT "Invalid map format, must be \"*.cub\""
 # define INVALID_PATTERN "Invalid file pattern"
-# define INVALID_FILE_PARAM "Unrecognized or duplicated input parameter at line : "
-# define INVALID_TEXT_FILE_PATTERN "Invalid texture pattern at line : "
-# define EMPTY_PATTERN "Pattern is empty at line : "
-# define INVALID_COLOR "Invalid color input at line : "
-# define INVALID_MAZE_CHAR "Unrecognized character in maze at line : "
+# define INVALID_FILE_PARAM "Unrecognized or duplicated input parameter at line "
+# define INVALID_TEXT_FILE_PATTERN "Invalid texture pattern at line "
+# define EMPTY_PATTERN "Pattern is empty at line "
+# define INVALID_COLOR "Invalid color input at line "
+# define INVALID_MAZE_CHAR "Unrecognized character in maze at line "
 # define UNCLOSED_MAZE "Unclosed maze at line : "
 # define SPAWNING "Missing of / too many spawning point "
 
