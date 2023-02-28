@@ -16,6 +16,7 @@ SRC_FILES		:=	main.c \
 					parsing.c \
 					find_texture_path_and_get_color.c \
 					utils.c \
+					mlx_init.c \
 					mlx_utils.c
 
 SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
@@ -26,11 +27,11 @@ LIB_LD			=	$(foreach lib,$(LIB_NAMES),-L$(lib))
 LIB_PATHS		=	$(foreach lib,$(LIB_NAMES),$(lib)/$(notdir $(lib)).a)
 LIB_HEADERS		=	$(foreach lib,$(LIB_NAMES),-I$(lib)/inc/)
 
-LIB_PATHS		+=	lib/minilibx-linux/libmlx.a \
-					lib/minilibx-linux/libmlx_Linux.a
-LIB_HEADERS		+= -Ilib/minilibx-linux/
-LIBS			+= -lm -lX11 -lXext -lz -lmlx -lmlx_Linux
-LIB_LD			+= -Llib/minilibx-linux/
+LIB_PATHS		+=	lib/minilibx-linux/libmlx_Linux.a \
+					lib/minilibx-linux/libmlx.a
+LIB_HEADERS		+= -Ilib/minilibx-linux
+LIBS			+= -lmlx_Linux -lX11 -lXext -lz -lmlx  -lm#-lmlx -,
+LIB_LD			+= -Llib/minilibx-linux
 
 BUILD_DIR		:=	build
 OBJS			:=	$(SRC_FILES:%.c=$(BUILD_DIR)/%.o)
