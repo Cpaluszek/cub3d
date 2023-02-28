@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 09:57:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/28 16:55:23 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:56:26 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,5 @@ void	exit_cube(t_cub3d *cube, int exit_code)
 	ft_free(cube->map_display.south_texture);
 	ft_free(cube->map_display.east_texture);
 	ft_free(cube->map_display.west_texture);
-
 	exit(exit_code);
 }
