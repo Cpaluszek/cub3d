@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:08:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/28 15:00:02 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/28 15:14:39 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ int	main(int argc, char **argv)
 		return (ERROR);
 	}
 	set_mlx_hooks(&cube.mlx_data);
+	for (int i = 100; i < WIN_WIDTH - 100; i++)
+	{
+		my_mlx_pixel_put(&cube.mlx_data.img, i, 100, 0x00FF00FF);
+	}
+	mlx_put_image_to_window(cube.mlx_data.mlx, cube.mlx_data.mlx_win, cube.mlx_data.img.img, 0, 0);
 	mlx_loop(cube.mlx_data.mlx);
 	return (SUCCESS);
 }

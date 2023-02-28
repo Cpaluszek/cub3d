@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:32:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/28 13:49:36 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/28 13:51:52 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct	s_mlx_data {
 	void		*mlx;
 	void		*mlx_win;
 	void		*mlx_img;
-	t_img_data	imgData;
+	t_img_data	img;
 }	t_mlx_data;
 
 typedef struct s_cub3d
