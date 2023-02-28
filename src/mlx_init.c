@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 13:42:41 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/28 15:04:42 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/28 15:26:34 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,4 @@ enum e_result	init_mlx_data(t_mlx_data *mlx_data)
 		return (ERROR);
 	}
 	return (SUCCESS);
-}
-
-
-int   printkey(int key)
-{
-    return (printf("%d\n", key));
-}
-
-void	set_mlx_hooks(t_mlx_data *mlx_data)
-{
-	mlx_key_hook(mlx_data->mlx_win, printkey, NULL);
 }

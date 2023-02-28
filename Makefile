@@ -17,6 +17,7 @@ SRC_FILES		:=	main.c \
 					find_texture_path_and_get_color.c \
 					utils.c \
 					mlx_init.c \
+					mlx_hooks.c \
 					mlx_utils.c
 
 SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
