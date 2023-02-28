@@ -28,5 +28,7 @@ void	error_exit_cube(t_cub3d *cube, char *msg1, char *msg2)
 void	exit_cube(t_cub3d *cube, int exit_code)
 {
 	(void) cube;
+	printf("Exit\n");
+	// Todo: free all and clean exit
 	exit(exit_code);
 }

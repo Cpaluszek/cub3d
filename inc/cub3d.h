@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:32:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/28 15:20:05 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/28 15:04:42 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <errno.h>
 # include "libft.h"
+# include "mlx_utils.h"
 # include "../lib/minilibx-linux/mlx.h"
 
 # define LOS_ANGLE 120
@@ -44,12 +45,20 @@ typedef struct s_map
 	t_color	ceiling_color;
 }	t_map;
 
+typedef struct	s_mlx_data {
+	void		*mlx;
+	void		*mlx_win;
+	void		*mlx_img;
+	t_img_data	img;
+}	t_mlx_data;
+
 typedef struct s_cub3d
 {
-	char	*map_path;
-	char	**grid_maze;
-	t_map	map_display;
-	int		view_angle;
+	char		*map_path;
+	char		**grid_maze;
+	t_map		map_display;
+	int			view_angle;
+	t_mlx_data	mlx_data;
 }	t_cub3d;
 
 # define WIN_WIDTH	1920
@@ -81,6 +90,9 @@ void	central_parsing(t_cub3d *cube);
 void	maze_validity_checking(t_cub3d *cube, char **grid_maze);
 void	find_texture_path_and_get_color(t_cub3d *cube, char *line);
 
+// --- MLX ---
+enum e_result	init_mlx_data(t_mlx_data *mlx_data);
+void			set_mlx_hooks(t_cub3d *cube);
 
 //	--- Utils ---
 void	error_exit_cube(t_cub3d *cube, char *msg1, char *msg2);
