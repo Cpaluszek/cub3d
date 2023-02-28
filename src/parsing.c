@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/28 10:44:08 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/28 10:48:40 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,19 @@ static void	interpret_map_information(t_cub3d *cube, char **map_information)
 	}
 	create_maze(cube, &map_information[i]);
 	fill_maze(cube->grid_maze, &map_information[i]);
+	print_maze(cube->grid_maze);
 	if (maze_validity_checking(cube->grid_maze) == ERROR)
 		exit_cube(cube, EXIT_FAILURE);
+}
+
+void print_maze(char **maze)
+{
+	printf("--- Maze Content ---\n");
+	for (int i = 0; maze[i]; i++)
+	{
+		printf("%s - %lu\n", maze[i], ft_strlen(maze[i]));
+	}
+	printf("--------------------\n");
 }
 
 static void	create_maze(t_cub3d *cube, char **map_information)
@@ -124,6 +135,7 @@ static int	maze_validity_checking(char **grid_maze)
 	int	i;
 
 	i = -1;
+	// TOdo:
 	while (grid_maze[0][++i])
 		if (grid_maze[0][i] != ' ' && grid_maze[0][i] != '1')
 			return (ERROR);

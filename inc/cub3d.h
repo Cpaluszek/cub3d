@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:32:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/28 10:14:58 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/28 10:23:14 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,9 @@ void	find_texture_path_and_get_color(t_cub3d *cube, char *line);
 void	error_exit_cube(t_cub3d *cube, char *msg1, char *msg2);
 void	test_failed_malloc(t_cub3d *cube, void *content);
 void	exit_cube(t_cub3d *cube, int exit_code);
+
+
+// _-- Debug
+void print_maze(char **maze);
 
 #endif
