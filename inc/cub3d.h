@@ -76,7 +76,7 @@ typedef struct s_cub3d
 # define INVALID_COLOR "Invalid color input at line "
 # define INVALID_MAZE_CHAR "Unrecognized character in maze at line "
 # define UNCLOSED_MAZE "Unclosed maze at line : "
-# define SPAWNING "Missing of / too many spawning point "
+# define SPAWNING "Missing or too many spawning point "
 
 enum e_result
 {
