@@ -16,12 +16,12 @@
 #include "cub3d.h"
 #include "libft.h"
 
-void	parse_map_information(t_general *cube, int fd_map);
-void	interpret_map_information(t_general *cube, char **map_information);
+void	parse_map_information(t_cub3d *cube, int fd_map);
+void	interpret_map_information(t_cub3d *cube, char **map_information);
 
 //todo : envisager le cas d'un fichier vide;
 
-void	central_parsing(t_general *cube)
+void	central_parsing(t_cub3d *cube)
 {
 	int	fd_map;
 
@@ -38,7 +38,7 @@ void	central_parsing(t_general *cube)
 //    map_information_checking(cube);
 }
 
-void	parse_map_information(t_general *cube, int fd_map)
+void	parse_map_information(t_cub3d *cube, int fd_map)
 {
 	char	buffer[1000000];
 	int		nb_read;
@@ -53,7 +53,7 @@ void	parse_map_information(t_general *cube, int fd_map)
 //    parse_maze(line, cube, fd_map);
 }
 
-void	interpret_map_information(t_general *cube, char **map_information)
+void	interpret_map_information(t_cub3d *cube, char **map_information)
 {
 	int	i;
 	int	j;
@@ -70,7 +70,7 @@ void	interpret_map_information(t_general *cube, char **map_information)
 		exit_cube(cube);
 }
 
-void	create_maze(t_general *cube, char **map_information)
+void	create_maze(t_cub3d *cube, char **map_information)
 {
 	int	i;
 	int	len;

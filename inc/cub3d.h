@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Teiki <Teiki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:32:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/27 17:59:16 by Teiki            ###   ########.fr       */
+/*   Updated: 2023/02/28 09:57:36 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "../lib/minilibx-linux/mlx.h"
 
 # define LOS_ANGLE 120
-# define MAX LOS	10
+# define MAX_LOS	10
 
 typedef struct s_rgb
 {
@@ -32,7 +32,7 @@ typedef union u_color
 {
 	unsigned int	color;
 	t_rgb			rgb;
-}t_color;
+}	t_color;
 
 typedef struct s_map
 {
@@ -42,15 +42,15 @@ typedef struct s_map
 	char	*east_texture;
 	t_color	floor_color;
 	t_color	ceiling_color;
-}t_map;
+}	t_map;
 
-typedef struct s_general
+typedef struct s_cub3d
 {
 	char	*map_path;
 	short	**grid_maze;
 	t_map	map_display;
 	int		view_angle;
-}t_general;
+}	t_cub3d;
 
 # define WIN_WIDTH	1920
 # define WIN_HEIGHT	1080
@@ -71,10 +71,10 @@ enum e_result
 	FINISHED = 10,
 };
 
-void	find_texture_path_and_get_color(t_general *cube, char *line);
+void	find_texture_path_and_get_color(t_cub3d *cube, char *line);
 
-void	error_exit_cube(t_general *cube, char *msg1, char *msg2);
-void	test_failed_malloc(t_general *cube, void *content);
-void	exit_cube(t_general *cube, int exit_code);
+void	error_exit_cube(t_cub3d *cube, char *msg1, char *msg2);
+void	test_failed_malloc(t_cub3d *cube, void *content);
+void	exit_cube(t_cub3d *cube, int exit_code);
 
 #endif

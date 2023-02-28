@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 	(void) argc;
     void *mlx_ptr;
     void *win_ptr;
-    t_general cube;
+    t_cub3d cube;
 
     cube.map_path = argv[1];
 //    mlx_ptr = mlx_init();

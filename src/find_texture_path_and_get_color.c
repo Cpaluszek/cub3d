@@ -2,13 +2,13 @@
 #include "cub3d.h"
 #include "libft.h"
 
-static void	parse_color(t_general *cube, t_rgb *color, char *line);
+static void	parse_color(t_cub3d *cube, t_rgb *color, char *line);
 static int	get_color(unsigned char *p_color, char **p_line);
-static char	*retrieve_path(t_general *cube, char *line, char *pattern);
-static void	retrieve_color(t_general *cube, t_rgb *color, \
+static char	*retrieve_path(t_cub3d *cube, char *line, char *pattern);
+static void	retrieve_color(t_cub3d *cube, t_rgb *color, \
 	char *line, char *pattern);
 
-void	find_texture_path_and_get_color(t_general *cube, char *line)
+void	find_texture_path_and_get_color(t_cub3d *cube, char *line)
 {
 	int	len;
 
@@ -29,7 +29,7 @@ void	find_texture_path_and_get_color(t_general *cube, char *line)
 		error_exit_cube(cube, INVALID_FILE_PARAM, line);
 }
 
-static char	*retrieve_path(t_general *cube, char *line, char *pattern)
+static char	*retrieve_path(t_cub3d *cube, char *line, char *pattern)
 {
 	char	*path;
 	int		i;
@@ -54,7 +54,7 @@ static char	*retrieve_path(t_general *cube, char *line, char *pattern)
 	return (path);
 }
 
-static void	retrieve_color(t_general *cube, \
+static void	retrieve_color(t_cub3d *cube, \
 	t_rgb *color, char *line, char *pattern)
 {
 	int		i;
@@ -74,7 +74,7 @@ static void	retrieve_color(t_general *cube, \
 	parse_color(cube, color, line);
 }
 
-static void	parse_color(t_general *cube, t_rgb *color, char *line)
+static void	parse_color(t_cub3d *cube, t_rgb *color, char *line)
 {
 	if (get_color(&color->red, &line) == ERROR)
 		error_exit_cube(cube, INVALID_COLOR, line);
