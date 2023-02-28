@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:32:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/28 10:23:14 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/28 14:36:38 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,18 @@ typedef struct s_cub3d
 # define WIN_NAME	"cub3D"
 
 # define ERR_MALLOC "Error with malloc(3)"
+# define ERR_READ "Error reading file"
 
 # define ERR_PATH "Map file : "
-# define INVALID_FILE_PARAM "Unrecognized input parameter at line : "
+# define ERR_FORMAT "Invalid map format, must be \"*.cub\""
+# define INVALID_PATTERN "Invalid file pattern"
+# define INVALID_FILE_PARAM "Unrecognized or duplicated input parameter at line : "
 # define INVALID_TEXT_FILE_PATTERN "Invalid texture pattern at line : "
 # define EMPTY_PATTERN "Pattern is empty at line : "
 # define INVALID_COLOR "Invalid color input at line : "
+# define INVALID_MAZE_CHAR "Unrecognized character in maze at line : "
+# define UNCLOSED_MAZE "Unclosed maze at line : "
+# define SPAWNING "Missing of / too many spawning point "
 
 enum e_result
 {
@@ -73,6 +79,7 @@ enum e_result
 
 //	--- Parsing ---
 void	central_parsing(t_cub3d *cube);
+void	maze_validity_checking(t_cub3d *cube, char **grid_maze);
 void	find_texture_path_and_get_color(t_cub3d *cube, char *line);
 
 

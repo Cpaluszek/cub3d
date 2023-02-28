@@ -2,7 +2,7 @@
 #include "cub3d.h"
 #include "libft.h"
 
-static void	parse_color(t_cub3d *cube, t_rgb *color, char *line);
+static void	parse_color(t_cub3d *cube, t_rgb *color, char **p_line);
 static int	get_color(unsigned char *p_color, char **p_line);
 static char	*retrieve_path(t_cub3d *cube, char *line, char *pattern);
 static void	retrieve_color(t_cub3d *cube, t_rgb *color, \
@@ -13,17 +13,17 @@ void	find_texture_path_and_get_color(t_cub3d *cube, char *line)
 	size_t	len;
 
 	len = ft_strlen(line);
-	if (ft_strnstr(line, "NO ", len) != NULL)
+	if (ft_strnstr(line, "NO ", len) != NULL && cube->map_display.north_texture == NULL)
 		cube->map_display.north_texture = retrieve_path(cube, line, "NO ");
-	else if (ft_strnstr(line, "SO ", len) != NULL)
-		cube->map_display.north_texture = retrieve_path(cube, line, "SO ");
-	else if (ft_strnstr(line, "WE ", len) != NULL)
-		cube->map_display.north_texture = retrieve_path(cube, line, "WE ");
-	else if (ft_strnstr(line, "EA ", len) != NULL)
-		cube->map_display.north_texture = retrieve_path(cube, line, "EA ");
-	else if (ft_strnstr(line, "F ", len) != NULL)
+	else if (ft_strnstr(line, "SO ", len) != NULL && cube->map_display.south_texture == NULL)
+		cube->map_display.south_texture = retrieve_path(cube, line, "SO ");
+	else if (ft_strnstr(line, "WE ", len) != NULL && cube->map_display.west_texture == NULL)
+		cube->map_display.west_texture = retrieve_path(cube, line, "WE ");
+	else if (ft_strnstr(line, "EA ", len) != NULL && cube->map_display.east_texture == NULL)
+		cube->map_display.east_texture = retrieve_path(cube, line, "EA ");
+	else if (ft_strnstr(line, "F ", len) != NULL  && cube->map_display.floor_color.color == 0x01000000)
 		retrieve_color(cube, &cube->map_display.floor_color.rgb, line, "F ");
-	else if (ft_strnstr(line, "C ", len) != NULL)
+	else if (ft_strnstr(line, "C ", len) != NULL && cube->map_display.ceiling_color.color == 0x01000000)
 		retrieve_color(cube, &cube->map_display.ceiling_color.rgb, line, "C ");
 	else
 		error_exit_cube(cube, INVALID_FILE_PARAM, line);
@@ -71,17 +71,20 @@ static void	retrieve_color(t_cub3d *cube, \
 	if (!line[i])
 		error_exit_cube(cube, EMPTY_PATTERN, line);
 	line = &line[i];
-	parse_color(cube, color, line);
+	parse_color(cube, color, &line);
 }
 
-static void	parse_color(t_cub3d *cube, t_rgb *color, char *line)
+static void	parse_color(t_cub3d *cube, t_rgb *color, char **p_line)
 {
+	char *line;
+
+	line = *p_line;
 	if (get_color(&color->red, &line) == ERROR)
-		error_exit_cube(cube, INVALID_COLOR, line);
+		error_exit_cube(cube, INVALID_COLOR, *p_line);
 	if (get_color(&color->gre, &line) == ERROR)
-		error_exit_cube(cube, INVALID_COLOR, line);
+		error_exit_cube(cube, INVALID_COLOR, *p_line);
 	if (get_color(&color->blu, &line) == ERROR)
-		error_exit_cube(cube, INVALID_COLOR, line);
+		error_exit_cube(cube, INVALID_COLOR, *p_line);
 }
 
 static int	get_color(unsigned char *p_color, char **p_line)
