@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:32:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/28 15:04:42 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:44:17 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_cub3d
 {
 	char		*map_path;
 	char		**grid_maze;
+	char		**map_information;
 	t_map		map_display;
 	int			view_angle;
 	t_mlx_data	mlx_data;
@@ -69,8 +70,9 @@ typedef struct s_cub3d
 # define ERR_READ "Error reading file"
 
 # define ERR_FORMAT "Invalid map format, must be \"*.cub\""
+# define ERR_MAZE "Invalid maze"
 # define INVALID_PATTERN "Invalid file pattern"
-# define INVALID_FILE_PARAM "Unrecognized or duplicated input parameter at line "
+# define INVALID_FILE_PARAM "Missing, unrecognized or duplicated input parameter at line "
 # define INVALID_TEXT_FILE_PATTERN "Invalid texture pattern at line "
 # define EMPTY_PATTERN "Pattern is empty at line "
 # define INVALID_COLOR "Invalid color input at line "
@@ -88,6 +90,7 @@ enum e_result
 //	--- Parsing ---
 void	central_parsing(t_cub3d *cube);
 void	maze_validity_checking(t_cub3d *cube, char **grid_maze);
+void	interpret_map_information(t_cub3d *cube, char **map_information);
 void	find_texture_path_and_get_color(t_cub3d *cube, char *line);
 
 // --- MLX ---
