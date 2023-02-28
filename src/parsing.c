@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/28 10:51:20 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:11:06 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include <string.h>
 #include "cub3d.h"
 #include "libft.h"
+
+#define BUF_SIZE 1000000
 
 static void	parse_map_information(t_cub3d *cube, int fd_map);
 static void	interpret_map_information(t_cub3d *cube, char **map_information);
@@ -35,20 +37,19 @@ void	central_parsing(t_cub3d *cube)
 	cube->map_display.south_texture = NULL;
 	cube->map_display.west_texture = NULL;
 	cube->map_display.east_texture = NULL;
-	// Todo: define base color
-	cube->map_display.ceiling_color.color = 20000000;
-	cube->map_display.floor_color.color = 20000000;
+	cube->map_display.ceiling_color.color = 0xFFFFFF + 1;
+	cube->map_display.floor_color.color = 0xFFFFFF + 1;
 	parse_map_information(cube, fd_map);
 //    map_information_checking(cube);
 }
 
 static void	parse_map_information(t_cub3d *cube, int fd_map)
 {
-	char	buffer[1000000];
+	char	buffer[BUF_SIZE];
 	ssize_t	nb_read;
 	char	**map_information;
 
-	nb_read = read(fd_map, buffer, 1000000);
+	nb_read = read(fd_map, buffer, BUF_SIZE);
 	dprintf(2, "read: %s\n", buffer);
 	// Todo: check read return
 	(void) nb_read;
