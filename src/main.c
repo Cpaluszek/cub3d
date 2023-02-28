@@ -12,6 +12,7 @@
 
 #include "cub3d.h"
 
+// Todo: Makefile lib compilation check
 
 int	main(int argc, char **argv)
 {

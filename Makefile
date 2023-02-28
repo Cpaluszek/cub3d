@@ -32,7 +32,7 @@ LIB_HEADERS		=	$(foreach lib,$(LIB_NAMES),-I$(lib)/inc/)
 LIB_PATHS		+=	lib/minilibx-linux/libmlx_Linux.a \
 					lib/minilibx-linux/libmlx.a
 LIB_HEADERS		+= -Ilib/minilibx-linux
-LIBS			+= -lmlx_Linux -lX11 -lXext -lz -lmlx  -lm#-lmlx -,
+LIBS			+= -lmlx_Linux -lX11 -lXext -lz -lmlx -lm
 LIB_LD			+= -Llib/minilibx-linux
 
 BUILD_DIR		:=	build
@@ -70,7 +70,7 @@ _WHITE			:=	\x1b[37m
 all: $(NAME)
 
 $(LIB_PATHS): force
-	@$(foreach lib, $(LIB_NAMES), \
+	$(foreach lib, $(LIB_NAMES), \
 		$(MAKE) $(lib); \
 	)
 
