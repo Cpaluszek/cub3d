@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/28 10:48:40 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/28 10:51:20 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ static void	create_maze(t_cub3d *cube, char **map_information)
 		cube->grid_maze[i] = malloc(sizeof(char) * (len_max + 1));
 		test_failed_malloc(cube, cube->grid_maze[i]);
 		ft_memset(cube->grid_maze[i], ' ', len_max);
-		cube->grid_maze[i][len_max - 1] = '\0';
 		i++;
 	}
 }
