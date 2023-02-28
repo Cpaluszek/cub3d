@@ -1,12 +1,12 @@
 
-NO	./textures/mossy.xpm
-SO	./textures/redbrick.xpm
-WE	./textures/wood.xpm
-EA	./textures/colorstone.xpm
+NO ./textures/mossy.xpm
+SO ./textures/redbrick.xpm
+WE ./textures/wood.xpm
+EA                         ./textures/colorstone.xpm
 
 
-F	68, 68,  68
-C	51, 204, 255
+F             68,68,68
+C 51,204,255
 
 
 11111111111111111   11111

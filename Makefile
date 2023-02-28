@@ -26,11 +26,11 @@ LIB_LD			=	$(foreach lib,$(LIB_NAMES),-L$(lib))
 LIB_PATHS		=	$(foreach lib,$(LIB_NAMES),$(lib)/$(notdir $(lib)).a)
 LIB_HEADERS		=	$(foreach lib,$(LIB_NAMES),-I$(lib)/inc/)
 
-#LIB_PATHS		+=	lib/minilibx-linux/libmlx.a
-					#lib/minilibx-linux/libmlx_Linux.a
-#IB_HEADERS		+= -Ilib/minilibx-linux/
-#LIBS			+= -lm -lX11 -lXext -lz -lmlx -lmlx_Linux
-#LIB_LD			+= -Llib/minilibx-linux/
+LIB_PATHS		+=	lib/minilibx-linux/libmlx.a \
+					lib/minilibx-linux/libmlx_Linux.a
+LIB_HEADERS		+= -Ilib/minilibx-linux/
+LIBS			+= -lm -lX11 -lXext -lz -lmlx -lmlx_Linux
+LIB_LD			+= -Llib/minilibx-linux/
 
 BUILD_DIR		:=	build
 OBJS			:=	$(SRC_FILES:%.c=$(BUILD_DIR)/%.o)
@@ -40,7 +40,7 @@ CCDEFS			:=	NAME=\"$(NAME)\"
 # Compiler options
 CC				:=	cc
 DEBUG_FLAG		:=	-g3
-CC_FLAGS		:=	#-Wextra -Werror -Wall -O3 #$(DEBUG_FLAG)
+CC_FLAGS		:=	-Wextra -Werror -Wall -O3 #$(DEBUG_FLAG)
 CC_DEPS_FLAGS	:=	-MP -MMD
 CC_DEFS_FLAGS	:=	$(foreach def,$(CCDEFS),-D $(def))
 

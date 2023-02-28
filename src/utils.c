@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 09:57:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/28 09:57:36 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/02/28 09:59:05 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ void	error_exit_cube(t_cub3d *cube, char *msg1, char *msg2)
 
 void	exit_cube(t_cub3d *cube, int exit_code)
 {
+	(void) cube;
 	exit(exit_code);
 }

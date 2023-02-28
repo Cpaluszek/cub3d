@@ -10,7 +10,7 @@ static void	retrieve_color(t_cub3d *cube, t_rgb *color, \
 
 void	find_texture_path_and_get_color(t_cub3d *cube, char *line)
 {
-	int	len;
+	size_t	len;
 
 	len = ft_strlen(line);
 	if (ft_strnstr(line, "NO ", len) != NULL)
