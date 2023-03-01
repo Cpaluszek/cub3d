@@ -23,6 +23,7 @@ SRC_FILES		:=	main.c \
 					mlx_hooks.c \
 					mlx_utils.c \
 					render.c \
+					raytracer.c \
 					utils.c
 
 SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))

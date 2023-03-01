@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:32:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/01 10:18:43 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/01 11:55:53 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@
 # define MINI_MAP_Y 10
 # define MINI_MAP_WIDTH 300
 # define MINI_MAP_HEIGHT 300
+# define SCREEN_DISTANCE 0.1f
 
 // Viewing angle
-# define FOV	120
+# define FOV	120.0f
 
 # define LOS_ANGLE 120
 # define MAX_LOS	10
@@ -46,6 +47,8 @@ void			set_mlx_hooks(t_cub3d *cube);
 // --- Render ---
 
 void	init_render(t_cub3d *cube);
+void	raytracer(t_cub3d *cube);
+
 
 
 //	--- Utils ---
