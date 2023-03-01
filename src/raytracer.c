@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:27:24 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/01 15:32:08 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/01 18:39:26 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ void	raytracer(t_cub3d *cube)
 
 	player_dir = cube->player.dir;
 	player_pos = cube->player.pos;
-	ray_direction.x = -player_dir.y;
-	ray_direction.y = player_dir.x;
 	y = 0;
 	while (y < WIN_WIDTH)
 	{
-		relative_pos_in_screen = (float)y / WIN_WIDTH - 0.5f * cube->screen_width;
+		ray_direction.x = -player_dir.y;
+		ray_direction.y = player_dir.x;
+		relative_pos_in_screen = 2 * y / (double)WIN_WIDTH - 1;// * cube->screen_width;
 		ray_direction.x =  ray_direction.x * relative_pos_in_screen + player_dir.x;
 		ray_direction.y =  ray_direction.y * relative_pos_in_screen + player_dir.y;
 		set_colum_display(cube, player_pos, ray_direction, y);
@@ -50,14 +50,15 @@ static void set_colum_display(t_cub3d *cube, t_vector player_pos, t_vector ray_d
 	int  	hit;
 	int 	wall;
 
+//	dprintf(1, "%f %f \n", ray_direction.x, ray_direction.y);
 	map_pos_x = (int)player_pos.x;
 	map_pos_y = (int)player_pos.y;
 	if (ray_direction.x < 0)
-		delta.x = -1 / ray_direction.x;
+		delta.x = -1 * (1 / ray_direction.x);
 	else
 		delta.x = 1 / ray_direction.x;
 	if (ray_direction.y < 0)
-		delta.y = -1 / ray_direction.y;
+		delta.y = -1 * (1 / ray_direction.y);
 	else
 		delta.y = -1 / ray_direction.y;
 	if (ray_direction.x < 0)
@@ -87,19 +88,20 @@ static void set_colum_display(t_cub3d *cube, t_vector player_pos, t_vector ray_d
 		{
 			side.x += delta.x;
 			map_pos_x += step_x;
-			wall = 0;
+			wall = 1;
 		}
 		else
 		{
 			side.y += delta.y;
 			map_pos_y += step_y;
-			wall = 1;
+			wall = 0;
 		}
-		if (cube->grid_maze[map_pos_y][map_pos_x] == 1)
+		if (cube->grid_maze[map_pos_y][map_pos_x] == '1')
 			hit = 1;
 	}
 	if (wall == 0)
-		cube->raysize[column] = side.x - delta.x;
+		cube->raysize[column] = (int) (WIN_HEIGHT / (side.x - delta.x)) ;
 	else
-		cube->raysize[column] = side.y - delta.y;
+		cube->raysize[column] = (int) (WIN_HEIGHT / (side.y - delta.y));
+	printf("%f %f %d\n", side.x, side.y, cube->raysize[column]);
 }
