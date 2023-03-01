@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   maze_validity_checking.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 13:08:18 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/01 10:02:03 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/01 11:06:01 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 static void check_first_and_last_column(t_cub3d *cube, char *line, int i);
 static void check_first_and_last_line(t_cub3d *cube, char *line);
 static void check_prev_next_up_and_down(t_cub3d *cube, char **grid_maze, int line, int column);
+static void	set_player_starting_position(t_cub3d *cube, int i, int j);
 
 void	maze_validity_checking(t_cub3d *cube, char **grid_maze)
 {
@@ -35,13 +36,7 @@ void	maze_validity_checking(t_cub3d *cube, char **grid_maze)
 			else if (grid_maze[j][i] == ' ')
 				check_prev_next_up_and_down(cube, grid_maze, j, i);
 			if (ft_is_inside(grid_maze[j][i], "NSEW"))
-			{
-				// Todo: set player direction depending on NSEW
-				if (cube->player.pos.x != 0.0f || cube->player.pos.y != 0.0f)
-					error_exit_cube(cube, SPAWNING, "");
-				cube->player.pos.x = (float) i;
-				cube->player.pos.y = (float) j;
-			}
+				set_player_starting_position(cube, i ,j);
 			i++;
 		}
 		j++;
@@ -77,4 +72,33 @@ static void check_first_and_last_column(t_cub3d *cube, char *line, int i)
 {
 	if (ft_is_inside(line[i], "0NSEW"))
 		error_exit_cube(cube, UNCLOSED_MAZE, line);
+}
+
+static void	set_player_starting_position(t_cub3d *cube, int i, int j)
+{
+	if (cube->player.pos.x != 0.0f || cube->player.pos.y != 0.0f)
+		error_exit_cube(cube, SPAWNING, "aborting execution");
+	cube->player.pos.x = (float) i;
+	cube->player.pos.y = (float) j;
+	if (cube->grid_maze[j][i] == 'N')
+	{
+		cube->player.dir.x = 0.0f;
+		cube->player.dir.y = 1.0f;
+	}
+	else if (cube->grid_maze[j][i] == 'S')
+	{
+		cube->player.dir.x = 0.0f;
+		cube->player.dir.y = -1.0f;
+	}
+	if (cube->grid_maze[j][i] == 'E')
+	{
+		cube->player.dir.x = 1.0f;
+		cube->player.dir.y = 0.0f;
+	}
+	if (cube->grid_maze[j][i] == 'W')
+	{
+		cube->player.dir.x = -1.0f;
+		cube->player.dir.y = 0.0f;
+	}
+	cube->grid_maze[j][i] = '0';
 }

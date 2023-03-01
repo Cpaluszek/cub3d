@@ -30,6 +30,7 @@
 # define MM_PLAYER_COLOR	0x8AADF4
 # define MM_WALL_COLOR		0xCAD3F5
 # define MM_BG_COLOR		0x24273A
+# define SCREEN_DISTANCE	0.1f
 
 // Viewing angle
 # define FOV	120

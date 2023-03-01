@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/01 09:47:08 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/01 11:46:06 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <fcntl.h>
+#include <math.h>
 #include "errors.h"
 #include "cub3d.h"
 
@@ -40,6 +41,7 @@ void	central_parsing(t_cub3d *cube)
 	cube->grid_maze = NULL;
 	cube->player.pos.x = 0.0f;
 	cube->player.pos.y = 0.0f;
+	cube->screen_width = SCREEN_DISTANCE * tan(FOV / 2) * 2;
 	parse_map_information(cube, fd_map);
 }
 

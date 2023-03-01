@@ -2,6 +2,7 @@
 #define STRUCTS_H
 
 # include "mlx_utils.h"
+# include "cub3d.h"
 
 // Todo: double or float ?
 typedef struct	s_vector {
@@ -62,6 +63,10 @@ typedef struct s_cub3d
 	t_map_data	map_data;
 	t_mlx_data	mlx_data;
 	t_player	player;
+	float 		screen_width;
+	// Note: try to use previous defines
+	int			raysize[1920];
+	char		raytexture[1920];
 }	t_cub3d;
 
 enum e_result
