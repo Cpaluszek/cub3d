@@ -1,12 +1,7 @@
 
 NO ./textures/mossy.xpm
 SO ./textures/redbrick.xpm
-WE ./textures/wood.xpm
-EA                         ./textures/colorstone.xp
+EA    ./textubv;u;res/colorstone.xp
 
-F             68,255,68
-C 51,204,255
-
- 1
 1N1
 111

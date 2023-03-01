@@ -37,7 +37,7 @@ static char	*retrieve_path(t_cub3d *cube, char *line, char *pattern)
 	i = 0;
 	while (line[i] && line[i] == ' ')
 		i++;
-	if (ft_strncmp(&line[i], pattern, 3) == ERROR)
+	if (ft_strncmp(&line[i], pattern, 3))
 		error_exit_cube(cube, INVALID_TEXT_FILE_PATTERN, line);
 	line = &line[i + 3];
 	i = 0;

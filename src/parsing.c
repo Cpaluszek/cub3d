@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/28 15:19:01 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:45:10 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,11 @@
 #include <fcntl.h>
 #include <string.h>
 #include "cub3d.h"
-#include "libft.h"
 
 #define BUF_SIZE 1000000
 
 static void	parse_map_information(t_cub3d *cube, int fd_map);
-static void	interpret_map_information(t_cub3d *cube, char **map_information);
-static void	create_maze(t_cub3d *cube, char **map_information);
-static void	fill_maze(t_cub3d *cube, char **grid_maze, char **map_information);
-
-//todo : envisager le cas d'un fichier vide;
+static void	check_no_splitted_maze(t_cub3d *cube, char **map_information, char *buffer);
 
 void	central_parsing(t_cub3d *cube)
 {
@@ -42,6 +37,7 @@ void	central_parsing(t_cub3d *cube)
 	cube->map_display.east_texture = NULL;
 	cube->map_display.ceiling_color.color = 0x01000000;
 	cube->map_display.floor_color.color = 0x01000000;
+	cube->grid_maze = NULL;
 	parse_map_information(cube, fd_map);
 }
 
@@ -49,89 +45,42 @@ static void	parse_map_information(t_cub3d *cube, int fd_map)
 {
 	char	buffer[BUF_SIZE];
 	ssize_t	nb_read;
-	char	**map_information;
 
 	nb_read = read(fd_map, buffer, BUF_SIZE);
 	if (nb_read == -1)
 		error_exit_cube(cube, ERR_READ, "");
-	(void) nb_read;
-	map_information = ft_split(buffer, '\n');
-	test_failed_malloc(cube, map_information);
-	interpret_map_information(cube, map_information);
+	cube->map_information = ft_split(buffer, '\n');
+	test_failed_malloc(cube, cube->map_information);
+	check_no_splitted_maze(cube, cube->map_information, buffer);
+	interpret_map_information(cube, cube->map_information);
+	ft_free_split(cube->map_information);
+	cube->map_information = NULL;
 }
 
-static void	interpret_map_information(t_cub3d *cube, char **map_information)
+static void	check_no_splitted_maze(t_cub3d *cube, char **map_information, char *buffer)
 {
-	int	i;
+	int i;
+	int j;
 
-	i = 0;
-	while (i < 6)
-	{
-		if (!map_information[i])
-			error_exit_cube(cube, INVALID_PATTERN, "");
-		find_texture_path_and_get_color(cube, map_information[i]);
-		i++;
-	}
-	if (!map_information[i])
-		error_exit_cube(cube, INVALID_PATTERN, "");
-	create_maze(cube, &map_information[i]);
-	fill_maze(cube, cube->grid_maze, &map_information[i]);
-	maze_validity_checking(cube, cube->grid_maze);
-}
-
-void print_maze(char **maze)
-{
-	printf("--- Maze Content ---\n");
-	for (int i = 0; maze[i]; i++)
-	{
-		printf("%s - %lu\n", maze[i], ft_strlen(maze[i]));
-	}
-	printf("--------------------\n");
-}
-
-static void	create_maze(t_cub3d *cube, char **map_information)
-{
-	int		i;
-	size_t	len;
-	size_t	len_max;
-
-	len_max = ft_strlen(map_information[0]);
 	i = 0;
 	while (map_information[i])
 	{
-		len = ft_strlen(map_information[i]);
-		if (len > len_max)
-			len_max = len;
+		j = 0;
+		while (map_information[i][j] && ft_is_inside(map_information[i][j], "01NSEW "))
+			j++;
+		if (map_information[i][j] == '\0')
+			break;
 		i++;
 	}
-	cube->grid_maze = malloc(sizeof(char *) * (i + 1));
-	test_failed_malloc(cube, cube->grid_maze);
-	cube->grid_maze[i] = NULL;
+	buffer = ft_strnstr(buffer, map_information[i], ft_strlen(buffer));
+	buffer = ft_strnstr(buffer, "\n\n", ft_strlen(buffer));
+	if (!buffer)
+		return ;
 	i = 0;
-	while (map_information[i])
+	while (buffer[i])
 	{
-		cube->grid_maze[i] = malloc(sizeof(char) * (len_max + 1));
-		test_failed_malloc(cube, cube->grid_maze[i]);
-		ft_memset(cube->grid_maze[i], ' ', len_max);
+		if (buffer[i] != '\n')
+			error_exit_cube(cube, ERR_MAZE, "newline inside");
 		i++;
-	}
-}
-
- static void	fill_maze(t_cub3d *cube, char **grid_maze, char **map_information)
-{
-	int		line;
-	int		i;
-
-	line = 0;
-	while (map_information[line])
-	{
-		i = -1;
-		while (map_information[line][++i])
-        {
-            if (ft_is_inside(map_information[line][i], "01NSEW ")  == 0)
-                error_exit_cube(cube, INVALID_MAZE_CHAR, map_information[line]);
-			grid_maze[line][i] = map_information[line][i];
-        }
-		line++;
 	}
 }

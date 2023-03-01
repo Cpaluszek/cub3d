@@ -15,6 +15,7 @@ SRC_DIR			:=	src
 SRC_FILES		:=	main.c \
 					parsing.c \
 					find_texture_path_and_get_color.c \
+					interpret_map_information.c \
 					maze_validity_checking.c \
 					utils.c \
 					mlx_init.c \
