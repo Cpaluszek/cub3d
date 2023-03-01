@@ -22,6 +22,7 @@ SRC_FILES		:=	main.c \
 					mlx_init.c \
 					mlx_hooks.c \
 					mlx_utils.c \
+					game_loop.c \
 					render.c \
 					render_minimap.c \
 					utils.c

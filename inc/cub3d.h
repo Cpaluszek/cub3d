@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:32:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/01 14:09:46 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:17:07 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ void	find_texture_path_and_get_color(t_cub3d *cube, char *line);
 enum e_result	init_mlx_data(t_mlx_data *mlx_data);
 void			set_mlx_hooks(t_cub3d *cube);
 
-// --- Render ---
+//	--- Game Loop ---
+int		game_loop(t_cub3d *cube);
+
+//	--- Render ---
 void	init_render(t_cub3d *cube);
 void	draw_minimap(t_cub3d *cube);
 
@@ -56,7 +59,7 @@ void	error_exit_cube(t_cub3d *cube, char *msg1, char *msg2);
 void	test_failed_malloc(t_cub3d *cube, void *content);
 void	exit_cube(t_cub3d *cube, int exit_code);
 
-// _-- Debug
+// 	--- Debug
 void print_maze(char **maze);
 
 #endif
