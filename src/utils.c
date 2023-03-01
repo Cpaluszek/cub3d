@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 09:57:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/01 09:38:54 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/01 09:47:55 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void	error_exit_cube(t_cub3d *cube, char *msg1, char *msg2)
 
 void	exit_cube(t_cub3d *cube, int exit_code)
 {
-	(void) cube;
-	printf("Exit\n");
 	ft_free_split(cube->map_information);
 	ft_free_split(cube->grid_maze);
 	ft_free(cube->map_data.north_texture);

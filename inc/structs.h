@@ -41,13 +41,18 @@ typedef struct	s_mlx_data {
 	void		*mlx;
 	void		*mlx_win;
 	void		*mlx_img;
-	t_img_data	img;
+	t_img_data	img1;
+	t_img_data	img2;
+	t_img_data	*current_img;
+	t_img_data	*working_img;
 }	t_mlx_data;
 
 typedef struct s_cub3d
 {
+	// Note: remove map_path from struct
 	char		*map_path;
 	char		**grid_maze;
+	// Note: remove from struct ??
 	char		**map_information;
 	t_map_data	map_data;
 	t_mlx_data	mlx_data;

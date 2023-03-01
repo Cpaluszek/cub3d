@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/01 09:38:18 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/01 09:47:08 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	central_parsing(t_cub3d *cube)
 	cube->map_data.ceiling_color.color = 0x01000000;
 	cube->map_data.floor_color.color = 0x01000000;
 	cube->grid_maze = NULL;
+	cube->player.pos.x = 0.0f;
+	cube->player.pos.y = 0.0f;
 	parse_map_information(cube, fd_map);
 }
 

@@ -30,9 +30,9 @@ int	main(int argc, char **argv)
 	set_mlx_hooks(&cube);
 	for (int i = 100; i < WIN_WIDTH - 100; i++)
 	{
-		my_mlx_pixel_put(&cube.mlx_data.img, i, 100, 0x00FF00FF);
+		my_mlx_pixel_put(&cube.mlx_data.img1, i, 100, 0x00FF00FF);
 	}
-	mlx_put_image_to_window(cube.mlx_data.mlx, cube.mlx_data.mlx_win, cube.mlx_data.img.img, 0, 0);
+	mlx_put_image_to_window(cube.mlx_data.mlx, cube.mlx_data.mlx_win, cube.mlx_data.img1.img, 0, 0);
 	mlx_loop(cube.mlx_data.mlx);
 	return (SUCCESS);
 }

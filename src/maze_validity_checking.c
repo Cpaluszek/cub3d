@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   maze_validity_checking.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 13:08:18 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/28 13:50:54 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/01 09:38:46 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ void	maze_validity_checking(t_cub3d *cube, char **grid_maze)
 {
 	int	i;
 	int j;
-	int count;
 
-	count = 0;
 	j = 0;
 	while (grid_maze[j])
 	{
@@ -37,13 +35,16 @@ void	maze_validity_checking(t_cub3d *cube, char **grid_maze)
 			else if (grid_maze[j][i] == ' ')
 				check_prev_next_up_and_down(cube, grid_maze, j, i);
 			if (ft_is_inside(grid_maze[j][i], "NSEW"))
-				count++;
+			{
+				if (cube->player.pos.x != 0.0f || cube->player.pos.y != 0.0f)
+					error_exit_cube(cube, SPAWNING, "");
+				cube->player.pos.x = (float) i;
+				cube->player.pos.y = (float) j;
+			}
 			i++;
 		}
 		j++;
 	}
-	if (count != 1)
-		error_exit_cube(cube, SPAWNING, "");
 }
 
 static void check_first_and_last_line(t_cub3d *cube, char *line)

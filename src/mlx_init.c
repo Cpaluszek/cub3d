@@ -23,15 +23,15 @@ enum e_result	init_mlx_data(t_mlx_data *mlx_data)
 		// Todo: destroy mlx ??
 		return (ERROR);
 	}
-	mlx_data->img.img = mlx_new_image(mlx_data->mlx, WIN_WIDTH, WIN_HEIGHT);
-	if (mlx_data->img.img == NULL)
+	mlx_data->img1.img = mlx_new_image(mlx_data->mlx, WIN_WIDTH, WIN_HEIGHT);
+	if (mlx_data->img1.img == NULL)
 	{
 		// Todo: clean exit
 		return (ERROR);
 	}
-	mlx_data->img.addr = mlx_get_data_addr(mlx_data->img.img, &mlx_data->img.bits_per_pixel,
-										   &mlx_data->img.line_length, &mlx_data->img.endian);
-	if (mlx_data->img.addr == NULL)
+	mlx_data->img1.addr = mlx_get_data_addr(mlx_data->img1.img, &mlx_data->img1.bits_per_pixel,
+											&mlx_data->img1.line_length, &mlx_data->img1.endian);
+	if (mlx_data->img1.addr == NULL)
 	{
 		// Todo: clean exit
 		return (ERROR);
