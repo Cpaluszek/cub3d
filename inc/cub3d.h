@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:32:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/01 11:55:53 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:09:46 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,17 @@
 # define WIN_HEIGHT	1080
 # define WIN_NAME	"cub3D"
 
-# define MINI_MAP_X 10
-# define MINI_MAP_Y 10
-# define MINI_MAP_WIDTH 300
-# define MINI_MAP_HEIGHT 300
-# define SCREEN_DISTANCE 0.1f
+// --- Minimap ---
+# define MINI_MAP_X			10
+# define MINI_MAP_Y			10
+# define MINI_MAP_VIEW_DIST 30
+# define MINI_MAP_CELL_SIZE 10
+# define MM_PLAYER_COLOR	0x8AADF4
+# define MM_WALL_COLOR		0xCAD3F5
+# define MM_BG_COLOR		0x24273A
 
 // Viewing angle
-# define FOV	120.0f
+# define FOV	120
 
 # define LOS_ANGLE 120
 # define MAX_LOS	10
@@ -45,10 +48,8 @@ enum e_result	init_mlx_data(t_mlx_data *mlx_data);
 void			set_mlx_hooks(t_cub3d *cube);
 
 // --- Render ---
-
 void	init_render(t_cub3d *cube);
-void	raytracer(t_cub3d *cube);
-
+void	draw_minimap(t_cub3d *cube);
 
 
 //	--- Utils ---

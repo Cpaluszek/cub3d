@@ -36,6 +36,8 @@ typedef struct s_map_data
 	char	*east_texture;
 	t_color	floor_color;
 	t_color	ceiling_color;
+	int		height;
+	int		width;
 }	t_map_data;
 
 typedef struct	s_mlx_data {
