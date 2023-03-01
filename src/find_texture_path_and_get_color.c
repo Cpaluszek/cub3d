@@ -1,5 +1,6 @@
 
 #include "cub3d.h"
+#include "errors.h"
 #include "libft.h"
 
 static void	parse_color(t_cub3d *cube, t_rgb *color, char **p_line);

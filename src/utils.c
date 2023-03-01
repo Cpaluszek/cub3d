@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "errors.h"
 
 void	test_failed_malloc(t_cub3d *cube, void *content)
 {

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "errors.h"
 
 static void check_first_and_last_column(t_cub3d *cube, char *line, int i);
 static void check_first_and_last_line(t_cub3d *cube, char *line);

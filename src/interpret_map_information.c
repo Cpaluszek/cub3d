@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "errors.h"
 
 static void	create_maze(t_cub3d *cube, char **map_information);
 static void	fill_maze(t_cub3d *cube, char **grid_maze, char **map_information);

@@ -12,7 +12,7 @@
 
 #include <unistd.h>
 #include <fcntl.h>
-#include <string.h>
+#include "errors.h"
 #include "cub3d.h"
 
 #define BUF_SIZE 1000000

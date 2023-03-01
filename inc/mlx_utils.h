@@ -13,6 +13,8 @@
 #ifndef MLX_UTILS_H
 # define MLX_UTILS_H
 
+# include "../lib/minilibx-linux/mlx.h"
+
 typedef struct s_img_data
 {
 	void	*img;

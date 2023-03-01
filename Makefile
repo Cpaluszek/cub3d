@@ -7,7 +7,9 @@ NAME			:=	cub3D
 
 HEADERS_DIR		:=	inc
 HEADERS_FILES	:=	cub3d.h \
-					mlx_utils.h
+					mlx_utils.h \
+					structs.h \
+					errors.h
 
 HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
