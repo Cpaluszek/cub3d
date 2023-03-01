@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:32:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/01 13:20:58 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:09:46 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@
 # define WIN_NAME	"cub3D"
 
 // --- Minimap ---
-# define MINI_MAP_X 10
-# define MINI_MAP_Y 10
-# define MINI_MAP_WIDTH 300
-# define MINI_MAP_HEIGHT 300
+# define MINI_MAP_X			10
+# define MINI_MAP_Y			10
+# define MINI_MAP_VIEW_DIST 30
+# define MINI_MAP_CELL_SIZE 10
 # define MM_PLAYER_COLOR	0x8AADF4
 # define MM_WALL_COLOR		0xCAD3F5
-# define MM_BACKGROUND_COLOR 0x24273A
+# define MM_BG_COLOR		0x24273A
 
 // Viewing angle
 # define FOV	120
