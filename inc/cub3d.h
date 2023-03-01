@@ -51,7 +51,6 @@ void			set_mlx_hooks(t_cub3d *cube);
 void	init_render(t_cub3d *cube);
 void	draw_minimap(t_cub3d *cube);
 
-
 //	--- Utils ---
 void	error_exit_cube(t_cub3d *cube, char *msg1, char *msg2);
 void	test_failed_malloc(t_cub3d *cube, void *content);

@@ -12,6 +12,9 @@ typedef struct	s_vector {
 typedef struct	s_player {
 	t_vector	pos;
 	t_vector	dir;
+	// Todo: use int instead of float ?
+	t_vector	move;
+	int			rotate;
 }	t_player;
 
 typedef struct s_rgb
