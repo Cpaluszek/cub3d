@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 14:28:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/01 14:38:51 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/01 16:21:54 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	game_loop(t_cub3d *cube)
 	if (cube->player.move.x != 0 || cube->player.move.y != 0)
 	{
 		// Move player
+		cube->player.pos.x += cube->player.move.x * 0.01f;
+		cube->player.pos.y += cube->player.move.y * 0.01f;
 		render_needed = 1;
 	}
 	if (cube->player.rotate != 0)
