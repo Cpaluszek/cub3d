@@ -3,6 +3,18 @@
 
 # include "mlx_utils.h"
 
+// Todo: double or float ?
+typedef struct	s_vector {
+	float	x;
+	float	y;
+}	t_vector;
+
+typedef struct	s_player {
+	t_vector	pos;
+	t_vector	dir;
+	int			fov;
+}	t_player;
+
 typedef struct s_rgb
 {
 	unsigned char	blu;
@@ -16,12 +28,7 @@ typedef union u_color
 	t_rgb			rgb;
 }	t_color;
 
-typedef struct	s_dvector {
-	double	x;
-	double	y;
-}	t_dvector;
-
-typedef struct s_map
+typedef struct s_map_data
 {
 	char	*north_texture;
 	char	*south_texture;
@@ -29,7 +36,7 @@ typedef struct s_map
 	char	*east_texture;
 	t_color	floor_color;
 	t_color	ceiling_color;
-}	t_map;
+}	t_map_data;
 
 typedef struct	s_mlx_data {
 	void		*mlx;
@@ -43,9 +50,9 @@ typedef struct s_cub3d
 	char		*map_path;
 	char		**grid_maze;
 	char		**map_information;
-	t_map		map_display;
-	int			view_angle;
+	t_map_data	map_data;
 	t_mlx_data	mlx_data;
+	t_player	player;
 }	t_cub3d;
 
 enum e_result

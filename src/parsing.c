@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/28 16:45:10 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/01 09:38:18 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ void	central_parsing(t_cub3d *cube)
     fd_map = open(cube->map_path, O_RDONLY);
 	if (fd_map == -1)
 		error_exit_cube(cube, cube->map_path, strerror(errno));
-	cube->map_display.north_texture = NULL;
-	cube->map_display.south_texture = NULL;
-	cube->map_display.west_texture = NULL;
-	cube->map_display.east_texture = NULL;
-	cube->map_display.ceiling_color.color = 0x01000000;
-	cube->map_display.floor_color.color = 0x01000000;
+	cube->map_data.north_texture = NULL;
+	cube->map_data.south_texture = NULL;
+	cube->map_data.west_texture = NULL;
+	cube->map_data.east_texture = NULL;
+	cube->map_data.ceiling_color.color = 0x01000000;
+	cube->map_data.floor_color.color = 0x01000000;
 	cube->grid_maze = NULL;
 	parse_map_information(cube, fd_map);
 }

@@ -14,18 +14,18 @@ void	find_texture_path_and_get_color(t_cub3d *cube, char *line)
 	size_t	len;
 
 	len = ft_strlen(line);
-	if (ft_strnstr(line, "NO ", len) != NULL && cube->map_display.north_texture == NULL)
-		cube->map_display.north_texture = retrieve_path(cube, line, "NO ");
-	else if (ft_strnstr(line, "SO ", len) != NULL && cube->map_display.south_texture == NULL)
-		cube->map_display.south_texture = retrieve_path(cube, line, "SO ");
-	else if (ft_strnstr(line, "WE ", len) != NULL && cube->map_display.west_texture == NULL)
-		cube->map_display.west_texture = retrieve_path(cube, line, "WE ");
-	else if (ft_strnstr(line, "EA ", len) != NULL && cube->map_display.east_texture == NULL)
-		cube->map_display.east_texture = retrieve_path(cube, line, "EA ");
-	else if (ft_strnstr(line, "F ", len) != NULL  && cube->map_display.floor_color.color == 0x01000000)
-		retrieve_color(cube, &cube->map_display.floor_color.rgb, line, "F ");
-	else if (ft_strnstr(line, "C ", len) != NULL && cube->map_display.ceiling_color.color == 0x01000000)
-		retrieve_color(cube, &cube->map_display.ceiling_color.rgb, line, "C ");
+	if (ft_strnstr(line, "NO ", len) != NULL && cube->map_data.north_texture == NULL)
+		cube->map_data.north_texture = retrieve_path(cube, line, "NO ");
+	else if (ft_strnstr(line, "SO ", len) != NULL && cube->map_data.south_texture == NULL)
+		cube->map_data.south_texture = retrieve_path(cube, line, "SO ");
+	else if (ft_strnstr(line, "WE ", len) != NULL && cube->map_data.west_texture == NULL)
+		cube->map_data.west_texture = retrieve_path(cube, line, "WE ");
+	else if (ft_strnstr(line, "EA ", len) != NULL && cube->map_data.east_texture == NULL)
+		cube->map_data.east_texture = retrieve_path(cube, line, "EA ");
+	else if (ft_strnstr(line, "F ", len) != NULL  && cube->map_data.floor_color.color == 0x01000000)
+		retrieve_color(cube, &cube->map_data.floor_color.rgb, line, "F ");
+	else if (ft_strnstr(line, "C ", len) != NULL && cube->map_data.ceiling_color.color == 0x01000000)
+		retrieve_color(cube, &cube->map_data.ceiling_color.rgb, line, "C ");
 	else
 		error_exit_cube(cube, INVALID_FILE_PARAM, line);
 }

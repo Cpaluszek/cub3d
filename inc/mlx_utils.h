@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:49:06 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/02/23 17:27:46 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/01 09:40:57 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_img_data
 	int		endian;
 }	t_img_data;
 
-// Todo: update for Linux
+// Todo: remove useless
 enum	e_key_codes
 {
 	KEY_A = 97,

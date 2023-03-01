@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:32:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/01 09:40:46 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/01 09:40:57 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@
 
 # define LOS_ANGLE 120
 # define MAX_LOS	10
-
-
 
 //	--- Parsing ---
 void	central_parsing(t_cub3d *cube);
