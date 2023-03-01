@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:32:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/01 09:40:57 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/01 09:41:59 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 # define WIN_WIDTH	1920
 # define WIN_HEIGHT	1080
 # define WIN_NAME	"cub3D"
+
+// Viewing angle
+# define FOV	120
 
 # define LOS_ANGLE 120
 # define MAX_LOS	10
