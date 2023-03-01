@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interpret_map_information.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:24:31 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/02/28 16:25:34 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/01 09:38:46 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,16 @@ static void	create_maze(t_cub3d *cube, char **map_information)
 		i++;
 	}
 	cube->grid_maze = malloc(sizeof(char *) * (i + 1));
+	cube->map_data.height = i;
+	cube->map_data.width = (int) len_max;
 	test_failed_malloc(cube, cube->grid_maze);
 	cube->grid_maze[i] = NULL;
-	i = 0;
-	while (map_information[i])
+	i = -1;
+	while (map_information[++i])
 	{
 		cube->grid_maze[i] = malloc(sizeof(char) * (len_max + 1));
 		test_failed_malloc(cube, cube->grid_maze[i]);
 		ft_memset(cube->grid_maze[i], ' ', len_max);
-		i++;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 13:08:18 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/01 09:38:46 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/01 10:02:03 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	maze_validity_checking(t_cub3d *cube, char **grid_maze)
 				check_prev_next_up_and_down(cube, grid_maze, j, i);
 			if (ft_is_inside(grid_maze[j][i], "NSEW"))
 			{
+				// Todo: set player direction depending on NSEW
 				if (cube->player.pos.x != 0.0f || cube->player.pos.y != 0.0f)
 					error_exit_cube(cube, SPAWNING, "");
 				cube->player.pos.x = (float) i;
