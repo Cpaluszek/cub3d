@@ -40,3 +40,4 @@ Floor and ceiling colors. **RGB** colors in range [0,255]
 
 ## Resources
 - [cub3d - 42 Docs](https://harm-smits.github.io/42docs/projects/cub3d.html)
+- [Cube3d](https://b-bischoff.github.io/web/cube3d.html)
