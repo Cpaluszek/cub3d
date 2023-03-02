@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 14:28:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/02 11:09:21 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/02 11:57:17 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,27 @@
 int	game_loop(t_cub3d *cube)
 {
 	int render_needed;
+	int is_a_wall;
 
 	render_needed = 0;
 	if (cube->player.move.y != 0)
 	{
-		// Move player
-		cube->player.pos.x += 0.1f * cube->player.dir.x * cube->player.move.y;
-		cube->player.pos.y += 0.1f * cube->player.dir.y * cube->player.move.y;
+		is_a_wall = (int) (cube->player.pos.x + 0.1f * cube->player.dir.x * cube->player.move.y);
+		if (cube->grid_maze[(int)cube->player.pos.y][is_a_wall] == '0')
+			cube->player.pos.x += 0.1f * cube->player.dir.x * cube->player.move.y;
+		is_a_wall = (int) (cube->player.pos.y + 0.1f * cube->player.dir.y * cube->player.move.y);
+		if (cube->grid_maze[is_a_wall][(int)cube->player.pos.x] == '0')
+			cube->player.pos.y += 0.1f * cube->player.dir.y * cube->player.move.y;
 		render_needed = 1;
 	}
 	if (cube->player.move.x != 0)
 	{
-		// Move player
-		cube->player.pos.x += - 0.1f * cube->player.dir.y * cube->player.move.x;
-		cube->player.pos.y += 0.1f * cube->player.dir.x * cube->player.move.x;
+		is_a_wall = (int) (cube->player.pos.x + - 0.1f * cube->player.dir.y * cube->player.move.x);
+		if (cube->grid_maze[(int)cube->player.pos.y][is_a_wall] == '0')
+			cube->player.pos.x += - 0.1f * cube->player.dir.y * cube->player.move.x;
+		is_a_wall = (int) (cube->player.pos.y + 0.1f * cube->player.dir.x * cube->player.move.x);
+		if (cube->grid_maze[is_a_wall][(int)cube->player.pos.x] == '0')
+			cube->player.pos.y += 0.1f * cube->player.dir.x * cube->player.move.x;
 		render_needed = 1;
 	}
 	if (cube->player.rotate != 0)
