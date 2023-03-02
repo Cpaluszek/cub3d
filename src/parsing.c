@@ -3,23 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/01 11:46:06 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:33:07 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <fcntl.h>
-#include <math.h>
 #include "errors.h"
 #include "cub3d.h"
 
 #define BUF_SIZE 1000000
 
 static void	parse_map_information(t_cub3d *cube, int fd_map);
-static void	check_no_splitted_maze(t_cub3d *cube, char **map_information, char *buffer);
+static void	check_no_splitted_maze(t_cub3d *cube, char **map_info, char *buff);
 
 void	central_parsing(t_cub3d *cube)
 {
@@ -29,7 +28,7 @@ void	central_parsing(t_cub3d *cube)
 	extension = ft_strnstr(cube->map_path, ".cub", ft_strlen(cube->map_path));
 	if (!extension || extension[4] != '\0')
 		error_exit_cube(cube, ERR_FORMAT, "");
-    fd_map = open(cube->map_path, O_RDONLY);
+	fd_map = open(cube->map_path, O_RDONLY);
 	if (fd_map == -1)
 		error_exit_cube(cube, cube->map_path, strerror(errno));
 	cube->map_data.north_texture = NULL;
@@ -41,8 +40,6 @@ void	central_parsing(t_cub3d *cube)
 	cube->grid_maze = NULL;
 	cube->player.pos.x = 0.0f;
 	cube->player.pos.y = 0.0f;
-//	cube->screen_width = SCREEN_DIST * tan(FOV / 2) * 2;
-//	cube->screen_width = SCREEN_DIST * 2;
 	parse_map_information(cube, fd_map);
 }
 
@@ -62,30 +59,30 @@ static void	parse_map_information(t_cub3d *cube, int fd_map)
 	cube->map_information = NULL;
 }
 
-static void	check_no_splitted_maze(t_cub3d *cube, char **map_information, char *buffer)
+static void	check_no_splitted_maze(t_cub3d *cube, char **map_info, char *buff)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
-	while (map_information[i])
+	while (map_info[i])
 	{
 		j = 0;
-		while (map_information[i][j] && ft_is_inside(map_information[i][j], "01NSEW "))
+		while (map_info[i][j] && ft_is_inside(map_info[i][j], "01NSEW "))
 			j++;
-		if (map_information[i][j] == '\0')
-			break;
+		if (map_info[i][j] == '\0')
+			break ;
 		i++;
 	}
-	buffer = ft_strnstr(buffer, map_information[i], ft_strlen(buffer));
-	buffer = ft_strnstr(buffer, "\n\n", ft_strlen(buffer));
-	if (!buffer)
+	buff = ft_strnstr(buff, map_info[i], ft_strlen(buff));
+	buff = ft_strnstr(buff, "\n\n", ft_strlen(buff));
+	if (!buff)
 		return ;
 	i = 0;
-	while (buffer[i])
+	while (buff[i])
 	{
-		if (buffer[i] != '\n')
-			error_exit_cube(cube, ERR_MAZE, "newline inside");
+		if (buff[i] != '\n')
+			error_exit_cube(cube, ERR_MAZE, "unexpected newline inside");
 		i++;
 	}
 }

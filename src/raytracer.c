@@ -3,65 +3,65 @@
 /*                                                        :::      ::::::::   */
 /*   raytracer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:27:24 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/02 13:38:21 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:22:25 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "cub3d.h"
 #include "structs.h"
 
-static void set_colum_display(t_cub3d *cube, t_vector player_pos, t_vector ray_direction, int column);
+static void	set_col_display(t_cub3d *cube, t_vector player_pos, \
+	t_vector ray_dir, int col);
 
 void	raytracer(t_cub3d *cube)
 {
 	int			y;
 	float		relative_pos_in_screen;
 	t_vector	ray_direction;
-	t_vector	player_dir;
-	t_vector	player_pos;
+	t_vector	p_dir;
+	t_vector	p_pos;
 
-	player_dir = cube->player.dir;
-	player_pos = cube->player.pos;
-//	dprintf(1, "player pos x : %f y :%f\n player dir x : %f, y : %f\n", player_pos.x, player_pos.y, player_dir.x, player_dir.y);
+	p_dir = cube->player.dir;
+	p_pos = cube->player.pos;
 	y = 0;
-	while (y < WIN_WIDTH)
+	while (y < WIN_W)
 	{
-		ray_direction.x = -player_dir.y;
-		ray_direction.y = player_dir.x;
-		relative_pos_in_screen = 2 * y / (double)WIN_WIDTH - 1;// * cube->screen_width;
-		ray_direction.x =  ray_direction.x * relative_pos_in_screen + player_dir.x;
-		ray_direction.y =  ray_direction.y * relative_pos_in_screen + player_dir.y;
-		set_colum_display(cube, player_pos, ray_direction, y);
+		ray_direction.x = -p_dir.y;
+		ray_direction.y = p_dir.x;
+		relative_pos_in_screen = 2 * y / (double)WIN_W - 1;
+		ray_direction.x = ray_direction.x * relative_pos_in_screen + p_dir.x;
+		ray_direction.y = ray_direction.y * relative_pos_in_screen + p_dir.y;
+		set_col_display(cube, p_pos, ray_direction, y);
 		y++;
 	}
 }
 
-static void set_colum_display(t_cub3d *cube, t_vector player_pos, t_vector ray_direction, int column)
+static void	set_col_display(t_cub3d *cube, t_vector player_pos, \
+	t_vector ray_dir, int col)
 {
-	int 	map_pos_x;
-	int 	map_pos_y;
-	int 	step_x;
-	int 	step_y;
+	int			map_pos_x;
+	int			map_pos_y;
+	int			step_x;
+	int			step_y;
 	t_vector	delta;
 	t_vector	side;
-	int  	hit;
-	int 	wall;
+	int			hit;
+	int			wall;
 
 	map_pos_x = (int)player_pos.x;
 	map_pos_y = (int)player_pos.y;
-	if (ray_direction.x < 0)
-		delta.x = -1 * (1 / ray_direction.x);
+	if (ray_dir.x < 0)
+		delta.x = -1 * (1 / ray_dir.x);
 	else
-		delta.x = 1 / ray_direction.x;
-	if (ray_direction.y < 0)
-		delta.y = -1 * (1 / ray_direction.y);
+		delta.x = 1 / ray_dir.x;
+	if (ray_dir.y < 0)
+		delta.y = -1 * (1 / ray_dir.y);
 	else
-		delta.y = 1 / ray_direction.y;
-	if (ray_direction.x < 0)
+		delta.y = 1 / ray_dir.y;
+	if (ray_dir.x < 0)
 	{
 		step_x = -1;
 		side.x = (player_pos.x - map_pos_x) * delta.x;
@@ -69,9 +69,9 @@ static void set_colum_display(t_cub3d *cube, t_vector player_pos, t_vector ray_d
 	else
 	{
 		step_x = 1;
-		side.x = (map_pos_x + 1.0f - player_pos.x ) * delta.x;
+		side.x = (map_pos_x + 1.0f - player_pos.x) * delta.x;
 	}
-	if (ray_direction.y < 0)
+	if (ray_dir.y < 0)
 	{
 		step_y = -1;
 		side.y = (player_pos.y - map_pos_y) * delta.y;
@@ -79,7 +79,7 @@ static void set_colum_display(t_cub3d *cube, t_vector player_pos, t_vector ray_d
 	else
 	{
 		step_y = 1;
-		side.y = (map_pos_y + 1.0f - player_pos.y ) * delta.y;
+		side.y = (map_pos_y + 1.0f - player_pos.y) * delta.y;
 	}
 	hit = 0;
 	while (hit == 0)
@@ -101,18 +101,18 @@ static void set_colum_display(t_cub3d *cube, t_vector player_pos, t_vector ray_d
 	}
 	if (wall == 0)
 	{
-		cube->raysize[column] = (int) (WIN_HEIGHT / (side.x - delta.x)) ;
+		cube->raysize[col] = (int)(WIN_H / (side.x - delta.x));
 		if (step_x < 0)
-			cube->raytexture[column] = 'W';
+			cube->raytexture[col] = 'W';
 		else
-			cube->raytexture[column] = 'E';
+			cube->raytexture[col] = 'E';
 	}
 	else
 	{
-		cube->raysize[column] = (int) (WIN_HEIGHT / (side.y - delta.y));
+		cube->raysize[col] = (int)(WIN_H / (side.y - delta.y));
 		if (step_y < 0)
-			cube->raytexture[column] = 'N';
+			cube->raytexture[col] = 'N';
 		else
-			cube->raytexture[column] = 'S';
+			cube->raytexture[col] = 'S';
 	}
 }

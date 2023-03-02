@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   find_texture_path_and_get_color.c                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/02 15:15:00 by cpalusze          #+#    #+#             */
+/*   Updated: 2023/03/02 15:16:44 by cpalusze         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub3d.h"
 #include "errors.h"
@@ -22,7 +33,7 @@ void	find_texture_path_and_get_color(t_cub3d *cube, char *line)
 		cube->map_data.west_texture = retrieve_path(cube, line, "WE ");
 	else if (ft_strnstr(line, "EA ", len) != NULL && cube->map_data.east_texture == NULL)
 		cube->map_data.east_texture = retrieve_path(cube, line, "EA ");
-	else if (ft_strnstr(line, "F ", len) != NULL  && cube->map_data.floor_color.color == 0x01000000)
+	else if (ft_strnstr(line, "F ", len) != NULL && cube->map_data.floor_color.color == 0x01000000)
 		retrieve_color(cube, &cube->map_data.floor_color.rgb, line, "F ");
 	else if (ft_strnstr(line, "C ", len) != NULL && cube->map_data.ceiling_color.color == 0x01000000)
 		retrieve_color(cube, &cube->map_data.ceiling_color.rgb, line, "C ");
@@ -77,7 +88,7 @@ static void	retrieve_color(t_cub3d *cube, \
 
 static void	parse_color(t_cub3d *cube, t_rgb *color, char **p_line)
 {
-	char *line;
+	char	*line;
 
 	line = *p_line;
 	if (get_color(&color->red, &line) == ERROR)

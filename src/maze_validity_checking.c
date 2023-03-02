@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   maze_validity_checking.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 13:08:18 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/02 11:01:42 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:10:29 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 #include "errors.h"
 #include <math.h>
 
-static void check_first_and_last_column(t_cub3d *cube, char *line, int i);
-static void check_first_and_last_line(t_cub3d *cube, char *line);
-static void check_prev_next_up_and_down(t_cub3d *cube, char **grid_maze, int line, int column);
+static void	check_first_and_last_column(t_cub3d *cube, char *line, int i);
+static void	check_first_and_last_line(t_cub3d *cube, char *line);
+static void	check_adjacent_cells(t_cub3d *cube, char **grid, int row, int col);
 static void	set_player_starting_position(t_cub3d *cube, int i, int j);
 
 void	maze_validity_checking(t_cub3d *cube, char **grid_maze)
 {
 	int	i;
-	int j;
+	int	j;
 
 	j = 0;
 	while (grid_maze[j])
@@ -35,18 +35,18 @@ void	maze_validity_checking(t_cub3d *cube, char **grid_maze)
 			else if (i == 0 || grid_maze[j][i + 1] == '\0')
 				check_first_and_last_column(cube, grid_maze[j], i);
 			else if (grid_maze[j][i] == ' ')
-				check_prev_next_up_and_down(cube, grid_maze, j, i);
+				check_adjacent_cells(cube, grid_maze, j, i);
 			if (ft_is_inside(grid_maze[j][i], "NSEW"))
-				set_player_starting_position(cube, i ,j);
+				set_player_starting_position(cube, i, j);
 			i++;
 		}
 		j++;
 	}
 }
 
-static void check_first_and_last_line(t_cub3d *cube, char *line)
+static void	check_first_and_last_line(t_cub3d *cube, char *line)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (line[i])
@@ -57,19 +57,19 @@ static void check_first_and_last_line(t_cub3d *cube, char *line)
 	}
 }
 
-static void check_prev_next_up_and_down(t_cub3d *cube, char **grid_maze, int line, int column)
+static void	check_adjacent_cells(t_cub3d *cube, char **grid, int row, int col)
 {
-	if (ft_is_inside(grid_maze[line][column + 1], "0NSEW"))
-		error_exit_cube(cube, UNCLOSED_MAZE, grid_maze[line]);
-	if (ft_is_inside(grid_maze[line][column - 1], "0NSEW"))
-		error_exit_cube(cube, UNCLOSED_MAZE, grid_maze[line]);
-	if (ft_is_inside(grid_maze[line - 1][column], "0NSEW"))
-		error_exit_cube(cube, UNCLOSED_MAZE, grid_maze[line - 1]);
-	if (ft_is_inside(grid_maze[line + 1][column], "0NSEW"))
-		error_exit_cube(cube, UNCLOSED_MAZE, grid_maze[line + 1]);
+	if (ft_is_inside(grid[row][col + 1], "0NSEW"))
+		error_exit_cube(cube, UNCLOSED_MAZE, grid[row]);
+	if (ft_is_inside(grid[row][col - 1], "0NSEW"))
+		error_exit_cube(cube, UNCLOSED_MAZE, grid[row]);
+	if (ft_is_inside(grid[row - 1][col], "0NSEW"))
+		error_exit_cube(cube, UNCLOSED_MAZE, grid[row - 1]);
+	if (ft_is_inside(grid[row + 1][col], "0NSEW"))
+		error_exit_cube(cube, UNCLOSED_MAZE, grid[row + 1]);
 }
 
-static void check_first_and_last_column(t_cub3d *cube, char *line, int i)
+static void	check_first_and_last_column(t_cub3d *cube, char *line, int i)
 {
 	if (ft_is_inside(line[i], "0NSEW"))
 		error_exit_cube(cube, UNCLOSED_MAZE, line);

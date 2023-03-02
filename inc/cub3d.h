@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:32:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/02 14:55:45 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:09:30 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include "libft.h"
 # include "mlx_utils.h"
 
-# define WIN_WIDTH	1920
-# define WIN_HEIGHT	1080
+# define WIN_W	1920
+# define WIN_H	1080
 # define WIN_NAME	"cub3D"
 
 // --- Minimap ---
@@ -34,6 +34,7 @@
 # define MM_BG_COLOR		0x24273A
 # define PI					3.1415f
 # define SCREEN_DIST	0.1f
+
 
 // Viewing angle
 # define FOV	90

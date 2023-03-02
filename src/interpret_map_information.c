@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:24:31 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/01 09:38:46 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:13:02 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,6 @@ void	interpret_map_information(t_cub3d *cube, char **map_info)
 	create_maze(cube, &map_info[i]);
 	fill_maze(cube, cube->grid_maze, &map_info[i]);
 	maze_validity_checking(cube, cube->grid_maze);
-}
-
-void print_maze(char **maze)
-{
-	printf("--- Maze Content ---\n");
-	for (int i = 0; maze[i]; i++)
-	{
-		printf("%s - %lu\n", maze[i], ft_strlen(maze[i]));
-	}
-	printf("--------------------\n");
 }
 
 static void	create_maze(t_cub3d *cube, char **map_information)
@@ -85,7 +75,7 @@ static void	fill_maze(t_cub3d *cube, char **grid_maze, char **map_information)
 		i = -1;
 		while (map_information[line][++i])
 		{
-			if (ft_is_inside(map_information[line][i], "01NSEW ")  == 0)
+			if (ft_is_inside(map_information[line][i], "01NSEW ") == 0)
 				error_exit_cube(cube, INVALID_MAZE_CHAR, map_information[line]);
 			grid_maze[line][i] = map_information[line][i];
 		}

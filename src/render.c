@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 09:50:14 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/02 13:42:58 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:28:48 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	draw_minimap(t_cub3d *cube);
 static void	draw_maze(t_cub3d *cube);
-static int retrieve_color(t_cub3d *cube, int x, int y);
+static int	retrieve_color(t_cub3d *cube, int x, int y);
 
 void	init_render(t_cub3d *cube)
 {
@@ -26,30 +25,35 @@ void	init_render(t_cub3d *cube)
 
 static void	draw_maze(t_cub3d *cube)
 {
-	int x;
-	int y;
+	t_mlx_data	data;
+	int			color;
+	int			x;
+	int			y;
 
+	data = cube->mlx_data;
 	x = 0;
-	while (x < WIN_WIDTH)
+	while (x < WIN_W)
 	{
 		y = 0;
-		while ( y < WIN_HEIGHT)
+		while (y < WIN_H)
 		{
-			my_mlx_pixel_put(cube->mlx_data.working_img, x, y, retrieve_color(cube, x, y));
+			color = retrieve_color(cube, x, y);
+			my_mlx_pixel_put(data.working_img, x, y, color);
 			y++;
 		}
 		x++;
 	}
-	mlx_put_image_to_window(cube->mlx_data.mlx, cube->mlx_data.mlx_win, cube->mlx_data.working_img->img, 0, 0);
+	mlx_put_image_to_window(data.mlx, data.mlx_win, \
+		data.working_img->img, 0, 0);
 }
 
-static int retrieve_color(t_cub3d *cube, int x, int y)
+static int	retrieve_color(t_cub3d *cube, int x, int y)
 {
-	int column_size;
-	int diff;
+	int	column_size;
+	int	diff;
 
 	column_size = cube->raysize[x];
-	diff = (WIN_HEIGHT - column_size) / 2;
+	diff = (WIN_H - column_size) / 2;
 	if (diff < 0)
 	{
 		if (cube->raytexture[x] == 'N')
@@ -63,7 +67,7 @@ static int retrieve_color(t_cub3d *cube, int x, int y)
 	}
 	if (y < diff)
 		return (cube->map_data.ceiling_color.color);
-	else if (y < (WIN_HEIGHT - diff))
+	else if (y < (WIN_H - diff))
 	{
 		if (cube->raytexture[x] == 'N')
 			return (0xFFAA00);
