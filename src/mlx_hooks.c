@@ -74,9 +74,7 @@ static int	camera_on_mouse(int x, int y, t_cub3d *cube)
 	if (cube->player.move.x || cube->player.move.y)
 	{
 		distance_from_screen_side = ((float)(WIN_W / 2) - x) / WIN_W;
-		dprintf(2, "ANGLE BEFORE  %f\n", cube->player.angle);
 		cube->player.angle += MOUSE_ROT_SPEED * -distance_from_screen_side;
-		dprintf(2, "ANGLE AFTER  %f\n", cube->player.angle);
 		cube->player.dir.x = cos(cube->player.angle);
 		cube->player.dir.y = sin(cube->player.angle);
 	}
