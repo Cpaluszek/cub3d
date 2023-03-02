@@ -1,0 +1,14 @@
+
+NO ./textures/mossy.xpm
+SO ./textures/redbrick.xpm
+WE ./textures/wooWE d.xpm
+EA ./textures/colorstone.xpm
+EA ./textures/colorstone.xpm
+
+C 51,204,255
+F 0,0,68
+
+1111
+1001
+1E01
+1111

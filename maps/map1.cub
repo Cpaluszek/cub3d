@@ -1,8 +1,8 @@
 
-NO ./textures/mossy.xpm
-SO ./textures/redbrick.xpm
-WE ./textures/wooWE d.xpm
-EA                         ./textures/colorstone.xpm
+NO ./textures/cobble.xpm
+SO ./textures/dirt.xpm
+WE ./textures/wood.xpm
+EA                         ./textures/gold.xpm
 
 
 F             0,0,68
