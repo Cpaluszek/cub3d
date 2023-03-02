@@ -50,7 +50,6 @@ static int retrieve_color(t_cub3d *cube, int x, int y)
 
 	column_size = cube->raysize[x];
 	diff = (WIN_HEIGHT - column_size) / 2;
-//	printf("%d\n", diff);
 	if (diff < 0)
 	{
 		if (cube->raytexture[x] == 'N')
