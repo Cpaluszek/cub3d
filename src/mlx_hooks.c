@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:21:37 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/02 10:18:40 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/02 11:11:03 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ static int   key_press_hook(int key, t_cub3d *cube)
 	else if (key == KEY_S)
 		cube->player.move.y = -1;
 	else if (key == KEY_A)
-		cube->player.move.x = 1;
-	else if (key == KEY_D)
 		cube->player.move.x = -1;
+	else if (key == KEY_D)
+		cube->player.move.x = 1;
 	// Rotations
 	else if (key == KEY_Q || key == ARROW_LEFT)
-		cube->player.rotate = -1;
+		cube->player.rotate = -PI * 0.01;
 	else if (key == KEY_E || key == ARROW_RIGHT)
-		cube->player.rotate = 1;
+		cube->player.rotate = PI * 0.01;
 	else
 		printf("%d\n", key);
 	return (0);

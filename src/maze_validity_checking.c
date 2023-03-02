@@ -6,12 +6,13 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 13:08:18 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/01 11:06:01 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/02 11:01:42 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "errors.h"
+#include <math.h>
 
 static void check_first_and_last_column(t_cub3d *cube, char *line, int i);
 static void check_first_and_last_line(t_cub3d *cube, char *line);
@@ -83,22 +84,28 @@ static void	set_player_starting_position(t_cub3d *cube, int i, int j)
 	if (cube->grid_maze[j][i] == 'N')
 	{
 		cube->player.dir.x = 0.0f;
-		cube->player.dir.y = 1.0f;
+		cube->player.dir.y = -1.0f;
+		cube->player.angle = 3 * PI / 2;
 	}
 	else if (cube->grid_maze[j][i] == 'S')
 	{
 		cube->player.dir.x = 0.0f;
-		cube->player.dir.y = -1.0f;
+		cube->player.dir.y = 1.0f;
+		cube->player.angle = PI / 2;
 	}
 	if (cube->grid_maze[j][i] == 'E')
 	{
 		cube->player.dir.x = 1.0f;
 		cube->player.dir.y = 0.0f;
+		cube->player.angle = 0;
 	}
 	if (cube->grid_maze[j][i] == 'W')
 	{
 		cube->player.dir.x = -1.0f;
 		cube->player.dir.y = 0.0f;
+		cube->player.angle = PI;
 	}
+	cube->player.dir.x = cos(cube->player.angle);
+	cube->player.dir.y = sin(cube->player.angle);
 	cube->grid_maze[j][i] = '0';
 }

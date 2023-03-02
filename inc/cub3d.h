@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:32:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/01 14:17:07 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/01 17:00:43 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@
 # define MM_PLAYER_COLOR	0x8AADF4
 # define MM_WALL_COLOR		0xCAD3F5
 # define MM_BG_COLOR		0x24273A
+# define PI					3.1415f
 # define SCREEN_DISTANCE	0.1f
 
 // Viewing angle
-# define FOV	120
+# define FOV	90
 
 # define LOS_ANGLE 120
 # define MAX_LOS	10
@@ -54,6 +55,7 @@ int		game_loop(t_cub3d *cube);
 //	--- Render ---
 void	init_render(t_cub3d *cube);
 void	draw_minimap(t_cub3d *cube);
+void	raytracer(t_cub3d *cube);
 
 //	--- Utils ---
 void	error_exit_cube(t_cub3d *cube, char *msg1, char *msg2);
