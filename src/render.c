@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 09:50:14 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/01 17:09:54 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/02 10:27:40 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,12 @@ static int retrieve_color(t_cub3d *cube, int x, int y)
 
 	column_size = cube->raysize[x];
 	diff = (WIN_HEIGHT - column_size) / 2;
+//	printf("%d\n", diff);
 	if (diff < 0)
 		return (0xFFFFFF);
-	else if (y < diff)
+	if (y < diff)
 		return (cube->map_data.ceiling_color.color);
-	else if (y < (WIN_HEIGHT + diff))
+	else if (y < (WIN_HEIGHT - diff))
 		return (0xFFFFFF);
 	else
 		return (cube->map_data.floor_color.color);

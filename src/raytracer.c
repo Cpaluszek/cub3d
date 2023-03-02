@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:27:24 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/01 18:39:26 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/02 11:17:15 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	raytracer(t_cub3d *cube)
 
 	player_dir = cube->player.dir;
 	player_pos = cube->player.pos;
+	dprintf(1, "player pos x : %f y :%f\n player dir x : %f, y : %f\n", player_pos.x, player_pos.y, player_dir.x, player_dir.y);
 	y = 0;
 	while (y < WIN_WIDTH)
 	{
@@ -60,7 +61,7 @@ static void set_colum_display(t_cub3d *cube, t_vector player_pos, t_vector ray_d
 	if (ray_direction.y < 0)
 		delta.y = -1 * (1 / ray_direction.y);
 	else
-		delta.y = -1 / ray_direction.y;
+		delta.y = 1 / ray_direction.y;
 	if (ray_direction.x < 0)
 	{
 		step_x = -1;
@@ -88,13 +89,13 @@ static void set_colum_display(t_cub3d *cube, t_vector player_pos, t_vector ray_d
 		{
 			side.x += delta.x;
 			map_pos_x += step_x;
-			wall = 1;
+			wall = 0;
 		}
 		else
 		{
 			side.y += delta.y;
 			map_pos_y += step_y;
-			wall = 0;
+			wall = 1;
 		}
 		if (cube->grid_maze[map_pos_y][map_pos_x] == '1')
 			hit = 1;
@@ -103,5 +104,5 @@ static void set_colum_display(t_cub3d *cube, t_vector player_pos, t_vector ray_d
 		cube->raysize[column] = (int) (WIN_HEIGHT / (side.x - delta.x)) ;
 	else
 		cube->raysize[column] = (int) (WIN_HEIGHT / (side.y - delta.y));
-	printf("%f %f %d\n", side.x, side.y, cube->raysize[column]);
+//	printf("%f %f %d\n", side.x, side.y, cube->raysize[column]);
 }
