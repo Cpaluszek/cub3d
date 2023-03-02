@@ -6,15 +6,19 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:29:02 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/01 14:09:46 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/02 14:25:37 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include <math.h>
 
 static void	draw_minimap_cell(t_mlx_data *data, int x, int y, int color);
 static int	get_cell_color(t_cub3d *cube, int x, int y);
+static void	draw_viewport(t_mlx_data *data, t_player player);
+static void	draw_line(t_mlx_data *data, t_vector p1, t_vector p2);
 
+// Note: transparent BG ?
 void	draw_minimap(t_cub3d *cube)
 {
 	t_color		pixel_color;
@@ -38,6 +42,7 @@ void	draw_minimap(t_cub3d *cube)
 		}
 		x++;
 	}
+	draw_viewport(&cube->mlx_data, cube->player);
 	mlx_put_image_to_window(cube->mlx_data.mlx, \
 		cube->mlx_data.mlx_win, \
 		cube->mlx_data.working_img->img, 0, 0);
@@ -75,5 +80,38 @@ static void	draw_minimap_cell(t_mlx_data *data, int x, int y, int color)
 			j++;
 		}
 		i++;
+	}
+}
+
+static void	draw_viewport(t_mlx_data *data, t_player player)
+{
+	t_vector	start;
+	t_vector	end;
+
+	start.x = MINI_MAP_X + MINI_MAP_SIDE_SIZE / 2 + MINI_MAP_CELL_SIZE / 2;
+	start.y = MINI_MAP_Y + MINI_MAP_SIDE_SIZE / 2 + MINI_MAP_CELL_SIZE / 2;
+	end.x = start.x + 50 * cos(player.angle - M_PI_4);
+	end.y = start.y + 50 * sin(player.angle - M_PI_4);
+	draw_line(data, start, end);
+	end.x = start.x + 50 * cos(player.angle + M_PI_4);
+	end.y = start.y + 50 * sin(player.angle + M_PI_4);
+	draw_line(data, start, end);
+}
+
+static void	draw_line(t_mlx_data *data, t_vector p1, t_vector p2)
+{
+	t_vector	delta;
+	float		max;
+
+	delta.x = p2.x - p1.x;
+	delta.y = p2.y - p1.y;
+	max = fmax(fabs(delta.x), fabs(delta.y));
+	delta.x /= max;
+	delta.y /= max;
+	while (((int)(p1.x - p2.x) || (int)(p1.y - p2.y)))
+	{
+		my_mlx_pixel_put(data->working_img, p1.x, p1.y, MM_VIEWPORT_COLOR);
+		p1.x += delta.x;
+		p1.y += delta.y;
 	}
 }

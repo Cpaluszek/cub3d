@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:32:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/01 17:00:43 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:43:43 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@
 # define MINI_MAP_Y			10
 # define MINI_MAP_VIEW_DIST 30
 # define MINI_MAP_CELL_SIZE 10
+# define MINI_MAP_SIDE_SIZE 300
 # define MM_PLAYER_COLOR	0x8AADF4
+# define MM_VIEWPORT_COLOR	0xED8796
 # define MM_WALL_COLOR		0xCAD3F5
 # define MM_BG_COLOR		0x24273A
 # define PI					3.1415f
