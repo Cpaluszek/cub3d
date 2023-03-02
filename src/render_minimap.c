@@ -110,7 +110,7 @@ static void	draw_line(t_mlx_data *data, t_vector p1, t_vector p2)
 	delta.y /= max;
 	while (((int)(p1.x - p2.x) || (int)(p1.y - p2.y)))
 	{
-		my_mlx_pixel_put(data->working_img, p1.x, p1.y, MM_VIEWPORT_COLOR);
+		my_mlx_pixel_put(data->working_img, (int)p1.x, (int)p1.y, MM_VIEWPORT_COLOR);
 		p1.x += delta.x;
 		p1.y += delta.y;
 	}

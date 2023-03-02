@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/02 15:33:07 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:33:32 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "cub3d.h"
 
 #define BUF_SIZE 1000000
+#define FORMAT ".cub"
 
 static void	parse_map_information(t_cub3d *cube, int fd_map);
 static void	check_no_splitted_maze(t_cub3d *cube, char **map_info, char *buff);
@@ -23,10 +24,10 @@ static void	check_no_splitted_maze(t_cub3d *cube, char **map_info, char *buff);
 void	central_parsing(t_cub3d *cube)
 {
 	int		fd_map;
-	char	*extension;
+	char	*format;
 
-	extension = ft_strnstr(cube->map_path, ".cub", ft_strlen(cube->map_path));
-	if (!extension || extension[4] != '\0')
+	format = ft_strnstr(cube->map_path, FORMAT, ft_strlen(cube->map_path));
+	if (!format || format[4] != '\0')
 		error_exit_cube(cube, ERR_FORMAT, "");
 	fd_map = open(cube->map_path, O_RDONLY);
 	if (fd_map == -1)

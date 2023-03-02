@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:32:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/02 15:09:30 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:54:28 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,10 @@
 # define MM_VIEWPORT_COLOR	0xED8796
 # define MM_WALL_COLOR		0xCAD3F5
 # define MM_BG_COLOR		0x24273A
-# define PI					3.1415f
-# define SCREEN_DIST	0.1f
 
+# define SCREEN_DIST		0.1f
+# define ROT_SPEED			0.01f
+# define MOUSE_ROT_SPEED	0.062831f
 
 // Viewing angle
 # define FOV	90

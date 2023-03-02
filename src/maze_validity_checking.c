@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 13:08:18 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/02 15:10:29 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:51:50 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,13 @@ static void	set_player_starting_position(t_cub3d *cube, int i, int j)
 	{
 		cube->player.dir.x = 0.0f;
 		cube->player.dir.y = -1.0f;
-		cube->player.angle = 3 * PI / 2;
+		cube->player.angle = 3 * M_PI_2;
 	}
 	else if (cube->grid_maze[j][i] == 'S')
 	{
 		cube->player.dir.x = 0.0f;
 		cube->player.dir.y = 1.0f;
-		cube->player.angle = PI / 2;
+		cube->player.angle = M_PI_2;
 	}
 	if (cube->grid_maze[j][i] == 'E')
 	{
@@ -103,7 +103,7 @@ static void	set_player_starting_position(t_cub3d *cube, int i, int j)
 	{
 		cube->player.dir.x = -1.0f;
 		cube->player.dir.y = 0.0f;
-		cube->player.angle = PI;
+		cube->player.angle = M_PI;
 	}
 	cube->player.dir.x = cos(cube->player.angle);
 	cube->player.dir.y = sin(cube->player.angle);
