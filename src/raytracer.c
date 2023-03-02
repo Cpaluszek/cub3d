@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:27:24 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/02 11:17:15 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:38:21 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	raytracer(t_cub3d *cube)
 
 	player_dir = cube->player.dir;
 	player_pos = cube->player.pos;
-	dprintf(1, "player pos x : %f y :%f\n player dir x : %f, y : %f\n", player_pos.x, player_pos.y, player_dir.x, player_dir.y);
+//	dprintf(1, "player pos x : %f y :%f\n player dir x : %f, y : %f\n", player_pos.x, player_pos.y, player_dir.x, player_dir.y);
 	y = 0;
 	while (y < WIN_WIDTH)
 	{
@@ -51,7 +51,6 @@ static void set_colum_display(t_cub3d *cube, t_vector player_pos, t_vector ray_d
 	int  	hit;
 	int 	wall;
 
-//	dprintf(1, "%f %f \n", ray_direction.x, ray_direction.y);
 	map_pos_x = (int)player_pos.x;
 	map_pos_y = (int)player_pos.y;
 	if (ray_direction.x < 0)
@@ -101,8 +100,19 @@ static void set_colum_display(t_cub3d *cube, t_vector player_pos, t_vector ray_d
 			hit = 1;
 	}
 	if (wall == 0)
+	{
 		cube->raysize[column] = (int) (WIN_HEIGHT / (side.x - delta.x)) ;
+		if (step_x < 0)
+			cube->raytexture[column] = 'W';
+		else
+			cube->raytexture[column] = 'E';
+	}
 	else
+	{
 		cube->raysize[column] = (int) (WIN_HEIGHT / (side.y - delta.y));
-//	printf("%f %f %d\n", side.x, side.y, cube->raysize[column]);
+		if (step_y < 0)
+			cube->raytexture[column] = 'N';
+		else
+			cube->raytexture[column] = 'S';
+	}
 }

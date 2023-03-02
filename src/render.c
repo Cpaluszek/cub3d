@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 09:50:14 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/02 10:27:40 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:42:58 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,28 @@ static int retrieve_color(t_cub3d *cube, int x, int y)
 	diff = (WIN_HEIGHT - column_size) / 2;
 //	printf("%d\n", diff);
 	if (diff < 0)
-		return (0xFFFFFF);
+	{
+		if (cube->raytexture[x] == 'N')
+			return (0xFFAA00);
+		else if (cube->raytexture[x] == 'S')
+			return (0x77FF00);
+		else if (cube->raytexture[x] == 'W')
+			return (0x11AA55);
+		else if (cube->raytexture[x] == 'E')
+			return (0x00FF99);
+	}
 	if (y < diff)
 		return (cube->map_data.ceiling_color.color);
 	else if (y < (WIN_HEIGHT - diff))
-		return (0xFFFFFF);
-	else
-		return (cube->map_data.floor_color.color);
+	{
+		if (cube->raytexture[x] == 'N')
+			return (0xFFAA00);
+		else if (cube->raytexture[x] == 'S')
+			return (0x77FF00);
+		else if (cube->raytexture[x] == 'W')
+			return (0x11AA55);
+		else if (cube->raytexture[x] == 'E')
+			return (0x00FF99);
+	}
+	return (cube->map_data.floor_color.color);
 }
