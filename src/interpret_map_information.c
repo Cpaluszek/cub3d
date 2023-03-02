@@ -16,22 +16,22 @@
 static void	create_maze(t_cub3d *cube, char **map_information);
 static void	fill_maze(t_cub3d *cube, char **grid_maze, char **map_information);
 
-void	interpret_map_information(t_cub3d *cube, char **map_information)
+void	interpret_map_information(t_cub3d *cube, char **map_info)
 {
 	int	i;
 
 	i = 0;
 	while (i < 6)
 	{
-		if (!map_information[i])
+		if (!map_info[i])
 			error_exit_cube(cube, INVALID_PATTERN, "");
-		find_texture_path_and_get_color(cube, map_information[i]);
+		find_texture_path_and_get_color(cube, map_info[i]);
 		i++;
 	}
-	if (!map_information[i])
+	if (!map_info[i])
 		error_exit_cube(cube, INVALID_PATTERN, "");
-	create_maze(cube, &map_information[i]);
-	fill_maze(cube, cube->grid_maze, &map_information[i]);
+	create_maze(cube, &map_info[i]);
+	fill_maze(cube, cube->grid_maze, &map_info[i]);
 	maze_validity_checking(cube, cube->grid_maze);
 }
 

@@ -1,16 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   structs.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/02 14:51:59 by cpalusze          #+#    #+#             */
+/*   Updated: 2023/03/02 14:53:09 by cpalusze         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCTS_H
-#define STRUCTS_H
+# define STRUCTS_H
 
 # include "mlx_utils.h"
 # include "cub3d.h"
 
 // Todo: double or float ?
-typedef struct	s_vector {
+typedef struct s_vector {
 	float	x;
 	float	y;
 }	t_vector;
 
-typedef struct	s_player {
+typedef struct s_player {
 	t_vector	pos;
 	t_vector	dir;
 	// Todo: use int instead of float ?
@@ -24,7 +36,7 @@ typedef struct s_rgb
 	unsigned char	blu;
 	unsigned char	gre;
 	unsigned char	red;
-}t_rgb;
+}	t_rgb;
 
 typedef union u_color
 {
@@ -44,7 +56,7 @@ typedef struct s_map_data
 	int		width;
 }	t_map_data;
 
-typedef struct	s_mlx_data {
+typedef struct s_mlx_data {
 	void		*mlx;
 	void		*mlx_win;
 	void		*mlx_img;
@@ -64,7 +76,7 @@ typedef struct s_cub3d
 	t_map_data	map_data;
 	t_mlx_data	mlx_data;
 	t_player	player;
-	float 		screen_width;
+	float		screen_width;
 	// Note: try to use previous defines
 	int			raysize[1920];
 	char		raytexture[1920];

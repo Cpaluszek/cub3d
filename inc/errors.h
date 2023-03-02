@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   errors.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/02 14:54:00 by cpalusze          #+#    #+#             */
+/*   Updated: 2023/03/02 14:54:34 by cpalusze         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef ERRORS_H
 # define ERRORS_H
 
@@ -9,7 +21,7 @@
 # define ERR_FORMAT "Invalid map format, must be \"*.cub\""
 # define ERR_MAZE "Invalid maze"
 # define INVALID_PATTERN "Invalid file pattern"
-# define INVALID_FILE_PARAM "Missing, unrecognized or duplicated input parameter at line "
+# define INVALID_PARAM "Missing, unrecognized or duplicated parameter at line "
 # define INVALID_TEXT_FILE_PATTERN "Invalid texture pattern at line "
 # define EMPTY_PATTERN "Pattern is empty at line "
 # define INVALID_COLOR "Invalid color input at line "

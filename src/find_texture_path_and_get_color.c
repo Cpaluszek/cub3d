@@ -27,7 +27,7 @@ void	find_texture_path_and_get_color(t_cub3d *cube, char *line)
 	else if (ft_strnstr(line, "C ", len) != NULL && cube->map_data.ceiling_color.color == 0x01000000)
 		retrieve_color(cube, &cube->map_data.ceiling_color.rgb, line, "C ");
 	else
-		error_exit_cube(cube, INVALID_FILE_PARAM, line);
+		error_exit_cube(cube, INVALID_PARAM, line);
 }
 
 static char	*retrieve_path(t_cub3d *cube, char *line, char *pattern)

@@ -41,8 +41,8 @@ void	central_parsing(t_cub3d *cube)
 	cube->grid_maze = NULL;
 	cube->player.pos.x = 0.0f;
 	cube->player.pos.y = 0.0f;
-//	cube->screen_width = SCREEN_DISTANCE * tan(FOV / 2) * 2;
-//	cube->screen_width = SCREEN_DISTANCE * 2;
+//	cube->screen_width = SCREEN_DIST * tan(FOV / 2) * 2;
+//	cube->screen_width = SCREEN_DIST * 2;
 	parse_map_information(cube, fd_map);
 }
 

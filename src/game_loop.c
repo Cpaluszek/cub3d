@@ -3,41 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 14:28:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/02 14:26:39 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:06:21 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <math.h>
 
+static void	move_player_x(t_cub3d *cube);
+static void	move_player_y(t_cub3d *cube);
+
 // Todo: why int function ?
 int	game_loop(t_cub3d *cube)
 {
-	int render_needed;
-	int is_a_wall;
+	int	render_needed;
 
 	render_needed = 0;
 	if (cube->player.move.y != 0)
 	{
-		is_a_wall = (int) (cube->player.pos.x + 0.1f * cube->player.dir.x * cube->player.move.y);
-		if (cube->grid_maze[(int)cube->player.pos.y][is_a_wall] == '0')
-			cube->player.pos.x += 0.1f * cube->player.dir.x * cube->player.move.y;
-		is_a_wall = (int) (cube->player.pos.y + 0.1f * cube->player.dir.y * cube->player.move.y);
-		if (cube->grid_maze[is_a_wall][(int)cube->player.pos.x] == '0')
-			cube->player.pos.y += 0.1f * cube->player.dir.y * cube->player.move.y;
+		move_player_y(cube);
 		render_needed = 1;
 	}
 	if (cube->player.move.x != 0)
 	{
-		is_a_wall = (int) (cube->player.pos.x + - 0.1f * cube->player.dir.y * cube->player.move.x);
-		if (cube->grid_maze[(int)cube->player.pos.y][is_a_wall] == '0')
-			cube->player.pos.x += - 0.1f * cube->player.dir.y * cube->player.move.x;
-		is_a_wall = (int) (cube->player.pos.y + 0.1f * cube->player.dir.x * cube->player.move.x);
-		if (cube->grid_maze[is_a_wall][(int)cube->player.pos.x] == '0')
-			cube->player.pos.y += 0.1f * cube->player.dir.x * cube->player.move.x;
+		move_player_x(cube);
 		render_needed = 1;
 	}
 	if (cube->player.rotate != 0)
@@ -48,11 +40,50 @@ int	game_loop(t_cub3d *cube)
 		render_needed = 1;
 	}
 	if (render_needed == 1)
-	{
-
-		dprintf(2, "# ");
 		init_render(cube);
-	}
-	render_needed = 0;
 	return (0);
+}
+
+static void	move_player_x(t_cub3d *cube)
+{
+	int		wall;
+	float	dx;
+	float	dy;
+
+	wall = (int)(cube->player.pos.x + -SCREEN_DIST * \
+		cube->player.dir.y * cube->player.move.x);
+	if (cube->grid_maze[(int)cube->player.pos.y][wall] == '0')
+	{
+		dx = -SCREEN_DIST * cube->player.dir.y * cube->player.move.x;
+		cube->player.pos.x += dx;
+	}
+	wall = (int)(cube->player.pos.y + SCREEN_DIST * \
+		cube->player.dir.x * cube->player.move.x);
+	if (cube->grid_maze[wall][(int)cube->player.pos.x] == '0')
+	{
+		dy = SCREEN_DIST * cube->player.dir.x * cube->player.move.x;
+		cube->player.pos.y += dy;
+	}
+}
+
+static void	move_player_y(t_cub3d *cube)
+{
+	int		wall;
+	float	dx;
+	float	dy;
+
+	wall = (int)(cube->player.pos.x + SCREEN_DIST * \
+		cube->player.dir.x * cube->player.move.y);
+	if (cube->grid_maze[(int)cube->player.pos.y][wall] == '0')
+	{
+		dx = SCREEN_DIST * cube->player.dir.x * cube->player.move.y;
+		cube->player.pos.x += dx;
+	}
+	wall = (int)(cube->player.pos.y + SCREEN_DIST * \
+		cube->player.dir.y * cube->player.move.y);
+	if (cube->grid_maze[wall][(int)cube->player.pos.x] == '0')
+	{
+		dy = SCREEN_DIST * cube->player.dir.y * cube->player.move.y;
+		cube->player.pos.y += dy;
+	}
 }
