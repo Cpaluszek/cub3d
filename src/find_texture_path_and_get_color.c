@@ -20,6 +20,8 @@ static char	*retrieve_path(t_cub3d *cube, char *line, char *pattern);
 static void	retrieve_color(t_cub3d *cube, t_rgb *color, \
 	char *line, char *pattern);
 
+//todo : parse spaces in color
+
 void	find_texture_path_and_get_color(t_cub3d *cube, char *line)
 {
 	size_t	len;
