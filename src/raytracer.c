@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:27:24 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/03 15:30:41 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/03 16:23:32 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "structs.h"
 
 static void	set_col_display(t_cub3d *cube, t_float_vector player_pos, \
-	t_ray ray, int col);
+	t_ray *ray, int col);
 static void	set_ray_parameters(t_ray *ray, t_float_vector player_pos);
 static void	find_the_hit_wall(char **grid_maze, t_ray *ray, int *is_a_wall_hit, int *is_wall_hit_on_x_axe);
 
@@ -36,34 +36,34 @@ void	raytracer(t_cub3d *cube)
 		relative_pos_in_screen = 2 * y / (double)WIN_W - 1;
 		ray.direction.x = ray.direction.x * relative_pos_in_screen + p_dir.x;
 		ray.direction.y = ray.direction.y * relative_pos_in_screen + p_dir.y;
-		set_col_display(cube, p_pos, ray, y);
+		set_col_display(cube, p_pos, &ray, y);
 		y++;
 	}
 }
 
 static void	set_col_display(t_cub3d *cube, t_float_vector player_pos, \
-	t_ray ray, int col)
+	t_ray *ray, int col)
 {
 	int			is_a_wall_hit;
-	int			is_wall_hit_on_x_axe;
+	int			is_wall_hit_on_x_axis;
 
-	ray.map_pos.x = (int)player_pos.x;
-	ray.map_pos.y = (int)player_pos.y;
-	set_ray_parameters(&ray, player_pos);
+	ray->map_pos.x = (int)player_pos.x;
+	ray->map_pos.y = (int)player_pos.y;
+	set_ray_parameters(ray, player_pos);
 	is_a_wall_hit = 0;
-	find_the_hit_wall(cube->map_display.grid_maze, &ray, &is_a_wall_hit, &is_wall_hit_on_x_axe);
-	if (is_wall_hit_on_x_axe == 0)
+	find_the_hit_wall(cube->map_display.grid_maze, ray, &is_a_wall_hit, &is_wall_hit_on_x_axis);
+	if (is_wall_hit_on_x_axis == 0)
 	{
-		cube->map_display.raysize[col] = (int)(WIN_H / (ray.closest_side_wall.x - ray.next_wall_hit.x));
-		if (ray.moving_direction.x < 0)
+		cube->map_display.raysize[col] = (int)(WIN_H / (ray->closest_side_wall.x - ray->next_wall_hit.x));
+		if (ray->moving_direction.x < 0)
 			cube->map_display.raytexture[col] = 'W';
 		else
 			cube->map_display.raytexture[col] = 'E';
 	}
 	else
 	{
-		cube->map_display.raysize[col] = (int)(WIN_H / (ray.closest_side_wall.y - ray.next_wall_hit.y));
-		if (ray.moving_direction.y < 0)
+		cube->map_display.raysize[col] = (int)(WIN_H / (ray->closest_side_wall.y - ray->next_wall_hit.y));
+		if (ray->moving_direction.y < 0)
 			cube->map_display.raytexture[col] = 'N';
 		else
 			cube->map_display.raytexture[col] = 'S';
@@ -116,13 +116,13 @@ static void	find_the_hit_wall(char **grid_maze, t_ray *ray, int *is_a_wall_hit, 
 			closest_side_wall->x += next_wall_hit->x;
 			map_pos->x += moving_direction->x;
 			*is_wall_hit_on_x_axe = 0;
-		} else
+		}
+		else
 		{
 			closest_side_wall->y += next_wall_hit->y;
 			map_pos->y += moving_direction->y;
 			*is_wall_hit_on_x_axe = 1;
 		}
-		if (grid_maze[map_pos->y][map_pos->x] == '1')
-			*is_a_wall_hit = 1;
+		*is_a_wall_hit = (grid_maze[map_pos->y][map_pos->x] == '1');
 	}
 }
