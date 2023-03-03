@@ -20,7 +20,7 @@ void	init_render(t_cub3d *cube)
 	cube->mlx_data.working_img = &cube->mlx_data.img1;
 	raytracer(cube);
 	draw_maze(cube);
-//	draw_minimap(cube);
+	draw_minimap(cube);
 }
 
 static void	draw_maze(t_cub3d *cube)

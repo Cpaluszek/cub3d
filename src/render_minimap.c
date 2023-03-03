@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:29:02 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/02 14:25:37 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/03 16:40:26 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 static void	draw_minimap_cell(t_mlx_data *data, int x, int y, int color);
 static int	get_cell_color(t_cub3d *cube, int x, int y);
 static void	draw_viewport(t_mlx_data *data, t_player player);
-static void	draw_line(t_mlx_data *data, t_vector p1, t_vector p2);
+static void	draw_line(t_mlx_data *data, t_float_vector p1, t_float_vector p2);
 
 // Note: transparent BG ?
 void	draw_minimap(t_cub3d *cube)
@@ -51,11 +51,11 @@ void	draw_minimap(t_cub3d *cube)
 static int	get_cell_color(t_cub3d *cube, int x, int y)
 {
 	if (x >= 0 && y >= 0 && \
-		x < cube->map_data.width && y < cube->map_data.height)
+		x < cube->map_display.maze_width && y < cube->map_display.maze_height)
 	{
 		if (x == (int)cube->player.pos.x && y == (int)cube->player.pos.y)
 			return (MM_PLAYER_COLOR);
-		else if (cube->grid_maze[y][x] == '1')
+		else if (cube->map_display.grid_maze[y][x] == '1')
 			return (MM_WALL_COLOR);
 	}
 	return (MM_BG_COLOR);
@@ -85,8 +85,8 @@ static void	draw_minimap_cell(t_mlx_data *data, int x, int y, int color)
 
 static void	draw_viewport(t_mlx_data *data, t_player player)
 {
-	t_vector	start;
-	t_vector	end;
+	t_float_vector	start;
+	t_float_vector	end;
 
 	start.x = MINI_MAP_X + MINI_MAP_SIDE_SIZE / 2 + MINI_MAP_CELL_SIZE / 2;
 	start.y = MINI_MAP_Y + MINI_MAP_SIDE_SIZE / 2 + MINI_MAP_CELL_SIZE / 2;
@@ -98,9 +98,9 @@ static void	draw_viewport(t_mlx_data *data, t_player player)
 	draw_line(data, start, end);
 }
 
-static void	draw_line(t_mlx_data *data, t_vector p1, t_vector p2)
+static void	draw_line(t_mlx_data *data, t_float_vector p1, t_float_vector p2)
 {
-	t_vector	delta;
+	t_float_vector	delta;
 	float		max;
 
 	delta.x = p2.x - p1.x;
