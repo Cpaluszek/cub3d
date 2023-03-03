@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/03 11:41:07 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/03 11:41:20 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,13 @@ typedef struct s_display {
 	unsigned int	**west_texture;
 	unsigned int	**east_texture;
 	unsigned int	**door_texture;
-	t_color			floor_color;
-	t_color			ceiling_color;
 	int				raysize[1920];
+	int				maze_height;
+	int				maze_width;
 	char			raytexture[1920];
 	char			**grid_maze;
+	t_color			floor_color;
+	t_color			ceiling_color;
 }t_display;
 
 typedef struct s_cub3d
