@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:08:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/02 15:14:39 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/03 09:42:13 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	main(int argc, char **argv)
 	central_parsing(&cube);
 	if (init_mlx_data(&cube.mlx_data) == ERROR)
 	{
-		// Todo: free
-		return (ERROR);
+		printf("Mlx initialisation error\n");
+		exit_cube(&cube, ERROR);
 	}
 	init_player(&cube.player);
 	set_mlx_hooks(&cube);
