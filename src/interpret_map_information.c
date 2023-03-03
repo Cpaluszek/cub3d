@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interpret_map_information.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:24:31 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/02 15:13:02 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/03 13:55:44 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	interpret_map_information(t_cub3d *cube, char **map_info)
 	if (!map_info[i])
 		error_exit_cube(cube, INVALID_PATTERN, "");
 	create_maze(cube, &map_info[i]);
-	fill_maze(cube, cube->grid_maze, &map_info[i]);
-	maze_validity_checking(cube, cube->grid_maze);
+	fill_maze(cube, cube->map_display.grid_maze, &map_info[i]);
+	maze_validity_checking(cube, cube->map_display.grid_maze);
 }
 
 static void	create_maze(t_cub3d *cube, char **map_information)
@@ -50,17 +50,18 @@ static void	create_maze(t_cub3d *cube, char **map_information)
 			len_max = len;
 		i++;
 	}
-	cube->grid_maze = malloc(sizeof(char *) * (i + 1));
-	cube->map_data.height = i;
-	cube->map_data.width = (int) len_max;
-	test_failed_malloc(cube, cube->grid_maze);
-	cube->grid_maze[i] = NULL;
+	cube->map_display.grid_maze = malloc(sizeof(char *) * (i + 1));
+	cube->map_display.maze_height = i;
+	cube->map_display.maze_width = (int) len_max;
+	test_failed_malloc(cube, cube->map_display.grid_maze);
+	cube->map_display.grid_maze[i] = NULL;
 	i = -1;
 	while (map_information[++i])
 	{
-		cube->grid_maze[i] = malloc(sizeof(char) * (len_max + 1));
-		test_failed_malloc(cube, cube->grid_maze[i]);
-		ft_memset(cube->grid_maze[i], ' ', len_max);
+		cube->map_display.grid_maze[i] = malloc(sizeof(char) * (len_max + 1));
+		test_failed_malloc(cube, cube->map_display.grid_maze[i]);
+		ft_memset(cube->map_display.grid_maze[i], ' ', len_max);
+		cube->map_display.grid_maze[i][len_max] = 0;
 	}
 }
 

@@ -52,14 +52,14 @@ static void	move_player_x(t_cub3d *cube)
 
 	wall = (int)(cube->player.pos.x + -SCREEN_DIST * \
 		cube->player.dir.y * cube->player.move.x);
-	if (cube->grid_maze[(int)cube->player.pos.y][wall] == '0')
+	if (cube->map_display.grid_maze[(int)cube->player.pos.y][wall] == '0')
 	{
 		dx = -SCREEN_DIST * cube->player.dir.y * cube->player.move.x;
 		cube->player.pos.x += dx;
 	}
 	wall = (int)(cube->player.pos.y + SCREEN_DIST * \
 		cube->player.dir.x * cube->player.move.x);
-	if (cube->grid_maze[wall][(int)cube->player.pos.x] == '0')
+	if (cube->map_display.grid_maze[wall][(int)cube->player.pos.x] == '0')
 	{
 		dy = SCREEN_DIST * cube->player.dir.x * cube->player.move.x;
 		cube->player.pos.y += dy;
@@ -74,14 +74,14 @@ static void	move_player_y(t_cub3d *cube)
 
 	wall = (int)(cube->player.pos.x + SCREEN_DIST * \
 		cube->player.dir.x * cube->player.move.y);
-	if (cube->grid_maze[(int)cube->player.pos.y][wall] == '0')
+	if (cube->map_display.grid_maze[(int)cube->player.pos.y][wall] == '0')
 	{
 		dx = SCREEN_DIST * cube->player.dir.x * cube->player.move.y;
 		cube->player.pos.x += dx;
 	}
 	wall = (int)(cube->player.pos.y + SCREEN_DIST * \
 		cube->player.dir.y * cube->player.move.y);
-	if (cube->grid_maze[wall][(int)cube->player.pos.x] == '0')
+	if (cube->map_display.grid_maze[wall][(int)cube->player.pos.x] == '0')
 	{
 		dy = SCREEN_DIST * cube->player.dir.y * cube->player.move.y;
 		cube->player.pos.y += dy;

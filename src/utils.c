@@ -39,7 +39,7 @@ void	exit_cube(t_cub3d *cube, int exit_code)
 		mlx_destroy_display(mlx_data.mlx);
 	ft_free(mlx_data.mlx);
 	ft_free_split(cube->map_information);
-	ft_free_split(cube->grid_maze);
+	ft_free_split(cube->map_display.grid_maze);
 	ft_free(cube->map_data.north_texture_path);
 	ft_free(cube->map_data.south_texture_path);
 	ft_free(cube->map_data.east_texture_path);

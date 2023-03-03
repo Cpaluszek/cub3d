@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:08:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/03 09:42:13 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:38:11 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,18 @@ int	main(int argc, char **argv)
 		printf("Mlx initialisation error\n");
 		exit_cube(&cube, ERROR);
 	}
+//	int i=-1;
+//	while (cube.map_display.grid_maze[++i]){
+//			printf("%s\n", cube.map_display.grid_maze[i]);
+//	}
+//	printf("%x %x\n", cube.map_display.ceiling_color.color, cube.map_display.floor_color.color);
+
 	init_player(&cube.player);
 	set_mlx_hooks(&cube);
 	init_render(&cube);
 	mlx_loop_hook(cube.mlx_data.mlx, &game_loop, &cube);
 	mlx_loop(cube.mlx_data.mlx);
+	exit_cube(&cube, 0);
 	return (SUCCESS);
 }
 
