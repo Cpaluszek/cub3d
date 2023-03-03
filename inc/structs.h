@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/02 14:53:09 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/03 11:41:07 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,26 @@ typedef union u_color
 
 typedef struct s_map_data
 {
-	char	*north_texture;
-	char	*south_texture;
-	char	*west_texture;
-	char	*east_texture;
+	char	*north_texture_path;
+	char	*south_texture_path;
+	char	*west_texture_path;
+	char	*east_texture_path;
 	t_color	floor_color;
 	t_color	ceiling_color;
 	int		height;
 	int		width;
 }	t_map_data;
+
+typedef struct s_texture
+{
+	void *address;
+	char *text;
+	int bits_per_pixel;
+	int line_length;
+	int endian;
+	int width;
+	int height;
+} t_texture;
 
 typedef struct s_mlx_data {
 	void		*mlx;
@@ -66,6 +77,19 @@ typedef struct s_mlx_data {
 	t_img_data	*working_img;
 }	t_mlx_data;
 
+typedef struct s_display {
+	unsigned int	**north_texture;
+	unsigned int	**south_texture;
+	unsigned int	**west_texture;
+	unsigned int	**east_texture;
+	unsigned int	**door_texture;
+	t_color			floor_color;
+	t_color			ceiling_color;
+	int				raysize[1920];
+	char			raytexture[1920];
+	char			**grid_maze;
+}t_display;
+
 typedef struct s_cub3d
 {
 	// Note: remove map_path from struct
@@ -75,8 +99,8 @@ typedef struct s_cub3d
 	char		**map_information;
 	t_map_data	map_data;
 	t_mlx_data	mlx_data;
+	t_display	map_display;
 	t_player	player;
-	float		screen_width;
 	// Note: try to use previous defines
 	int			raysize[1920];
 	char		raytexture[1920];

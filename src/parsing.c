@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/02 15:33:32 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/03 11:41:37 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	central_parsing(t_cub3d *cube)
 	fd_map = open(cube->map_path, O_RDONLY);
 	if (fd_map == -1)
 		error_exit_cube(cube, cube->map_path, strerror(errno));
-	cube->map_data.north_texture = NULL;
-	cube->map_data.south_texture = NULL;
-	cube->map_data.west_texture = NULL;
-	cube->map_data.east_texture = NULL;
+	cube->map_data.north_texture_path = NULL;
+	cube->map_data.south_texture_path = NULL;
+	cube->map_data.west_texture_path = NULL;
+	cube->map_data.east_texture_path = NULL;
 	cube->map_data.ceiling_color.color = 0x01000000;
 	cube->map_data.floor_color.color = 0x01000000;
 	cube->grid_maze = NULL;
@@ -51,7 +51,11 @@ static void	parse_map_information(t_cub3d *cube, int fd_map)
 
 	nb_read = read(fd_map, buffer, BUF_SIZE);
 	if (nb_read == -1)
+	{
+		close(fd_map);
 		error_exit_cube(cube, ERR_READ, "");
+	}
+	close(fd_map);
 	cube->map_information = ft_split(buffer, '\n');
 	test_failed_malloc(cube, cube->map_information);
 	check_no_splitted_maze(cube, cube->map_information, buffer);
