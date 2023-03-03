@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 13:08:18 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/03 14:01:07 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/03 14:01:18 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,29 +82,13 @@ static void	set_player_starting_position(t_cub3d *cube, int i, int j)
 	cube->player.pos.x = (float) i;
 	cube->player.pos.y = (float) j;
 	if (cube->map_display.grid_maze[j][i] == 'N')
-	{
-		cube->player.dir.x = 0.0f;
-		cube->player.dir.y = -1.0f;
 		cube->player.angle = 3 * M_PI_2;
-	}
 	else if (cube->map_display.grid_maze[j][i] == 'S')
-	{
-		cube->player.dir.x = 0.0f;
-		cube->player.dir.y = 1.0f;
 		cube->player.angle = M_PI_2;
-	}
-	if (cube->map_display.grid_maze[j][i] == 'E')
-	{
-		cube->player.dir.x = 1.0f;
-		cube->player.dir.y = 0.0f;
+	else if (cube->map_display.grid_maze[j][i] == 'E')
 		cube->player.angle = 0;
-	}
-	if (cube->map_display.grid_maze[j][i] == 'W')
-	{
-		cube->player.dir.x = -1.0f;
-		cube->player.dir.y = 0.0f;
+	else if (cube->map_display.grid_maze[j][i] == 'W')
 		cube->player.angle = M_PI;
-	}
 	cube->player.dir.x = cos(cube->player.angle);
 	cube->player.dir.y = sin(cube->player.angle);
 	cube->map_display.grid_maze[j][i] = '0';
