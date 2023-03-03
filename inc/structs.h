@@ -50,10 +50,7 @@ typedef struct s_map_data
 	char	*south_texture_path;
 	char	*west_texture_path;
 	char	*east_texture_path;
-	t_color	floor_color;
-	t_color	ceiling_color;
-	int		height;
-	int		width;
+	char	*door_texture_path;
 }	t_map_data;
 
 typedef struct s_texture
