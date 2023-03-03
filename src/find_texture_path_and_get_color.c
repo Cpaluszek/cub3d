@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_texture_path_and_get_color.c                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 15:15:00 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/02 15:16:44 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/03 11:46:41 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ void	find_texture_path_and_get_color(t_cub3d *cube, char *line)
 	size_t	len;
 
 	len = ft_strlen(line);
-	if (ft_strnstr(line, "NO ", len) != NULL && cube->map_data.north_texture == NULL)
-		cube->map_data.north_texture = retrieve_path(cube, line, "NO ");
-	else if (ft_strnstr(line, "SO ", len) != NULL && cube->map_data.south_texture == NULL)
-		cube->map_data.south_texture = retrieve_path(cube, line, "SO ");
-	else if (ft_strnstr(line, "WE ", len) != NULL && cube->map_data.west_texture == NULL)
-		cube->map_data.west_texture = retrieve_path(cube, line, "WE ");
-	else if (ft_strnstr(line, "EA ", len) != NULL && cube->map_data.east_texture == NULL)
-		cube->map_data.east_texture = retrieve_path(cube, line, "EA ");
+	if (ft_strnstr(line, "NO ", len) != NULL && cube->map_data.north_texture_path == NULL)
+		cube->map_data.north_texture_path = retrieve_path(cube, line, "NO ");
+	else if (ft_strnstr(line, "SO ", len) != NULL && cube->map_data.south_texture_path == NULL)
+		cube->map_data.south_texture_path = retrieve_path(cube, line, "SO ");
+	else if (ft_strnstr(line, "WE ", len) != NULL && cube->map_data.west_texture_path == NULL)
+		cube->map_data.west_texture_path = retrieve_path(cube, line, "WE ");
+	else if (ft_strnstr(line, "EA ", len) != NULL && cube->map_data.east_texture_path == NULL)
+		cube->map_data.east_texture_path = retrieve_path(cube, line, "EA ");
 	else if (ft_strnstr(line, "F ", len) != NULL && cube->map_data.floor_color.color == 0x01000000)
 		retrieve_color(cube, &cube->map_data.floor_color.rgb, line, "F ");
 	else if (ft_strnstr(line, "C ", len) != NULL && cube->map_data.ceiling_color.color == 0x01000000)
@@ -114,7 +114,11 @@ static int	get_color(unsigned char *p_color, char **p_line)
 	color = ft_atoi(line);
 	if (i > 3 || i == 0 || color > 255)
 		return (ERROR);
-	*p_line = &line[i + 1];
+	if (line[i])
+		i++;
+	while (line[i] && line[i] == ' ')
+		i++;
+	*p_line = &line[i];
 	*p_color = color;
 	return (SUCCESS);
 }

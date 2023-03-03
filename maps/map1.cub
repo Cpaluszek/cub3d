@@ -5,8 +5,8 @@ WE ./textures/wood.xpm
 EA                         ./textures/gold.xpm
 
 
-F             0,0,68
-C 51,204,255
+F             0, 0, 68
+C 51,     204,     255
 
 
 11111111111111111   11111
