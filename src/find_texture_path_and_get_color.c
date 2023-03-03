@@ -35,10 +35,10 @@ void	find_texture_path_and_get_color(t_cub3d *cube, char *line)
 		cube->map_data.west_texture_path = retrieve_path(cube, line, "WE ");
 	else if (ft_strnstr(line, "EA ", len) != NULL && cube->map_data.east_texture_path == NULL)
 		cube->map_data.east_texture_path = retrieve_path(cube, line, "EA ");
-	else if (ft_strnstr(line, "F ", len) != NULL && cube->map_data.floor_color.color == 0x01000000)
-		retrieve_color(cube, &cube->map_data.floor_color.rgb, line, "F ");
-	else if (ft_strnstr(line, "C ", len) != NULL && cube->map_data.ceiling_color.color == 0x01000000)
-		retrieve_color(cube, &cube->map_data.ceiling_color.rgb, line, "C ");
+	else if (ft_strnstr(line, "F ", len) != NULL && cube->map_display.floor_color.color == 0x01000000)
+		retrieve_color(cube, &cube->map_display.floor_color.rgb, line, "F ");
+	else if (ft_strnstr(line, "C ", len) != NULL && cube->map_display.ceiling_color.color == 0x01000000)
+		retrieve_color(cube, &cube->map_display.ceiling_color.rgb, line, "C ");
 	else
 		error_exit_cube(cube, INVALID_PARAM, line);
 }

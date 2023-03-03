@@ -29,7 +29,7 @@ void	error_exit_cube(t_cub3d *cube, char *msg1, char *msg2)
 void	exit_cube(t_cub3d *cube, int exit_code)
 {
 	ft_free_split(cube->map_information);
-	ft_free_split(cube->grid_maze);
+	ft_free_split(cube->map_display.grid_maze);
 	ft_free(cube->map_data.north_texture_path);
 	ft_free(cube->map_data.south_texture_path);
 	ft_free(cube->map_data.east_texture_path);

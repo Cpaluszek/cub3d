@@ -19,14 +19,14 @@ SRC_FILES		:=	main.c \
 					find_texture_path_and_get_color.c \
 					interpret_map_information.c \
 					maze_validity_checking.c \
-					mlx_init.c \
+					utils.c
+					#game_loop.c \
+					#mlx_init.c \
 					mlx_hooks.c \
 					mlx_utils.c \
-					game_loop.c \
-					render.c \
+					#render.c \
 					raytracer.c \
 					render_minimap.c \
-					utils.c
 
 SRCS			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
@@ -49,7 +49,7 @@ CCDEFS			:=	NAME=\"$(NAME)\"
 
 # Compiler options
 CC				:=	cc
-DEBUG_FLAG		:=	-g3
+DEBUG_FLAG		:=	-g3 -fsanitize=address
 CC_FLAGS		:=	-Wextra -Werror -Wall -O3 $(DEBUG_FLAG)
 CC_DEPS_FLAGS	:=	-MP -MMD
 CC_DEFS_FLAGS	:=	$(foreach def,$(CCDEFS),-D $(def))

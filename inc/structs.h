@@ -93,7 +93,6 @@ typedef struct s_cub3d
 {
 	// Note: remove map_path from struct
 	char		*map_path;
-	char		**grid_maze;
 	// Note: remove from struct ??
 	char		**map_information;
 	t_map_data	map_data;
@@ -101,8 +100,6 @@ typedef struct s_cub3d
 	t_display	map_display;
 	t_player	player;
 	// Note: try to use previous defines
-	int			raysize[1920];
-	char		raytexture[1920];
 }	t_cub3d;
 
 enum e_result
