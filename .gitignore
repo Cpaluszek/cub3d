@@ -1,3 +1,4 @@
 build/
 cub3D
 .idea/
+lib/libft/libft.a
