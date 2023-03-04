@@ -51,6 +51,7 @@ typedef struct s_rgb
 	unsigned char	red;
 }	t_rgb;
 
+// Note: switch color to (int) instead of (unsigned int)
 typedef union u_color
 {
 	unsigned int	color;

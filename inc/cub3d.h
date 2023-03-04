@@ -37,12 +37,6 @@
 # define ROT_SPEED			0.01f
 # define MOUSE_ROT_SPEED	0.062831f
 
-// Viewing angle
-# define FOV	90
-
-# define LOS_ANGLE 120
-# define MAX_LOS	10
-
 //	--- Parsing ---
 void			central_parsing(t_cub3d *cube);
 void			maze_validity_checking(t_cub3d *cube, char **grid_maze);

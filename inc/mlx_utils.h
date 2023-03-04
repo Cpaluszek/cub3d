@@ -76,6 +76,7 @@ enum	e_mlx_events
 {
 	ON_KEYDOWN = 2,
 	ON_KEYUP = 3,
+	ON_MOUSE_MOVE = 6,
 	ON_BUTTON_PRESS = 17
 };
 
