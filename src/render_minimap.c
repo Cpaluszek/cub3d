@@ -87,14 +87,16 @@ static void	draw_viewport(t_mlx_data *data, t_player player)
 {
 	t_float_vector	start;
 	t_float_vector	end;
+	float			map_center;
 
-	start.x = MINI_MAP_X + MINI_MAP_SIDE_SIZE / 2 + MINI_MAP_CELL_SIZE / 2;
-	start.y = MINI_MAP_Y + MINI_MAP_SIDE_SIZE / 2 + MINI_MAP_CELL_SIZE / 2;
-	end.x = start.x + 50 * cos(player.angle - M_PI_4);
-	end.y = start.y + 50 * sin(player.angle - M_PI_4);
+	map_center = MINI_MAP_SIDE_SIZE / 2.0 + MINI_MAP_CELL_SIZE / 2.0;
+	start.x = MINI_MAP_X + map_center;
+	start.y = MINI_MAP_Y + map_center;
+	end.x = start.x + 50 * (float) cos(player.angle - M_PI_4);
+	end.y = start.y + 50 * (float) sin(player.angle - M_PI_4);
 	draw_line(data, start, end);
-	end.x = start.x + 50 * cos(player.angle + M_PI_4);
-	end.y = start.y + 50 * sin(player.angle + M_PI_4);
+	end.x = start.x + 50 * (float) cos(player.angle + M_PI_4);
+	end.y = start.y + 50 * (float) sin(player.angle + M_PI_4);
 	draw_line(data, start, end);
 }
 
@@ -105,7 +107,7 @@ static void	draw_line(t_mlx_data *data, t_float_vector p1, t_float_vector p2)
 
 	delta.x = p2.x - p1.x;
 	delta.y = p2.y - p1.y;
-	max = fmax(fabs(delta.x), fabs(delta.y));
+	max = fmaxf(fabsf(delta.x), fabsf(delta.y));
 	delta.x /= max;
 	delta.y /= max;
 	while (((int)(p1.x - p2.x) || (int)(p1.y - p2.y)))
