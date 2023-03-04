@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:08:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/04 11:23:39 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/04 11:27:43 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,6 @@ int	main(int argc, char **argv)
 		printf("Mlx initialisation error\n");
 		exit_cube(&cube, ERROR);
 	}
-//	int i=-1;
-//	while (cube.map_display.grid_maze[++i]){
-//			printf("%s\n", cube.map_display.grid_maze[i]);
-//	}
-//	printf("%x %x\n", cube.map_display.ceiling_color.color, cube.map_display.floor_color.color);
 	init_player(&cube.player);
 	set_mlx_hooks(&cube);
 	init_render(&cube);
@@ -42,6 +37,13 @@ int	main(int argc, char **argv)
 	exit_cube(&cube, 0);
 	return (SUCCESS);
 }
+
+//	int i=-1;
+//	while (cube.map_display.grid_maze[++i]){
+//			printf("%s\n", cube.map_display.grid_maze[i]);
+//	}
+//	printf("%x %x\n", cube.map_display.ceiling_color.color,
+//  cube.map_display.floor_color.color);
 
 static void	init_player(t_player *player)
 {

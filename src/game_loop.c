@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 14:28:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/02 15:06:21 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/04 11:25:15 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 static void	move_player_x(t_cub3d *cube);
 static void	move_player_y(t_cub3d *cube);
 
-// Todo: why int function ?
 int	game_loop(t_cub3d *cube)
 {
 	int	render_needed;

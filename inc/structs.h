@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/04 11:23:28 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/04 11:28:11 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_float_vector {
 typedef struct s_int_vector {
 	int	x;
 	int	y;
-}t_int_vector;
+}	t_int_vector;
 
 typedef struct s_ray{
 	t_int_vector	map_pos;
@@ -38,7 +38,6 @@ typedef struct s_ray{
 typedef struct s_player {
 	t_float_vector	pos;
 	t_float_vector	dir;
-	// Todo: use int instead of float ?
 	t_float_vector	move;
 	float			rotate;
 	float			angle;
@@ -69,14 +68,14 @@ typedef struct s_map_data
 
 typedef struct s_texture
 {
-	void *address;
-	char *text;
-	int bits_per_pixel;
-	int line_length;
-	int endian;
-	int width;
-	int height;
-} t_texture;
+	void	*address;
+	char	*text;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	int		width;
+	int		height;
+}	t_texture;
 
 typedef struct s_mlx_data {
 	void		*mlx;
@@ -94,6 +93,7 @@ typedef struct s_display {
 	unsigned int	**west_texture;
 	unsigned int	**east_texture;
 	unsigned int	**door_texture;
+	// Note: try to use previous defines
 	int				raysize[1920];
 	int				maze_height;
 	int				maze_width;
@@ -113,7 +113,6 @@ typedef struct s_cub3d
 	t_mlx_data	mlx_data;
 	t_display	map_display;
 	t_player	player;
-	// Note: try to use previous defines
 }	t_cub3d;
 
 enum e_result

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_texture_path_and_get_color.c                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 15:15:00 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/03 11:46:41 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/04 11:25:24 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ static int	get_color(unsigned char *p_color, char **p_line);
 static char	*retrieve_path(t_cub3d *cube, char *line, char *pattern);
 static void	retrieve_color(t_cub3d *cube, t_rgb *color, \
 	char *line, char *pattern);
-
-//todo : parse spaces in color
 
 void	find_texture_path_and_get_color(t_cub3d *cube, char *line)
 {
