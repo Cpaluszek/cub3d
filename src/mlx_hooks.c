@@ -16,7 +16,7 @@
 static int	button_hook(t_cub3d *cube);
 static int	key_press_hook(int key, t_cub3d *cube);
 static int	key_release_hook(int key, t_cub3d *cube);
-static int	mouse_rot_hook(int x, int y, t_cub3d *cube);
+static int	mouse_move_hook(int x, int y, t_cub3d *cube);
 
 void	set_mlx_hooks(t_cub3d *cube)
 {
@@ -26,7 +26,7 @@ void	set_mlx_hooks(t_cub3d *cube)
 	mlx_hook(win_ptr, ON_KEYDOWN, 1L << 0, key_press_hook, cube);
 	mlx_hook(win_ptr, ON_KEYUP, 1L << 1, key_release_hook, cube);
 	mlx_hook(win_ptr, ON_BUTTON_PRESS, 1L << 0, button_hook, cube);
-	mlx_hook(win_ptr, ON_MOUSE_MOVE, 1L << 6, mouse_rot_hook, cube);
+	mlx_hook(win_ptr, ON_MOUSE_MOVE, 1L << 6, mouse_move_hook, cube);
 }
 
 static int	key_press_hook(int key, t_cub3d *cube)
@@ -66,7 +66,7 @@ static int	button_hook(t_cub3d *cube)
 	return (0);
 }
 
-static int	mouse_rot_hook(int x, int y, t_cub3d *cube)
+static int	mouse_move_hook(int x, int y, t_cub3d *cube)
 {
 	float	distance_from_screen_side;
 

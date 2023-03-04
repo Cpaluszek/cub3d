@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:08:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/03 16:35:43 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/04 11:23:39 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 static void	init_player(t_player *player);
 
-// Todo: Makefile lib compilation check
 int	main(int argc, char **argv)
 {
 	t_cub3d	cube;

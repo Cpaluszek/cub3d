@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/03 15:50:37 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/04 11:23:28 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ typedef struct s_float_vector {
 }	t_float_vector;
 
 typedef struct s_int_vector {
-	int x;
+	int	x;
 	int	y;
 }t_int_vector;
 
 typedef struct s_ray{
-	t_int_vector 	map_pos;
-	t_int_vector 	moving_direction;
+	t_int_vector	map_pos;
+	t_int_vector	moving_direction;
 	t_float_vector	next_wall_hit;
 	t_float_vector	closest_side_wall;
 	t_float_vector	direction;

@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:29:02 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/03 16:40:26 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/04 11:22:31 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static int	get_cell_color(t_cub3d *cube, int x, int y);
 static void	draw_viewport(t_mlx_data *data, t_player player);
 static void	draw_line(t_mlx_data *data, t_float_vector p1, t_float_vector p2);
 
-// Note: transparent BG ?
 void	draw_minimap(t_cub3d *cube)
 {
 	t_color		pixel_color;
