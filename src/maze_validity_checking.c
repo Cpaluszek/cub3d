@@ -59,9 +59,10 @@ static void	check_first_and_last_line(t_cub3d *cube, char *line)
 
 static void	check_adjacent_cells(t_cub3d *cube, char **grid, int row, int col)
 {
-	if (col != cube->map_display.maze_width - 1 && ft_is_inside(grid[row][col + 1], "0NSEW"))
+	if (col != cube->map_display.maze_width - 1 && \
+		ft_is_inside(grid[row][col + 1], "0NSEW"))
 		error_exit_cube(cube, UNCLOSED_MAZE, grid[row]);
-	if ( col != 0 && ft_is_inside(grid[row][col - 1], "0NSEW"))
+	if (col != 0 && ft_is_inside(grid[row][col - 1], "0NSEW"))
 		error_exit_cube(cube, UNCLOSED_MAZE, grid[row]);
 	if (row != 0 && ft_is_inside(grid[row - 1][col], "0NSEW"))
 		error_exit_cube(cube, UNCLOSED_MAZE, grid[row - 1]);

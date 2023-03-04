@@ -32,10 +32,10 @@ void	central_parsing(t_cub3d *cube)
 	fd_map = open(cube->map_path, O_RDONLY);
 	if (fd_map == -1)
 		error_exit_cube(cube, cube->map_path, strerror(errno));
-	cube->map_data.north_texture_path = NULL;
-	cube->map_data.south_texture_path = NULL;
-	cube->map_data.west_texture_path = NULL;
-	cube->map_data.east_texture_path = NULL;
+	cube->map_data.no_tex_path = NULL;
+	cube->map_data.so_tex_path = NULL;
+	cube->map_data.we_tex_path = NULL;
+	cube->map_data.ea_tex_path = NULL;
 	cube->map_display.ceiling_color.color = 0x01000000;
 	cube->map_display.floor_color.color = 0x01000000;
 	cube->map_display.grid_maze = NULL;

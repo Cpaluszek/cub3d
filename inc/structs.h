@@ -59,11 +59,11 @@ typedef union u_color
 
 typedef struct s_map_data
 {
-	char	*north_texture_path;
-	char	*south_texture_path;
-	char	*west_texture_path;
-	char	*east_texture_path;
-	char	*door_texture_path;
+	char	*no_tex_path;
+	char	*so_tex_path;
+	char	*we_tex_path;
+	char	*ea_tex_path;
+	char	*door_tex_path;
 }	t_map_data;
 
 typedef struct s_texture
@@ -84,7 +84,7 @@ typedef struct s_mlx_data {
 	t_img_data	img1;
 	t_img_data	img2;
 	t_img_data	*current_img;
-	t_img_data	*working_img;
+	t_img_data	*work_img;
 }	t_mlx_data;
 
 typedef struct s_display {

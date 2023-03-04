@@ -17,7 +17,7 @@ static int	retrieve_color(t_display *map_display, int x, int y, int diff);
 
 void	init_render(t_cub3d *cube)
 {
-	cube->mlx_data.working_img = &cube->mlx_data.img1;
+	cube->mlx_data.work_img = &cube->mlx_data.img1;
 	raytracer(cube);
 	draw_maze(cube);
 	draw_minimap(cube);
@@ -27,7 +27,7 @@ static void	draw_maze(t_cub3d *cube)
 {
 	t_mlx_data	data;
 	t_display	*map_display;
-	int 		diff;
+	int			diff;
 	int			x;
 	int			y;
 
@@ -40,16 +40,17 @@ static void	draw_maze(t_cub3d *cube)
 		diff = (WIN_H - map_display->raysize[x]) / 2;
 		while (y < WIN_H)
 		{
-			my_mlx_pixel_put(data.working_img, x, y, retrieve_color(map_display, x, y, diff));
+			my_mlx_pixel_put(data.work_img, x, y, \
+				retrieve_color(map_display, x, y, diff));
 			y++;
 		}
 		x++;
 	}
 	mlx_put_image_to_window(data.mlx, data.mlx_win, \
-		data.working_img->img, 0, 0);
+		data.work_img->img, 0, 0);
 }
 
-static int retrieve_color(t_display	*map_display, int x, int y, int diff)
+static int	retrieve_color(t_display	*map_display, int x, int y, int diff)
 {
 	if (y < diff)
 		return (map_display->ceiling_color.color);

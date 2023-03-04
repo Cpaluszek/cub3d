@@ -27,17 +27,23 @@ void	find_texture_path_and_get_color(t_cub3d *cube, char *line)
 	size_t	len;
 
 	len = ft_strlen(line);
-	if (ft_strnstr(line, "NO ", len) != NULL && cube->map_data.north_texture_path == NULL)
-		cube->map_data.north_texture_path = retrieve_path(cube, line, "NO ");
-	else if (ft_strnstr(line, "SO ", len) != NULL && cube->map_data.south_texture_path == NULL)
-		cube->map_data.south_texture_path = retrieve_path(cube, line, "SO ");
-	else if (ft_strnstr(line, "WE ", len) != NULL && cube->map_data.west_texture_path == NULL)
-		cube->map_data.west_texture_path = retrieve_path(cube, line, "WE ");
-	else if (ft_strnstr(line, "EA ", len) != NULL && cube->map_data.east_texture_path == NULL)
-		cube->map_data.east_texture_path = retrieve_path(cube, line, "EA ");
-	else if (ft_strnstr(line, "F ", len) != NULL && cube->map_display.floor_color.color == 0x01000000)
+	if (ft_strnstr(line, "NO ", len) != NULL && \
+		cube->map_data.no_tex_path == NULL)
+		cube->map_data.no_tex_path = retrieve_path(cube, line, "NO ");
+	else if (ft_strnstr(line, "SO ", len) != NULL && \
+		cube->map_data.so_tex_path == NULL)
+		cube->map_data.so_tex_path = retrieve_path(cube, line, "SO ");
+	else if (ft_strnstr(line, "WE ", len) != NULL && \
+		cube->map_data.we_tex_path == NULL)
+		cube->map_data.we_tex_path = retrieve_path(cube, line, "WE ");
+	else if (ft_strnstr(line, "EA ", len) != NULL && \
+		cube->map_data.ea_tex_path == NULL)
+		cube->map_data.ea_tex_path = retrieve_path(cube, line, "EA ");
+	else if (ft_strnstr(line, "F ", len) != NULL && \
+		cube->map_display.floor_color.color == 0x01000000)
 		retrieve_color(cube, &cube->map_display.floor_color.rgb, line, "F ");
-	else if (ft_strnstr(line, "C ", len) != NULL && cube->map_display.ceiling_color.color == 0x01000000)
+	else if (ft_strnstr(line, "C ", len) != NULL && \
+		cube->map_display.ceiling_color.color == 0x01000000)
 		retrieve_color(cube, &cube->map_display.ceiling_color.rgb, line, "C ");
 	else
 		error_exit_cube(cube, INVALID_PARAM, line);

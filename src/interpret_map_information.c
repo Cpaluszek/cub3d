@@ -42,13 +42,12 @@ static void	create_maze(t_cub3d *cube, char **map_information)
 	size_t	len_max;
 
 	len_max = ft_strlen(map_information[0]);
-	i = 0;
-	while (map_information[i])
+	i = -1;
+	while (map_information[++i])
 	{
 		len = ft_strlen(map_information[i]);
 		if (len > len_max)
 			len_max = len;
-		i++;
 	}
 	cube->map_display.grid_maze = malloc(sizeof(char *) * (i + 1));
 	cube->map_display.maze_height = i;
