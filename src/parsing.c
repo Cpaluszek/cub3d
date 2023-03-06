@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/03 13:03:57 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/03 20:14:12 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	central_parsing(t_cub3d *cube)
 	cube->player.pos.x = 0.0f;
 	cube->player.pos.y = 0.0f;
 	parse_map_information(cube, fd_map);
+	create_texture_array(cube);
 }
 
 static void	parse_map_information(t_cub3d *cube, int fd_map)

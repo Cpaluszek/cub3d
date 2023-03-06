@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:32:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/02 15:54:28 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/06 19:29:30 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,18 @@
 # define ROT_SPEED			0.01f
 # define MOUSE_ROT_SPEED	0.062831f
 
+// Viewing angle
+# define FOV	90
+
+# define LOS_ANGLE 120
+# define MAX_LOS	10
+
 //	--- Parsing ---
 void			central_parsing(t_cub3d *cube);
 void			maze_validity_checking(t_cub3d *cube, char **grid_maze);
 void			interpret_map_information(t_cub3d *cube, char **map_info);
 void			find_texture_path_and_get_color(t_cub3d *cube, char *line);
+void			create_texture_array(t_cub3d *cube);
 
 // --- MLX ---
 enum e_result	init_mlx_data(t_mlx_data *mlx_data);

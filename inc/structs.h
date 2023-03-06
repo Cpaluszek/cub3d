@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/04 11:28:11 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/06 10:18:23 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,23 @@ typedef struct s_float_vector {
 }	t_float_vector;
 
 typedef struct s_int_vector {
-	int	x;
+	int x;
 	int	y;
-}	t_int_vector;
+}t_int_vector;
 
 typedef struct s_ray{
-	t_int_vector	map_pos;
-	t_int_vector	moving_direction;
+	t_int_vector 	map_pos;
+	t_int_vector 	moving_direction;
 	t_float_vector	next_wall_hit;
 	t_float_vector	closest_side_wall;
 	t_float_vector	direction;
+	float 			relative_hit_on_wall;
 }t_ray;
 
 typedef struct s_player {
 	t_float_vector	pos;
 	t_float_vector	dir;
+	// Todo: use int instead of float ?
 	t_float_vector	move;
 	float			rotate;
 	float			angle;
@@ -50,7 +52,6 @@ typedef struct s_rgb
 	unsigned char	red;
 }	t_rgb;
 
-// Note: switch color to (int) instead of (unsigned int)
 typedef union u_color
 {
 	unsigned int	color;
@@ -59,23 +60,23 @@ typedef union u_color
 
 typedef struct s_map_data
 {
-	char	*no_tex_path;
-	char	*so_tex_path;
-	char	*we_tex_path;
-	char	*ea_tex_path;
-	char	*door_tex_path;
+	char	*north_texture_path;
+	char	*south_texture_path;
+	char	*west_texture_path;
+	char	*east_texture_path;
+	char	*door_texture_path;
 }	t_map_data;
 
 typedef struct s_texture
 {
-	void	*address;
-	char	*text;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-	int		width;
-	int		height;
-}	t_texture;
+	void *address;
+	char *text;
+	int bits_per_pixel;
+	int line_length;
+	int endian;
+	int width;
+	int height;
+} t_texture;
 
 typedef struct s_mlx_data {
 	void		*mlx;
@@ -84,7 +85,7 @@ typedef struct s_mlx_data {
 	t_img_data	img1;
 	t_img_data	img2;
 	t_img_data	*current_img;
-	t_img_data	*work_img;
+	t_img_data	*working_img;
 }	t_mlx_data;
 
 typedef struct s_display {
@@ -93,8 +94,12 @@ typedef struct s_display {
 	unsigned int	**west_texture;
 	unsigned int	**east_texture;
 	unsigned int	**door_texture;
-	// Note: try to use previous defines
+	t_int_vector	north_texture_size;
+	t_int_vector	south_texture_size;
+	t_int_vector	east_texture_size;
+	t_int_vector	west_texture_size;
 	int				raysize[1920];
+	int 			pos_x_in_wall[1920];
 	int				maze_height;
 	int				maze_width;
 	char			raytexture[1920];
@@ -113,6 +118,7 @@ typedef struct s_cub3d
 	t_mlx_data	mlx_data;
 	t_display	map_display;
 	t_player	player;
+	// Note: try to use previous defines
 }	t_cub3d;
 
 enum e_result
