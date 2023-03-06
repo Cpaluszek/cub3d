@@ -19,6 +19,7 @@ SRC_FILES		:=	main.c \
 					find_texture_path_and_get_color.c \
 					interpret_map_information.c \
 					maze_validity_checking.c \
+					create_texture_array.c \
 					utils.c \
 					game_loop.c \
 					mlx_init.c \
@@ -50,7 +51,7 @@ CCDEFS			:=	NAME=\"$(NAME)\"
 # Compiler options
 CC				:=	cc
 DEBUG_FLAG		:=	-g3 -fsanitize=address
-CC_FLAGS		:=	-Wextra -Werror -Wall -O3 #$(DEBUG_FLAG)
+CC_FLAGS		:=	-Wextra -Werror -Wall -O3 $(DEBUG_FLAG)
 CC_DEPS_FLAGS	:=	-MP -MMD
 CC_DEFS_FLAGS	:=	$(foreach def,$(CCDEFS),-D $(def))
 
@@ -82,13 +83,13 @@ $(LIB_PATHS): force
 	)
 
 $(NAME): $(LIB_PATHS) $(OBJS)
-	$(CC) $(CC_FLAGS) $(OBJS) $(LIB_LD) $(LIBS) -o $@ 
+	$(CC) -g3 $(CC_FLAGS) $(OBJS) $(LIB_LD) $(LIBS) -o $@
 
 -include $(DEPS)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(LIB_PATHS) Makefile
 	@mkdir -p $(@D)
-	$(CC) $(CC_FLAGS) $(CC_DEPS_FLAGS) $(CC_DEFS_FLAGS) -I$(HEADERS_DIR) $(LIB_HEADERS) -c $< -o $@
+	$(CC) $(CC_FLAGS)  -g3 $(CC_DEPS_FLAGS) $(CC_DEFS_FLAGS) -I$(HEADERS_DIR) $(LIB_HEADERS) -c $< -o $@
 
 clean:
 	@$(foreach lib, $(LIB_NAMES), \

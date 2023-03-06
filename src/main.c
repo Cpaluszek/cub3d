@@ -17,6 +17,7 @@
 static void	init_player(t_player *player);
 
 // Todo: Makefile lib compilation check
+// Todo: missing player parsingss
 int	main(int argc, char **argv)
 {
 	t_cub3d	cube;
@@ -24,12 +25,12 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		printf(PRG_USAGE);
 	cube.map_path = argv[1];
-	central_parsing(&cube);
 	if (init_mlx_data(&cube.mlx_data) == ERROR)
 	{
 		printf("Mlx initialisation error\n");
 		exit_cube(&cube, ERROR);
 	}
+	central_parsing(&cube);
 //	int i=-1;
 //	while (cube.map_display.grid_maze[++i]){
 //			printf("%s\n", cube.map_display.grid_maze[i]);

@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/03 15:50:37 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/06 10:18:23 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_ray{
 	t_float_vector	next_wall_hit;
 	t_float_vector	closest_side_wall;
 	t_float_vector	direction;
+	float 			relative_hit_on_wall;
 }t_ray;
 
 typedef struct s_player {
@@ -93,7 +94,12 @@ typedef struct s_display {
 	unsigned int	**west_texture;
 	unsigned int	**east_texture;
 	unsigned int	**door_texture;
+	t_int_vector	north_texture_size;
+	t_int_vector	south_texture_size;
+	t_int_vector	east_texture_size;
+	t_int_vector	west_texture_size;
 	int				raysize[1920];
+	int 			pos_x_in_wall[1920];
 	int				maze_height;
 	int				maze_width;
 	char			raytexture[1920];
