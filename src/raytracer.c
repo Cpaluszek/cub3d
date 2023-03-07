@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:27:24 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/03 16:53:19 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/06 19:32:49 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,14 @@ static void	set_col_display(t_cub3d *cube, t_float_vector player_pos, \
 	find_the_hit_wall(cube->map_display.grid_maze, ray, &is_a_wall_hit, \
 	&is_wall_hit_on_x_axis);
 	fill_col_display(cube, ray, is_wall_hit_on_x_axis, col);
+	if (cube->map_display.raytexture[col] == 'N')
+		cube->map_display.pos_x_in_wall[col] = (int)(ray->relative_hit_on_wall * cube->map_display.north_texture_size.x);
+	if (cube->map_display.raytexture[col] == 'S')
+		cube->map_display.pos_x_in_wall[col] = (int)(ray->relative_hit_on_wall * cube->map_display.south_texture_size.x);
+	if (cube->map_display.raytexture[col] == 'W')
+		cube->map_display.pos_x_in_wall[col] = (int)(ray->relative_hit_on_wall * cube->map_display.west_texture_size.x);
+	if (cube->map_display.raytexture[col] == 'E')
+		cube->map_display.pos_x_in_wall[col] = (int)(ray->relative_hit_on_wall * cube->map_display.east_texture_size.x);
 }
 
 static void	set_ray_parameters(t_ray *ray, t_float_vector player_pos)
@@ -124,6 +132,7 @@ static void	fill_col_display(t_cub3d *cube, t_ray *ray, \
 	{
 		cube->map_display.raysize[col] = (int)(WIN_H / \
 			(ray->closest_side_wall.x - ray->next_wall_hit.x));
+		ray->relative_hit_on_wall = (ray->closest_side_wall.x - ray->next_wall_hit.x) * ray->direction.y + cube->player.pos.y;
 		if (ray->moving_direction.x < 0)
 			cube->map_display.raytexture[col] = 'W';
 		else
@@ -133,9 +142,13 @@ static void	fill_col_display(t_cub3d *cube, t_ray *ray, \
 	{
 		cube->map_display.raysize[col] = (int)(WIN_H / \
 			(ray->closest_side_wall.y - ray->next_wall_hit.y));
+		ray->relative_hit_on_wall = (ray->closest_side_wall.y - ray->next_wall_hit.y) * ray->direction.x  + cube->player.pos.x;
 		if (ray->moving_direction.y < 0)
 			cube->map_display.raytexture[col] = 'N';
 		else
 			cube->map_display.raytexture[col] = 'S';
 	}
+	ray->relative_hit_on_wall -= (int)ray->relative_hit_on_wall;
+	if (ray->relative_hit_on_wall < 0)
+			ray->relative_hit_on_wall *= -1;
 }
