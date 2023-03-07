@@ -16,6 +16,7 @@
 # include "cub3d.h"
 # include "mlx_utils.h"
 
+// Todo: create a vector header
 // Todo: double or float ?
 typedef struct s_float_vector {
 	float	x;

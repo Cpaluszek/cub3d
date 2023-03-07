@@ -15,14 +15,17 @@
 
 # include <stdio.h>
 # include "libft.h"
-# include "mlx_utils.h"
 
 # define WIN_W	1920
 # define WIN_H	1080
 # define WIN_NAME	"cub3D"
 
+# define TORCH_TEX_PATH "textures/torch.xpm"
+# define TORCH_ATTACK_TEX_PATH "textures/attack_torch.xpm"
+
 # include "structs.h"
 
+// Todo: use a header for minimap infos
 // --- Minimap ---
 # define MINI_MAP_X			10
 # define MINI_MAP_Y			10
