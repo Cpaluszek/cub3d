@@ -1,8 +1,3 @@
-#########################
-#		VARIABLES		#
-#########################
-
-# Folders and names
 NAME			:=	cub3D
 
 HEADERS_DIR		:=	inc
@@ -37,8 +32,7 @@ LIB_LD			=	$(foreach lib,$(LIB_NAMES),-L$(lib))
 LIB_PATHS		=	$(foreach lib,$(LIB_NAMES),$(lib)/$(notdir $(lib)).a)
 LIB_HEADERS		=	$(foreach lib,$(LIB_NAMES),-I$(lib)/inc/)
 
-LIB_PATHS		+=	lib/minilibx-linux/libmlx_Linux.a \
-					lib/minilibx-linux/libmlx.a
+LIB_PATHS		+=	lib/minilibx-linux/libmlx_Linux.a
 LIB_HEADERS		+= -Ilib/minilibx-linux
 LIBS			+= -lmlx_Linux -lX11 -lXext -lz -lmlx -lm
 LIB_LD			+= -Llib/minilibx-linux
@@ -46,30 +40,16 @@ LIB_LD			+= -Llib/minilibx-linux
 BUILD_DIR		:=	build
 OBJS			:=	$(SRC_FILES:%.c=$(BUILD_DIR)/%.o)
 DEPS			:=	$(SRC_FILES:%.c=$(BUILD_DIR)/%.d)
-CCDEFS			:=	NAME=\"$(NAME)\"
+CCDEPS			:=	NAME=\"$(NAME)\"
 
 # Compiler options
 CC				:=	cc
 DEBUG_FLAG		:=	-g3 -fsanitize=address
 CC_FLAGS		:=	-Wextra -Werror -Wall -O3 $(DEBUG_FLAG)
 CC_DEPS_FLAGS	:=	-MP -MMD
-CC_DEFS_FLAGS	:=	$(foreach def,$(CCDEFS),-D $(def))
+CC_DEFS_FLAGS	:=	$(foreach def,$(CCDEPS),-D $(def))
 
 MAKE			:=	make -C
-
-# define standard colors
-_END			:=	\x1b[0m
-_BOLD			:=	\x1b[1m
-_UNDER			:=	\x1b[4m
-_REV			:=	\x1b[7m
-_GREY			:=	\x1b[30m
-_RED			:=	\x1b[31m
-_GREEN			:=	\x1b[32m
-_YELLOW			:=	\x1b[33m
-_BLUE			:=	\x1b[34m
-_PURPLE			:=	\x1b[35m
-_CYAN			:=	\x1b[36m
-_WHITE			:=	\x1b[37m
 
 #########################
 # 		RULES			#
@@ -78,11 +58,10 @@ _WHITE			:=	\x1b[37m
 all: $(NAME)
 
 $(LIB_PATHS): force
-	$(foreach lib, $(LIB_NAMES), \
-		$(MAKE) $(lib); \
-	)
+	$(MAKE) lib/libft
+	$(MAKE) lib/minilibx-linux
 
-$(NAME): $(LIB_PATHS) $(OBJS)
+$(NAME): $(OBJS)
 	$(CC) -g3 $(CC_FLAGS) $(OBJS) $(LIB_LD) $(LIBS) -o $@
 
 -include $(DEPS)
@@ -92,16 +71,13 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(LIB_PATHS) Makefile
 	$(CC) $(CC_FLAGS)  -g3 $(CC_DEPS_FLAGS) $(CC_DEFS_FLAGS) -I$(HEADERS_DIR) $(LIB_HEADERS) -c $< -o $@
 
 clean:
-	@$(foreach lib, $(LIB_NAMES), \
-		@$(MAKE) $(lib) clean; \
-	)
+	$(MAKE) lib/libft clean
+	$(MAKE) lib/minilibx-linux clean
 	@rm -rf $(BUILD_DIR)
 	@rm -rf $(BUILD_DIR_B)
 
 fclean: clean
-	@$(foreach lib, $(LIB_NAMES), \
-		@$(MAKE) $(lib) fclean; \
-	)
+	$(MAKE) lib/libft fclean
 	@rm -rf $(NAME)
 
 re: fclean all
