@@ -12,6 +12,7 @@
 
 #include "cub3d.h"
 #include "structs.h"
+#include "errors.h"
 
 static unsigned int	**load_texture(t_cub3d *cube, void *mlx, char *texture_path, t_int_vector *size);
 
@@ -21,7 +22,7 @@ void	create_texture_array(t_cub3d *cube)
 	cube->map_display.south_texture = load_texture(cube, cube->mlx_data.mlx, cube->map_data.south_texture_path, &cube->map_display.south_texture_size);
 	cube->map_display.west_texture = load_texture(cube, cube->mlx_data.mlx, cube->map_data.west_texture_path, &cube->map_display.west_texture_size);
 	cube->map_display.east_texture = load_texture(cube, cube->mlx_data.mlx, cube->map_data.east_texture_path, &cube->map_display.east_texture_size);
-	dprintf(1, "%d %d %d %d\n", cube->map_display.east_texture_size.x, cube->map_display.east_texture_size.x, cube->map_display.east_texture_size.x, cube->map_display.east_texture_size.x);
+//	dprintf(1, "%d %d %d %d\n", cube->map_display.east_texture_size.x, cube->map_display.east_texture_size.x, cube->map_display.east_texture_size.x, cube->map_display.east_texture_size.x);
 }
 
 static unsigned int	**load_texture(t_cub3d *cube, void *mlx, char *texture_path, t_int_vector *size)
@@ -30,14 +31,14 @@ static unsigned int	**load_texture(t_cub3d *cube, void *mlx, char *texture_path,
 	unsigned int	**texture_array;
 	int 			i;
 
-	dprintf(1, "%s\n", texture_path);
+//	dprintf(1, "%s\n", texture_path);
 	texture.address = mlx_xpm_file_to_image(mlx, texture_path, &texture.width, &texture.height);
 	if (texture.address == NULL) // Check conversion error
-		error_exit_cube(cube, "mlx_xpm", "error while converting xpm file to image");
+		error_exit_cube(cube, ERR_MLX_XPM, ERR_XPM_CONV);
 
 	texture.text = mlx_get_data_addr(texture.address, &texture.bits_per_pixel, &texture.line_length, &texture.endian);
 	if (texture.text == NULL)
-		error_exit_cube(cube, "mlx_xpm", "error getting address with xpm image");
+		error_exit_cube(cube, ERR_MLX_XPM, ERR_XPM_ADDR);
 	texture_array = malloc(sizeof(unsigned int *) * (texture.height));
 	test_failed_malloc(cube, texture_array);
 	i = 0;

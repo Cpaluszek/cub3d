@@ -29,4 +29,8 @@
 # define UNCLOSED_MAZE "Unclosed maze at line : "
 # define SPAWNING "Missing or too many spawning point "
 
+# define ERR_MLX_XPM "mlx_xpm"
+# define ERR_XPM_CONV "error while converting xpm file to image"
+# define ERR_XPM_ADDR "error getting address with xpm image"
+
 #endif
