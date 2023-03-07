@@ -18,7 +18,6 @@ static int	get_cell_color(t_cub3d *cube, int x, int y);
 static void	draw_viewport(t_mlx_data *data, t_player player);
 static void	draw_line(t_mlx_data *data, t_float_vector p1, t_float_vector p2);
 
-// Todo: unzoom minimap
 void	draw_minimap(t_cub3d *cube)
 {
 	t_color		pixel_color;

@@ -37,7 +37,7 @@ static void	draw_maze(t_cub3d *cube)
 	while (x < WIN_W)
 	{
 		y = 0;
-		diff = (WIN_H - map_display->raysize[x]) / 2;
+		diff = (WIN_H - map_display->ray_size[x]) / 2;
 //		dprintf(1, " %d - diff=%d\n", map_display->pos_x_in_wall[x],diff);
 		while (y < WIN_H)
 		{
@@ -59,16 +59,16 @@ static unsigned int retrieve_color(t_display *map_display, int x, int y, int dif
 	if (diff < 0 || y < (WIN_H - diff ))
 	{
 		//todo adapter a la taile de la texture.
-		relative_y_in_texture = (int)((float)((float)(y - diff) / ((float)map_display->raysize[x])) * 64);
+		relative_y_in_texture = (int)((float)((float)(y - diff) / ((float)map_display->ray_size[x])) * 64);
 		if (relative_y_in_texture >= 64)
 			relative_y_in_texture = 63;
-		if (map_display->raytexture[x] == 'N')
+		if (map_display->ray_texture[x] == 'N')
 			return (map_display->north_texture[relative_y_in_texture][map_display->pos_x_in_wall[x]]);
-		else if (map_display->raytexture[x] == 'S')
+		else if (map_display->ray_texture[x] == 'S')
 			return (map_display->south_texture[relative_y_in_texture][map_display->pos_x_in_wall[x]]);
-		else if (map_display->raytexture[x] == 'W')
+		else if (map_display->ray_texture[x] == 'W')
 			return (map_display->west_texture[relative_y_in_texture][map_display->pos_x_in_wall[x]]);
-		else if (map_display->raytexture[x] == 'E')
+		else if (map_display->ray_texture[x] == 'E')
 			return (map_display->east_texture[relative_y_in_texture][map_display->pos_x_in_wall[x]]);
 	}
 	return (map_display->floor_color.color);

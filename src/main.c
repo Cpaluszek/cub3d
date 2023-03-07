@@ -17,7 +17,7 @@
 static void	init_player(t_player *player);
 
 // Todo: Makefile lib compilation check
-// Todo: missing player parsingss
+// Todo: missing player parsings
 // Todo: ./cub3d maps/ma -> ABORT
 int	main(int argc, char **argv)
 {

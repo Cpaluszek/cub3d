@@ -19,7 +19,7 @@
 #define FORMAT ".cub"
 
 static void	parse_map_information(t_cub3d *cube, int fd_map);
-static void	check_no_splitted_maze(t_cub3d *cube, char **map_info, char *buff);
+static void	check_no_gap_in_maze(t_cub3d *cube, char **map_info, char *buff);
 
 void	central_parsing(t_cub3d *cube)
 {
@@ -59,13 +59,13 @@ static void	parse_map_information(t_cub3d *cube, int fd_map)
 	close(fd_map);
 	cube->map_information = ft_split(buffer, '\n');
 	test_failed_malloc(cube, cube->map_information);
-	check_no_splitted_maze(cube, cube->map_information, buffer);
+	check_no_gap_in_maze(cube, cube->map_information, buffer);
 	interpret_map_information(cube, cube->map_information);
 	ft_free_split(cube->map_information);
 	cube->map_information = NULL;
 }
 
-static void	check_no_splitted_maze(t_cub3d *cube, char **map_info, char *buff)
+static void	check_no_gap_in_maze(t_cub3d *cube, char **map_info, char *buff)
 {
 	int	i;
 	int	j;

@@ -13,8 +13,8 @@
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-# include "mlx_utils.h"
 # include "cub3d.h"
+# include "mlx_utils.h"
 
 // Todo: double or float ?
 typedef struct s_float_vector {
@@ -25,21 +25,20 @@ typedef struct s_float_vector {
 typedef struct s_int_vector {
 	int x;
 	int	y;
-}t_int_vector;
+}	t_int_vector;
 
-typedef struct s_ray{
+typedef struct s_ray {
 	t_int_vector 	map_pos;
 	t_int_vector 	moving_direction;
 	t_float_vector	next_wall_hit;
 	t_float_vector	closest_side_wall;
 	t_float_vector	direction;
 	float 			relative_hit_on_wall;
-}t_ray;
+}	t_ray;
 
 typedef struct s_player {
 	t_float_vector	pos;
 	t_float_vector	dir;
-	// Todo: use int instead of float ?
 	t_float_vector	move;
 	float			rotate;
 	float			angle;
@@ -98,15 +97,15 @@ typedef struct s_display {
 	t_int_vector	south_texture_size;
 	t_int_vector	east_texture_size;
 	t_int_vector	west_texture_size;
-	int				raysize[1920];
-	int 			pos_x_in_wall[1920];
+	int				ray_size[WIN_W];
+	int 			pos_x_in_wall[WIN_W];
 	int				maze_height;
 	int				maze_width;
-	char			raytexture[1920];
+	char			ray_texture[WIN_W];
 	char			**grid_maze;
 	t_color			floor_color;
 	t_color			ceiling_color;
-}t_display;
+}	t_display;
 
 typedef struct s_cub3d
 {
@@ -118,7 +117,6 @@ typedef struct s_cub3d
 	t_mlx_data	mlx_data;
 	t_display	map_display;
 	t_player	player;
-	// Note: try to use previous defines
 }	t_cub3d;
 
 enum e_result

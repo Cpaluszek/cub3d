@@ -14,13 +14,14 @@
 # define CUB3D_H
 
 # include <stdio.h>
-# include "structs.h"
 # include "libft.h"
 # include "mlx_utils.h"
 
 # define WIN_W	1920
 # define WIN_H	1080
 # define WIN_NAME	"cub3D"
+
+# include "structs.h"
 
 // --- Minimap ---
 # define MINI_MAP_X			10
@@ -36,12 +37,6 @@
 # define SCREEN_DIST		0.1f
 # define ROT_SPEED			0.01f
 # define MOUSE_ROT_SPEED	0.062831f
-
-// Viewing angle
-# define FOV	90
-
-# define LOS_ANGLE 120
-# define MAX_LOS	10
 
 //	--- Parsing ---
 void			central_parsing(t_cub3d *cube);
