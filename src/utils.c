@@ -33,10 +33,10 @@ void	exit_cube(t_cub3d *cube, int exit_code)
 	clean_mlx(cube);
 	ft_free_split(cube->map_information);
 	ft_free_split(cube->map_display.grid_maze);
-	ft_free(cube->map_data.no_tex_path);
-	ft_free(cube->map_data.so_tex_path);
-	ft_free(cube->map_data.ea_tex_path);
-	ft_free(cube->map_data.we_tex_path);
+	ft_free(cube->map_data.north_texture_path);
+	ft_free(cube->map_data.south_texture_path);
+	ft_free(cube->map_data.west_texture_path);
+	ft_free(cube->map_data.east_texture_path);
 	exit(exit_code);
 }
 

@@ -18,6 +18,7 @@ static int	get_cell_color(t_cub3d *cube, int x, int y);
 static void	draw_viewport(t_mlx_data *data, t_player player);
 static void	draw_line(t_mlx_data *data, t_float_vector p1, t_float_vector p2);
 
+// Todo: unzoom minimap
 void	draw_minimap(t_cub3d *cube)
 {
 	t_color		pixel_color;
@@ -44,7 +45,7 @@ void	draw_minimap(t_cub3d *cube)
 	draw_viewport(&cube->mlx_data, cube->player);
 	mlx_put_image_to_window(cube->mlx_data.mlx, \
 		cube->mlx_data.mlx_win, \
-		cube->mlx_data.work_img->img, 0, 0);
+		cube->mlx_data.working_img->img, 0, 0);
 }
 
 static int	get_cell_color(t_cub3d *cube, int x, int y)
@@ -75,7 +76,7 @@ static void	draw_minimap_cell(t_mlx_data *data, int x, int y, int color)
 		j = start_y;
 		while (j < start_y + MINI_MAP_CELL_SIZE)
 		{
-			my_mlx_pixel_put(data->work_img, i, j, color);
+			my_mlx_pixel_put(data->working_img, i, j, color);
 			j++;
 		}
 		i++;
@@ -111,7 +112,7 @@ static void	draw_line(t_mlx_data *data, t_float_vector p1, t_float_vector p2)
 	delta.y /= max;
 	while (((int)(p1.x - p2.x) || (int)(p1.y - p2.y)))
 	{
-		my_mlx_pixel_put(data->work_img, (int)p1.x, (int)p1.y, \
+		my_mlx_pixel_put(data->working_img, (int)p1.x, (int)p1.y, \
 			MM_VIEWPORT_COLOR);
 		p1.x += delta.x;
 		p1.y += delta.y;
