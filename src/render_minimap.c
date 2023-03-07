@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "minimap.h"
 #include <math.h>
 
 static void	draw_minimap_cell(t_mlx_data *data, int x, int y, int color);

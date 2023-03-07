@@ -15,18 +15,8 @@
 
 # include "cub3d.h"
 # include "mlx_utils.h"
-
-// Todo: create a vector header
-// Todo: double or float ?
-typedef struct s_float_vector {
-	float	x;
-	float	y;
-}	t_float_vector;
-
-typedef struct s_int_vector {
-	int x;
-	int	y;
-}	t_int_vector;
+# include "vectors.h"
+# include "colors.h"
 
 typedef struct s_ray {
 	t_int_vector 	map_pos;
@@ -45,18 +35,7 @@ typedef struct s_player {
 	float			angle;
 }	t_player;
 
-typedef struct s_rgb
-{
-	unsigned char	blu;
-	unsigned char	gre;
-	unsigned char	red;
-}	t_rgb;
 
-typedef union u_color
-{
-	unsigned int	color;
-	t_rgb			rgb;
-}	t_color;
 
 typedef struct s_map_data
 {

@@ -4,7 +4,10 @@ HEADERS_DIR		:=	inc
 HEADERS_FILES	:=	cub3d.h \
 					mlx_utils.h \
 					structs.h \
-					errors.h
+					errors.h \
+					vectors.h \
+					colors.h \
+					minimap.h
 
 HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
