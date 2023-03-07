@@ -34,6 +34,7 @@
 # define MM_WALL_COLOR		0xCAD3F5
 # define MM_BG_COLOR		0x24273A
 
+// --- Player ---
 # define SCREEN_DIST		0.1f
 # define ROT_SPEED			0.01f
 # define MOUSE_ROT_SPEED	0.062831f

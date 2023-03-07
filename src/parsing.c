@@ -16,6 +16,7 @@
 #include "cub3d.h"
 
 #define BUF_SIZE 1000000
+#define DEFAULT_COLOR_VALUE 0x01000000
 #define FORMAT ".cub"
 
 static void	set_default_values(t_cub3d *cube);
@@ -46,8 +47,8 @@ static void	set_default_values(t_cub3d *cube)
 	cube->map_data.east_texture_path = NULL;
 	cube->map_display.grid_maze = NULL;
 	cube->map_information = NULL;
-	cube->map_display.ceiling_color.color = 0x01000000;
-	cube->map_display.floor_color.color = 0x01000000;
+	cube->map_display.ceiling_color.color = DEFAULT_COLOR_VALUE;
+	cube->map_display.floor_color.color = DEFAULT_COLOR_VALUE;
 	cube->player.pos.x = 0.0f;
 	cube->player.pos.y = 0.0f;
 }
@@ -95,7 +96,7 @@ static void	check_no_gap_in_maze(t_cub3d *cube, char **map_info, char *buff)
 	while (buff[i])
 	{
 		if (buff[i] != '\n')
-			error_exit_cube(cube, ERR_MAZE, "unexpected newline inside");
+			error_exit_cube(cube, ERR_MAZE, UNEXPECTED_NEWLINE_MAZE);
 		i++;
 	}
 }

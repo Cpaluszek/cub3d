@@ -27,10 +27,12 @@
 # define INVALID_COLOR "Invalid color input at line "
 # define INVALID_MAZE_CHAR "Unrecognized character in maze at line "
 # define UNCLOSED_MAZE "Unclosed maze at line : "
+# define UNEXPECTED_NEWLINE_MAZE "unexpected newline in maze"
 # define SPAWNING "Missing or too many spawning point "
 
 # define ERR_MLX_XPM "mlx_xpm"
 # define ERR_XPM_CONV "error while converting xpm file to image"
 # define ERR_XPM_ADDR "error getting address with xpm image"
+# define ERR_MLX_INIT "Mlx initialisation error\n"
 
 #endif

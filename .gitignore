@@ -1,6 +1,9 @@
 build/
 cub3D
 lib/minilibx-linux/obj/*
+lib/minilibx-linux/libmlx.a
+lib/minilibx-linux/libmlx_Linux.a
+lib/minilibx-linux/test/*
 .idea/
 /lib/libft/build
 /lib/libft/libft.a

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "errors.h"
 
 #define PRG_USAGE "Usage: ./cub3D <map.cub>\n"
 
@@ -28,7 +29,7 @@ int	main(int argc, char **argv)
 	cube.map_path = argv[1];
 	if (init_mlx_data(&cube.mlx_data) == ERROR)
 	{
-		printf("Mlx initialisation error\n");
+		printf(ERR_MLX_INIT);
 		exit_cube(&cube, ERROR);
 	}
 	central_parsing(&cube);
