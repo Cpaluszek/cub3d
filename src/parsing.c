@@ -26,19 +26,20 @@ void	central_parsing(t_cub3d *cube)
 	int		fd_map;
 	char	*format;
 
+	cube->map_data.north_texture_path = NULL;
+	cube->map_data.south_texture_path = NULL;
+	cube->map_data.west_texture_path = NULL;
+	cube->map_data.east_texture_path = NULL;
+	cube->map_display.grid_maze = NULL;
+	cube->map_information = NULL;
 	format = ft_strnstr(cube->map_path, FORMAT, ft_strlen(cube->map_path));
 	if (!format || format[4] != '\0')
 		error_exit_cube(cube, ERR_FORMAT, "");
 	fd_map = open(cube->map_path, O_RDONLY);
 	if (fd_map == -1)
 		error_exit_cube(cube, cube->map_path, strerror(errno));
-	cube->map_data.north_texture_path = NULL;
-	cube->map_data.south_texture_path = NULL;
-	cube->map_data.west_texture_path = NULL;
-	cube->map_data.east_texture_path = NULL;
 	cube->map_display.ceiling_color.color = 0x01000000;
 	cube->map_display.floor_color.color = 0x01000000;
-	cube->map_display.grid_maze = NULL;
 	cube->player.pos.x = 0.0f;
 	cube->player.pos.y = 0.0f;
 	parse_map_information(cube, fd_map);
