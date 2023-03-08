@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/08 12:58:20 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 14:39:42 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,18 @@ static void	set_default_values(t_cub3d *cube);
 static void	parse_map_information(t_cub3d *cube, int fd_map);
 static void	check_no_gap_in_maze(t_cub3d *cube, char **map_info, char *buff);
 
-void	central_parsing(t_cub3d *cube)
+void central_parsing(t_cub3d *cube, char *map_path)
 {
 	int		fd_map;
 	char	*format;
 
 	set_default_values(cube);
-	format = ft_strnstr(cube->map_path, FORMAT, ft_strlen(cube->map_path));
+	format = ft_strnstr(map_path, FORMAT, ft_strlen(map_path));
 	if (!format || format[4] != '\0')
 		error_exit_cube(cube, ERR_FORMAT, "");
-	fd_map = open(cube->map_path, O_RDONLY);
+	fd_map = open(map_path, O_RDONLY);
 	if (fd_map == -1)
-		error_exit_cube(cube, cube->map_path, strerror(errno));
+		error_exit_cube(cube, map_path, strerror(errno));
 	parse_map_information(cube, fd_map);
 }
 
@@ -45,7 +45,6 @@ static void	set_default_values(t_cub3d *cube)
 	cube->textures_paths.west_texture_path = NULL;
 	cube->textures_paths.east_texture_path = NULL;
 	cube->display.grid_maze = NULL;
-	cube->map_information = NULL;
 	cube->display.ceiling_color.color = DEFAULT_COLOR_VALUE;
 	cube->display.floor_color.color = DEFAULT_COLOR_VALUE;
 	cube->player.pos.x = 0.0f;
@@ -56,6 +55,7 @@ static void	parse_map_information(t_cub3d *cube, int fd_map)
 {
 	char	buffer[BUF_SIZE];
 	ssize_t	nb_read;
+	char 	**map_information;
 
 	nb_read = read(fd_map, buffer, BUF_SIZE);
 	if (nb_read == -1)
@@ -64,12 +64,11 @@ static void	parse_map_information(t_cub3d *cube, int fd_map)
 		error_exit_cube(cube, ERR_READ, "");
 	}
 	close(fd_map);
-	cube->map_information = ft_split(buffer, '\n');
-	test_failed_malloc(cube, cube->map_information);
-	check_no_gap_in_maze(cube, cube->map_information, buffer);
-	interpret_map_information(cube, cube->map_information);
-	ft_free_split(cube->map_information);
-	cube->map_information = NULL;
+	map_information = ft_split(buffer, '\n');
+	test_failed_malloc(cube, map_information);
+	check_no_gap_in_maze(cube, map_information, buffer);
+	interpret_map_information(cube, map_information);
+	ft_free_split(map_information);
 }
 
 static void	check_no_gap_in_maze(t_cub3d *cube, char **map_info, char *buff)

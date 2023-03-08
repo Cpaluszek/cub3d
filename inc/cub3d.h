@@ -30,7 +30,7 @@
 # define MOUSE_ROT_SPEED	0.062831f
 
 //	--- Parsing ---
-void			central_parsing(t_cub3d *cube);
+void central_parsing(t_cub3d *cube, char *map_path);
 void			maze_validity_checking(t_cub3d *cube, char **grid_maze);
 void			interpret_map_information(t_cub3d *cube, char **map_info);
 void			find_texture_path_and_get_color(t_cub3d *cube, char *line);

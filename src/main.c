@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:08:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/08 12:59:35 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 13:30:03 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		printf(PRG_USAGE);
-	cube.map_path = argv[1];
-	central_parsing(&cube);
+	central_parsing(&cube, argv[1]);
 	if (init_mlx_data(&cube.mlx_data) == ERROR)
 	{
 		printf(ERR_MLX_INIT);
