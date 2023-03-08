@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 09:50:14 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/08 11:30:19 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 11:34:22 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static int get_relative_y(t_display *map_display, int x, int y, int diff)
 		y_size = map_display->west_texture_size.y;
 	else if (map_display->ray_texture[x] == 'E')
 		y_size = map_display->east_texture_size.y;
-	relative_y = (int)((float)((float)(y - diff) / ((float)map_display->ray_size[x])) * y_size);
+	relative_y = (int)((float)((float)(y - diff) / ((float)map_display->ray_size[x])) * (float)y_size);
 	relative_y %= y_size;
 	return (relative_y);
 }

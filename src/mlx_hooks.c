@@ -42,7 +42,7 @@ static int	key_press_hook(int key, t_cub3d *cube)
 	else if (key == KEY_D)
 		cube->player.move.x = 1;
 	else if (key == KEY_Q || key == ARROW_LEFT)
-		cube->player.rotate = -M_PI * ROT_SPEED;
+		cube->player.rotate = (float)(-M_PI * ROT_SPEED);
 	else if (key == KEY_E || key == ARROW_RIGHT)
 		cube->player.rotate = M_PI * ROT_SPEED;
 	return (0);
@@ -75,7 +75,7 @@ static int	mouse_move_hook(int x, int y, t_cub3d *cube)
 		return (0);
 	distance_from_screen_side = ((float)(WIN_W / 2) - x) / WIN_W;
 	cube->player.angle += MOUSE_ROT_SPEED * -distance_from_screen_side;
-	cube->player.dir.x = cos(cube->player.angle);
-	cube->player.dir.y = sin(cube->player.angle);
+	cube->player.dir.x = cosf(cube->player.angle);
+	cube->player.dir.y = sinf(cube->player.angle);
 	return (0);
 }

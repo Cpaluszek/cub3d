@@ -123,6 +123,6 @@ static int	get_color(char *p_color, char **p_line)
 	while (line[i] && line[i] == ' ')
 		i++;
 	*p_line = &line[i];
-	*p_color = color;
+	*p_color = (char)color;
 	return (SUCCESS);
 }

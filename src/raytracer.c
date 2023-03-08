@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   raytracer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:27:24 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/06 19:32:49 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/08 11:49:37 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "structs.h"
+#include <math.h>
 
 static void	set_col_display(t_cub3d *cube, t_float_vector player_pos, \
 	t_ray *ray, int col);
@@ -38,7 +39,7 @@ void	raytracer(t_cub3d *cube)
 		ray.direction.y = p_dir.x;
 		ray.moving_direction.x = 1;
 		ray.moving_direction.y = 1;
-		relative_pos_in_screen = 2 * y / (double)WIN_W - 1;
+		relative_pos_in_screen = 2.0f * (float)y / (float)WIN_W - 1;
 		ray.direction.x = ray.direction.x * relative_pos_in_screen + p_dir.x;
 		ray.direction.y = ray.direction.y * relative_pos_in_screen + p_dir.y;
 		set_col_display(cube, p_pos, &ray, y);
@@ -60,13 +61,13 @@ static void	set_col_display(t_cub3d *cube, t_float_vector player_pos, \
 	&is_wall_hit_on_x_axis);
 	fill_col_display(cube, ray, is_wall_hit_on_x_axis, col);
 	if (cube->map_display.ray_texture[col] == 'N')
-		cube->map_display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * cube->map_display.north_texture_size.x);
+		cube->map_display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * (float)cube->map_display.north_texture_size.x);
 	if (cube->map_display.ray_texture[col] == 'S')
-		cube->map_display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * cube->map_display.south_texture_size.x);
+		cube->map_display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * (float)cube->map_display.south_texture_size.x);
 	if (cube->map_display.ray_texture[col] == 'W')
-		cube->map_display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * cube->map_display.west_texture_size.x);
+		cube->map_display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * (float)cube->map_display.west_texture_size.x);
 	if (cube->map_display.ray_texture[col] == 'E')
-		cube->map_display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * cube->map_display.east_texture_size.x);
+		cube->map_display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * (float)cube->map_display.east_texture_size.x);
 }
 
 static void	set_ray_parameters(t_ray *ray, t_float_vector player_pos)
@@ -76,22 +77,22 @@ static void	set_ray_parameters(t_ray *ray, t_float_vector player_pos)
 	{
 		ray->next_wall_hit.x *= -1;
 		ray->moving_direction.x = -1;
-		ray->closest_side_wall.x = (player_pos.x - ray->map_pos.x) \
+		ray->closest_side_wall.x = (player_pos.x - (float)ray->map_pos.x) \
 		* ray->next_wall_hit.x;
 	}
 	else
-		ray->closest_side_wall.x = (ray->map_pos.x + 1.0f - player_pos.x) * \
+		ray->closest_side_wall.x = ((float)ray->map_pos.x + 1.0f - player_pos.x) * \
 		ray->next_wall_hit.x;
 	ray->next_wall_hit.y = 1 / ray->direction.y;
 	if (ray->direction.y < 0)
 	{
 		ray->next_wall_hit.y *= -1;
 		ray->moving_direction.y = -1;
-		ray->closest_side_wall.y = (player_pos.y - ray->map_pos.y) * \
+		ray->closest_side_wall.y = (player_pos.y - (float)ray->map_pos.y) * \
 		ray->next_wall_hit.y;
 	}
 	else
-		ray->closest_side_wall.y = (ray->map_pos.y + 1.0f - player_pos.y) * \
+		ray->closest_side_wall.y = ((float)ray->map_pos.y + 1.0f - player_pos.y) * \
 		ray->next_wall_hit.y;
 }
 
@@ -148,7 +149,7 @@ static void	fill_col_display(t_cub3d *cube, t_ray *ray, \
 		else
 			cube->map_display.ray_texture[col] = 'S';
 	}
-	ray->relative_hit_on_wall -= (int)ray->relative_hit_on_wall;
+	ray->relative_hit_on_wall -= roundf(ray->relative_hit_on_wall);
 	if (ray->relative_hit_on_wall < 0)
 			ray->relative_hit_on_wall *= -1;
 }

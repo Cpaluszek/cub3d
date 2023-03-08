@@ -83,14 +83,14 @@ static void	set_player_starting_position(t_cub3d *cube, int i, int j)
 	cube->player.pos.x = (float) i;
 	cube->player.pos.y = (float) j;
 	if (cube->map_display.grid_maze[j][i] == 'N')
-		cube->player.angle = 3 * M_PI_2;
+		cube->player.angle = (float)(3 * M_PI_2);
 	else if (cube->map_display.grid_maze[j][i] == 'S')
 		cube->player.angle = M_PI_2;
 	else if (cube->map_display.grid_maze[j][i] == 'E')
 		cube->player.angle = 0;
 	else if (cube->map_display.grid_maze[j][i] == 'W')
 		cube->player.angle = M_PI;
-	cube->player.dir.x = cos(cube->player.angle);
-	cube->player.dir.y = sin(cube->player.angle);
+	cube->player.dir.x = cosf(cube->player.angle);
+	cube->player.dir.y = sinf(cube->player.angle);
 	cube->map_display.grid_maze[j][i] = '0';
 }

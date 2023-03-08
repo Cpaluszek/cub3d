@@ -34,8 +34,8 @@ int	game_loop(t_cub3d *cube)
 	if (cube->player.rotate != 0)
 	{
 		cube->player.angle += cube->player.rotate;
-		cube->player.dir.x = cos(cube->player.angle);
-		cube->player.dir.y = sin(cube->player.angle);
+		cube->player.dir.x = cosf(cube->player.angle);
+		cube->player.dir.y = sinf(cube->player.angle);
 		render_needed = 1;
 	}
 	if (render_needed == 1)
