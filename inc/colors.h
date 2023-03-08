@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/06 10:18:23 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/08 11:31:54 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 
 typedef struct s_rgb
 {
-	unsigned char	blu;
-	unsigned char	gre;
-	unsigned char	red;
+	char	blu;
+	char	gre;
+	char	red;
 }	t_rgb;
 
 typedef union u_color
 {
-	unsigned int	color;
+	int	color;
 	t_rgb			rgb;
 }	t_color;
 

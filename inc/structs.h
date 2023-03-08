@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/06 10:18:23 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/08 11:29:40 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,11 @@ typedef struct s_mlx_data {
 }	t_mlx_data;
 
 typedef struct s_display {
-	unsigned int	**north_texture;
-	unsigned int	**south_texture;
-	unsigned int	**west_texture;
-	unsigned int	**east_texture;
-	unsigned int	**door_texture;
+	int	**north_texture;
+	int	**south_texture;
+	int	**west_texture;
+	int	**east_texture;
+	int	**door_texture;
 	t_int_vector	north_texture_size;
 	t_int_vector	south_texture_size;
 	t_int_vector	east_texture_size;

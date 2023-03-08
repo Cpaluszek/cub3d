@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_texture_array.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:25 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/06 11:14:57 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/08 11:31:04 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "structs.h"
 #include "errors.h"
 
-static unsigned int	**load_texture(t_cub3d *cube, void *mlx, char *texture_path, t_int_vector *size);
+static int	**load_texture(t_cub3d *cube, void *mlx, char *texture_path, t_int_vector *size);
 
 void	create_texture_array(t_cub3d *cube)
 {
@@ -28,15 +28,15 @@ void	create_texture_array(t_cub3d *cube)
 //	dprintf(1, "%d %d %d %d\n", cube->map_display.east_texture_size.x, cube->map_display.east_texture_size.x, cube->map_display.east_texture_size.x, cube->map_display.east_texture_size.x);
 }
 
-static unsigned int	**load_texture(t_cub3d *cube, void *mlx, char *texture_path, t_int_vector *size)
+static int	**load_texture(t_cub3d *cube, void *mlx, char *texture_path, t_int_vector *size)
 {
 	t_texture		texture;
-	unsigned int	**texture_array;
+	int	**texture_array;
 	int 			i;
 
 //	dprintf(1, "%s\n", texture_path);
 	texture.address = mlx_xpm_file_to_image(mlx, texture_path, &texture.width, &texture.height);
-	if (texture.address == NULL) // Check conversion error
+	if (texture.address == NULL) // Todo: Check conversion error
 		error_exit_cube(cube, ERR_MLX_XPM, ERR_XPM_CONV);
 	texture.text = mlx_get_data_addr(texture.address, &texture.bits_per_pixel, &texture.line_length, &texture.endian);
 	if (texture.text == NULL)
@@ -46,7 +46,7 @@ static unsigned int	**load_texture(t_cub3d *cube, void *mlx, char *texture_path,
 	i = 0;
 	while (i < texture.width)
 	{
-		texture_array[i] = malloc(sizeof(unsigned int) * (texture.width));
+		texture_array[i] = malloc(sizeof(int) * (texture.width));
 		test_failed_malloc(cube, texture_array[i]);
 		i++;
 	}
@@ -58,7 +58,7 @@ static unsigned int	**load_texture(t_cub3d *cube, void *mlx, char *texture_path,
 		x = 0;
 		while (x < texture.width)
 		{
-			texture_array[i][x] = *(unsigned int *)(texture.text + (i * texture.line_length + x * (texture.bits_per_pixel / 8)));
+			texture_array[i][x] = *(int *)(texture.text + (i * texture.line_length + x * (texture.bits_per_pixel / 8)));
 //			dprintf(1, "%x ", texture_array[i][x]);
 			x++;
 		}

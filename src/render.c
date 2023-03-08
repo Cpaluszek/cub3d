@@ -6,14 +6,14 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 09:50:14 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/08 11:27:41 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 11:29:40 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 static void	draw_maze(t_cub3d *cube);
-static unsigned int	retrieve_color(t_display *map_display, int x, int y, int diff);
+static int	retrieve_color(t_display *map_display, int x, int y, int diff);
 static int get_relative_y(t_display *map_display, int x, int y, int diff);
 
 //Todo: rename to render
@@ -50,7 +50,7 @@ static void	draw_maze(t_cub3d *cube)
 		data.working_img->img, 0, 0);
 }
 
-static unsigned int retrieve_color(t_display *map_display, int x, int y, int diff)
+static int retrieve_color(t_display *map_display, int x, int y, int diff)
 {
 	int relative_y_in_texture;
 

@@ -15,7 +15,7 @@
 #include "libft.h"
 
 static void	parse_color(t_cub3d *cube, t_rgb *color, char **p_line);
-static int	get_color(unsigned char *p_color, char **p_line);
+static int	get_color(char *p_color, char **p_line);
 static char	*retrieve_path(t_cub3d *cube, char *line, char *pattern);
 static void	retrieve_color(t_cub3d *cube, t_rgb *color, \
 	char *line, char *pattern);
@@ -105,7 +105,7 @@ static void	parse_color(t_cub3d *cube, t_rgb *color, char **p_line)
 		error_exit_cube(cube, INVALID_COLOR, *p_line);
 }
 
-static int	get_color(unsigned char *p_color, char **p_line)
+static int	get_color(char *p_color, char **p_line)
 {
 	int		i;
 	int		color;
