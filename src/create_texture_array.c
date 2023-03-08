@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:25 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/08 11:31:04 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 11:31:54 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	create_texture_array(t_cub3d *cube)
 	void	*mlx_ptr;
 
 	mlx_ptr = cube->mlx_data.mlx;
-	cube->map_display.north_texture = load_texture(cube, mlx_ptr, cube->map_data.north_texture_path, &cube->map_display.north_texture_size);
-	cube->map_display.south_texture = load_texture(cube, mlx_ptr, cube->map_data.south_texture_path, &cube->map_display.south_texture_size);
-	cube->map_display.west_texture = load_texture(cube, mlx_ptr, cube->map_data.west_texture_path, &cube->map_display.west_texture_size);
-	cube->map_display.east_texture = load_texture(cube, mlx_ptr, cube->map_data.east_texture_path, &cube->map_display.east_texture_size);
+	cube->map_display.north_texture = load_texture(cube, mlx_ptr, cube->textures_paths.north_texture_path, &cube->map_display.north_texture_size);
+	cube->map_display.south_texture = load_texture(cube, mlx_ptr, cube->textures_paths.south_texture_path, &cube->map_display.south_texture_size);
+	cube->map_display.west_texture = load_texture(cube, mlx_ptr, cube->textures_paths.west_texture_path, &cube->map_display.west_texture_size);
+	cube->map_display.east_texture = load_texture(cube, mlx_ptr, cube->textures_paths.east_texture_path, &cube->map_display.east_texture_size);
 //	dprintf(1, "%d %d %d %d\n", cube->map_display.east_texture_size.x, cube->map_display.east_texture_size.x, cube->map_display.east_texture_size.x, cube->map_display.east_texture_size.x);
 }
 

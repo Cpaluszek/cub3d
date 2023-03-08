@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/08 12:00:40 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 12:11:17 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,15 @@ typedef struct s_player {
 }	t_player;
 
 // Todo: rename to texture data
-typedef struct s_map_data
-{
+typedef struct s_texture_path {
 	char	*north_texture_path;
 	char	*south_texture_path;
 	char	*west_texture_path;
 	char	*east_texture_path;
 	char	*door_texture_path;
-}	t_map_data;
+}	t_texture_path;
 
-typedef struct s_texture
-{
+typedef struct s_texture {
 	void *address;
 	char *text;
 	int bits_per_pixel;
@@ -63,19 +61,18 @@ typedef struct s_mlx_data {
 }	t_mlx_data;
 
 typedef struct s_display {
-	int	**north_texture;
-	int	**south_texture;
-	int	**west_texture;
-	int	**east_texture;
-	int	**door_texture;
+	int				**north_texture;
+	int				**south_texture;
+	int				**west_texture;
+	int				**east_texture;
+	int				**door_texture;
 	t_int_vector	north_texture_size;
 	t_int_vector	south_texture_size;
 	t_int_vector	east_texture_size;
 	t_int_vector	west_texture_size;
+	t_int_vector 	maze_size;
 	int				ray_size[WIN_W];
 	int 			wall_pos_x[WIN_W];
-	int				maze_height;
-	int				maze_width;
 	char			ray_texture[WIN_W];
 	char			**grid_maze;
 	t_color			floor_color;
@@ -85,13 +82,13 @@ typedef struct s_display {
 typedef struct s_cub3d
 {
 	// Note: remove map_path from struct
-	char		*map_path;
+	char			*map_path;
 	// Note: remove from struct ??
-	char		**map_information;
-	t_map_data	map_data;
-	t_mlx_data	mlx_data;
-	t_display	map_display;
-	t_player	player;
+	char			**map_information;
+	t_texture_path	textures_paths;
+	t_mlx_data		mlx_data;
+	t_display		map_display;
+	t_player		player;
 }	t_cub3d;
 
 enum e_result

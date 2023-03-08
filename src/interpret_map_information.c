@@ -50,8 +50,8 @@ static void	create_maze(t_cub3d *cube, char **map_information)
 			len_max = len;
 	}
 	cube->map_display.grid_maze = malloc(sizeof(char *) * (i + 1));
-	cube->map_display.maze_height = i;
-	cube->map_display.maze_width = (int) len_max;
+	cube->map_display.maze_size.y = i;
+	cube->map_display.maze_size.x = (int) len_max;
 	test_failed_malloc(cube, cube->map_display.grid_maze);
 	cube->map_display.grid_maze[i] = NULL;
 	i = -1;

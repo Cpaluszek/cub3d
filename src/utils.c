@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 09:57:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/08 12:01:23 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 12:03:48 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	exit_cube(t_cub3d *cube, int exit_code)
 	clean_mlx(cube);
 	ft_free_split(cube->map_information);
 	ft_free_split(cube->map_display.grid_maze);
-	ft_free(cube->map_data.north_texture_path);
-	ft_free(cube->map_data.south_texture_path);
-	ft_free(cube->map_data.west_texture_path);
-	ft_free(cube->map_data.east_texture_path);
+	ft_free(cube->textures_paths.north_texture_path);
+	ft_free(cube->textures_paths.south_texture_path);
+	ft_free(cube->textures_paths.west_texture_path);
+	ft_free(cube->textures_paths.east_texture_path);
 	exit(exit_code);
 }
 

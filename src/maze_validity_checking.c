@@ -32,7 +32,7 @@ void	maze_validity_checking(t_cub3d *cube, char **grid_maze)
 		{
 			if (row == 0 || grid_maze[row + 1] == NULL)
 				check_first_and_last_line(cube, grid_maze[row]);
-			else if (col == 0 || col == cube->map_display.maze_width - 1)
+			else if (col == 0 || col == cube->map_display.maze_size.x - 1)
 				check_first_and_last_column(cube, grid_maze[row], col);
 			if (grid_maze[row][col] == ' ')
 				check_adjacent_cells(cube, grid_maze, row, col);
@@ -59,7 +59,7 @@ static void	check_first_and_last_line(t_cub3d *cube, char *line)
 
 static void	check_adjacent_cells(t_cub3d *cube, char **grid, int row, int col)
 {
-	if (col != cube->map_display.maze_width - 1 && \
+	if (col != cube->map_display.maze_size.x - 1 && \
 		ft_is_inside(grid[row][col + 1], "0NSEW"))
 		error_exit_cube(cube, UNCLOSED_MAZE, grid[row]);
 	if (col != 0 && ft_is_inside(grid[row][col - 1], "0NSEW"))

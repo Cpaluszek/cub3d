@@ -41,10 +41,10 @@ void	central_parsing(t_cub3d *cube)
 
 static void	set_default_values(t_cub3d *cube)
 {
-	cube->map_data.north_texture_path = NULL;
-	cube->map_data.south_texture_path = NULL;
-	cube->map_data.west_texture_path = NULL;
-	cube->map_data.east_texture_path = NULL;
+	cube->textures_paths.north_texture_path = NULL;
+	cube->textures_paths.south_texture_path = NULL;
+	cube->textures_paths.west_texture_path = NULL;
+	cube->textures_paths.east_texture_path = NULL;
 	cube->map_display.grid_maze = NULL;
 	cube->map_information = NULL;
 	cube->map_display.ceiling_color.color = DEFAULT_COLOR_VALUE;

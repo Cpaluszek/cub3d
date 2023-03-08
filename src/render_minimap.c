@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:29:02 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/08 11:59:51 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 12:04:26 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	draw_minimap(t_cub3d *cube)
 static int	get_cell_color(t_cub3d *cube, int x, int y)
 {
 	if (x >= 0 && y >= 0 && \
-		x < cube->map_display.maze_width && y < cube->map_display.maze_height)
+		x < cube->map_display.maze_size.x && y < cube->map_display.maze_size.y)
 	{
 		if (x == (int)cube->player.pos.x && y == (int)cube->player.pos.y)
 			return (MM_PLAYER_COLOR);
