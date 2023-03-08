@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:25 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/08 13:15:27 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 14:32:19 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,19 @@ void	create_texture_array(t_cub3d *cube)
 	void	*mlx_ptr;
 
 	mlx_ptr = cube->mlx_data.mlx;
-	cube->display.north_texture = load_texture(cube, mlx_ptr, cube->textures_paths.north_texture_path, &cube->display.north_texture_size);
-	cube->display.south_texture = load_texture(cube, mlx_ptr, cube->textures_paths.south_texture_path, &cube->display.south_texture_size);
-	cube->display.west_texture = load_texture(cube, mlx_ptr, cube->textures_paths.west_texture_path, &cube->display.west_texture_size);
-	cube->display.east_texture = load_texture(cube, mlx_ptr, cube->textures_paths.east_texture_path, &cube->display.east_texture_size);
+	cube->display.north_texture.content = load_texture(cube, mlx_ptr, cube->textures_paths.north_texture_path, &cube->display.north_texture.size);
+	cube->display.south_texture.content = load_texture(cube, mlx_ptr, cube->textures_paths.south_texture_path, &cube->display.south_texture.size);
+	cube->display.west_texture.content = load_texture(cube, mlx_ptr, cube->textures_paths.west_texture_path, &cube->display.west_texture.size);
+	cube->display.east_texture.content = load_texture(cube, mlx_ptr, cube->textures_paths.east_texture_path, &cube->display.east_texture.size);
 
 	// Set torch
-	cube->display.torch_attack_texture = load_texture(cube, mlx_ptr, TORCH_ATTACK_TEX_PATH, &cube->display.torch_attack_texture_size);
-	cube->display.torch_idle_texture = load_texture(cube, mlx_ptr, TORCH_IDLE_TEX_PATH, &cube->display.torch_idle_texture_size);
+	cube->display.torch_attack_texture.content = load_texture(cube, mlx_ptr, TORCH_ATTACK_TEX_PATH, &cube->display.torch_attack_texture.size);
+	cube->display.torch_idle_texture.content = load_texture(cube, mlx_ptr, TORCH_IDLE_TEX_PATH, &cube->display.torch_idle_texture.size);
 }
 
 static int	**load_texture(t_cub3d *cube, void *mlx, char *texture_path, t_int_vector *size)
 {
-	t_texture	texture;
+	t_mlx_texture	texture;
 	int			**texture_array;
 	int 		i;
 

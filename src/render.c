@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 09:50:14 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/08 13:15:27 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 14:33:04 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	render(t_cub3d *cube)
 	raytracer(cube);
 	draw_maze(cube);
 	draw_minimap(cube);
-	// Todo: draw torch
 	draw_torch(cube);
 }
 
@@ -60,13 +59,13 @@ static int retrieve_color(t_display *map_display, int x, int y, int diff)
 	{
 		relative_y = get_relative_y(map_display, x, y, diff);
 		if (map_display->ray_texture[x] == 'N')
-			return (map_display->north_texture[relative_y][map_display->wall_pos_x[x]]);
+			return (map_display->north_texture.content[relative_y][map_display->wall_pos_x[x]]);
 		else if (map_display->ray_texture[x] == 'S')
-			return (map_display->south_texture[relative_y][map_display->wall_pos_x[x]]);
+			return (map_display->south_texture.content[relative_y][map_display->wall_pos_x[x]]);
 		else if (map_display->ray_texture[x] == 'W')
-			return (map_display->west_texture[relative_y][map_display->wall_pos_x[x]]);
+			return (map_display->west_texture.content[relative_y][map_display->wall_pos_x[x]]);
 		else if (map_display->ray_texture[x] == 'E')
-			return (map_display->east_texture[relative_y][map_display->wall_pos_x[x]]);
+			return (map_display->east_texture.content[relative_y][map_display->wall_pos_x[x]]);
 	}
 	return (map_display->floor_color.color);
 }
@@ -78,13 +77,13 @@ static int get_relative_y(t_display *map_display, int x, int y, int diff)
 
 	y_size = 0;
 	if (map_display->ray_texture[x] == 'N')
-		y_size = map_display->north_texture_size.y;
+		y_size = map_display->north_texture.size.y;
 	else if (map_display->ray_texture[x] == 'S')
-		y_size = map_display->south_texture_size.y;
+		y_size = map_display->south_texture.size.y;
 	else if (map_display->ray_texture[x] == 'W')
-		y_size = map_display->west_texture_size.y;
+		y_size = map_display->west_texture.size.y;
 	else if (map_display->ray_texture[x] == 'E')
-		y_size = map_display->east_texture_size.y;
+		y_size = map_display->east_texture.size.y;
 	relative_y = (int)((float)((float)(y - diff) / ((float)map_display->ray_size[x])) * (float)y_size);
 	relative_y %= y_size;
 	return (relative_y);

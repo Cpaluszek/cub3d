@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:27:24 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/08 11:49:37 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 13:15:27 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,13 @@ static void	set_col_display(t_cub3d *cube, t_float_vector player_pos, \
 	&is_wall_hit_on_x_axis);
 	fill_col_display(cube, ray, is_wall_hit_on_x_axis, col);
 	if (cube->display.ray_texture[col] == 'N')
-		cube->display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * (float)cube->display.north_texture_size.x);
+		cube->display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * (float)cube->display.north_texture.size.x);
 	if (cube->display.ray_texture[col] == 'S')
-		cube->display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * (float)cube->display.south_texture_size.x);
+		cube->display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * (float)cube->display.south_texture.size.x);
 	if (cube->display.ray_texture[col] == 'W')
-		cube->display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * (float)cube->display.west_texture_size.x);
+		cube->display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * (float)cube->display.west_texture.size.x);
 	if (cube->display.ray_texture[col] == 'E')
-		cube->display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * (float)cube->display.east_texture_size.x);
+		cube->display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * (float)cube->display.east_texture.size.x);
 }
 
 static void	set_ray_parameters(t_ray *ray, t_float_vector player_pos)

@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/08 13:30:03 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 14:31:43 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,45 +44,32 @@ typedef struct s_texture_path {
 	char	*door_texture_path;
 }	t_texture_path;
 
-typedef struct s_texture {
-	void *address;
-	char *text;
-	int bits_per_pixel;
-	int line_length;
-	int endian;
-	int width;
-	int height;
-} t_texture;
-
 typedef struct s_mlx_data {
 	void		*mlx;
 	void		*mlx_win;
 	t_img_data	mlx_img;
 }	t_mlx_data;
 
-// Todo: create texture strect
+typedef struct s_texture {
+	t_int_vector	size;
+	int				**content;
+}	t_texture;
+
 typedef struct s_display {
-	t_color			floor_color;
-	t_color			ceiling_color;
-	int				**north_texture;
-	int				**south_texture;
-	int				**west_texture;
-	int				**east_texture;
-	int				**door_texture;
-	t_int_vector	north_texture_size;
-	t_int_vector	south_texture_size;
-	t_int_vector	east_texture_size;
-	t_int_vector	west_texture_size;
 	t_int_vector 	maze_size;
+	char			**grid_maze;
+	char			ray_texture[WIN_W];
 	int				ray_size[WIN_W];
 	int 			wall_pos_x[WIN_W];
-	char			ray_texture[WIN_W];
-	char			**grid_maze;
-	//
-	int 			**torch_idle_texture;
-	int 			**torch_attack_texture;
-	t_int_vector	torch_idle_texture_size;
-	t_int_vector	torch_attack_texture_size;
+	t_color			floor_color;
+	t_color			ceiling_color;
+	t_texture 		north_texture;
+	t_texture 		south_texture;
+	t_texture 		west_texture;
+	t_texture 		east_texture;
+	t_texture 		door_texture;
+	t_texture 		torch_idle_texture;
+	t_texture 		torch_attack_texture;
 }	t_display;
 
 typedef struct s_cub3d

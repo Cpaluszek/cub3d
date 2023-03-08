@@ -48,13 +48,13 @@ void	draw_torch(t_cub3d *cube)
 static t_int_vector	get_texture_size(t_cub3d *cube)
 {
 	if (cube->player.attack_state == 1)
-		return (cube->display.torch_attack_texture_size);
-	return (cube->display.torch_idle_texture_size);
+		return (cube->display.torch_attack_texture.size);
+	return (cube->display.torch_idle_texture.size);
 }
 
 static int	**get_texture_content(t_cub3d *cube)
 {
 	if (cube->player.attack_state == 1)
-		return (cube->display.torch_attack_texture);
-	return (cube->display.torch_idle_texture);
+		return (cube->display.torch_attack_texture.content);
+	return (cube->display.torch_idle_texture.content);
 }
