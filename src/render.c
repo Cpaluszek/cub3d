@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 09:50:14 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/08 11:34:22 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 12:01:10 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static int get_relative_y(t_display *map_display, int x, int y, int diff);
 //Todo: rename to render
 void	init_render(t_cub3d *cube)
 {
-	cube->mlx_data.working_img = &cube->mlx_data.img1;
 	raytracer(cube);
 	draw_maze(cube);
 	draw_minimap(cube);
@@ -41,13 +40,13 @@ static void	draw_maze(t_cub3d *cube)
 		diff = (WIN_H - map_display->ray_size[pos.x]) / 2;
 		while (pos.y < WIN_H)
 		{
-			my_mlx_pixel_put(data.working_img, pos.x, pos.y, retrieve_color(map_display, pos.x, pos.y, diff));
+			my_mlx_pixel_put(&data.mlx_img, pos.x, pos.y, retrieve_color(map_display, pos.x, pos.y, diff));
 			pos.y++;
 		}
 		pos.x++;
 	}
 	mlx_put_image_to_window(data.mlx, data.mlx_win, \
-		data.working_img->img, 0, 0);
+		data.mlx_img.img, 0, 0);
 }
 
 static int retrieve_color(t_display *map_display, int x, int y, int diff)

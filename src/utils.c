@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 09:57:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/03 13:52:01 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 12:01:23 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ static void	clean_mlx(t_cub3d *cube)
 	t_mlx_data	mlx_data;
 
 	mlx_data = cube->mlx_data;
-	if (mlx_data.img1.img != NULL)
-		mlx_destroy_image(mlx_data.mlx, mlx_data.img1.img);
+	if (mlx_data.mlx_img.img != NULL)
+		mlx_destroy_image(mlx_data.mlx, mlx_data.mlx_img.img);
 	if (mlx_data.mlx_win != NULL)
 		mlx_destroy_window(mlx_data.mlx, mlx_data.mlx_win);
 	if (mlx_data.mlx != NULL)

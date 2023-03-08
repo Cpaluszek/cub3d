@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/08 11:30:19 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 12:00:40 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,7 @@ typedef struct s_texture
 typedef struct s_mlx_data {
 	void		*mlx;
 	void		*mlx_win;
-	void		*mlx_img;
-	t_img_data	img1;
-	t_img_data	img2;
-	t_img_data	*current_img;
-	t_img_data	*working_img;
+	t_img_data	mlx_img;
 }	t_mlx_data;
 
 typedef struct s_display {
