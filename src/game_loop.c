@@ -6,50 +6,48 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 14:28:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/08 13:15:27 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 14:47:44 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <math.h>
 
-static void	move_player_x(t_cub3d *cube);
-static void	move_player_y(t_cub3d *cube);
+static int	move_player_x(t_cub3d *cube);
+static int	move_player_y(t_cub3d *cube);
+static int	rotate_player(t_cub3d *cube);
 
 int	game_loop(t_cub3d *cube)
 {
-	int	render_needed;
-	static int last_player_attack_state;
+	static int	last_player_attack_state;
+	int			render_needed;
 
 	render_needed = 0;
 	if (cube->player.move.y != 0)
-	{
-		move_player_y(cube);
-		render_needed = 1;
-	}
+		render_needed = move_player_y(cube);
 	if (cube->player.move.x != 0)
-	{
-		move_player_x(cube);
-		render_needed = 1;
-	}
+		render_needed = move_player_x(cube);
 	if (cube->player.rotate != 0)
-	{
-		cube->player.angle += cube->player.rotate;
-		cube->player.dir.x = cosf(cube->player.angle);
-		cube->player.dir.y = sinf(cube->player.angle);
-		render_needed = 1;
-	}
+		render_needed = rotate_player(cube);
 	if (cube->player.attack_state != last_player_attack_state)
 	{
-		render_needed = 1;
 		last_player_attack_state = cube->player.attack_state;
+		render_needed = 1;
 	}
 	if (render_needed == 1)
 		render(cube);
 	return (0);
 }
 
-static void	move_player_x(t_cub3d *cube)
+static int	rotate_player(t_cub3d *cube)
+{
+	cube->player.angle += cube->player.rotate;
+	cube->player.dir.x = cosf(cube->player.angle);
+	cube->player.dir.y = sinf(cube->player.angle);
+	return (1);
+}
+
+static int	move_player_x(t_cub3d *cube)
 {
 	int		wall;
 	float	dx;
@@ -69,9 +67,10 @@ static void	move_player_x(t_cub3d *cube)
 		dy = SCREEN_DIST * cube->player.dir.x * cube->player.move.x;
 		cube->player.pos.y += dy;
 	}
+	return (1);
 }
 
-static void	move_player_y(t_cub3d *cube)
+static int	move_player_y(t_cub3d *cube)
 {
 	int		wall;
 	float	dx;
@@ -91,4 +90,5 @@ static void	move_player_y(t_cub3d *cube)
 		dy = SCREEN_DIST * cube->player.dir.y * cube->player.move.y;
 		cube->player.pos.y += dy;
 	}
+	return (1);
 }

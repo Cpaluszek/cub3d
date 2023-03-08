@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/08 14:37:48 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 14:49:13 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,13 @@ typedef struct s_display {
 	int 			wall_pos_x[WIN_W];
 	t_color			floor_color;
 	t_color			ceiling_color;
-	t_texture 		north_texture;
-	t_texture 		south_texture;
-	t_texture 		west_texture;
-	t_texture 		east_texture;
-	t_texture 		door_texture;
-	t_texture 		torch_idle_texture;
-	t_texture 		torch_attack_texture;
+	t_texture 		north_tex;
+	t_texture 		south_tex;
+	t_texture 		west_tex;
+	t_texture 		east_tex;
+	t_texture 		door_tex;
+	t_texture 		torch_idle_tex;
+	t_texture 		torch_attack_tex;
 }	t_display;
 
 typedef struct s_cub3d

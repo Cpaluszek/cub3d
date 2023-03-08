@@ -16,7 +16,7 @@
 
 static void	parse_color(t_cub3d *cube, t_rgb *color, char **p_line);
 static int	get_color(char *p_color, char **p_line);
-static char	*retrieve_path(t_cub3d *cube, char *line, char *pattern);
+static char	*get_path(t_cub3d *cube, char *line, char *pattern);
 static void	retrieve_color(t_cub3d *cube, t_rgb *color, \
 	char *line, char *pattern);
 
@@ -27,16 +27,16 @@ void	find_texture_path_and_get_color(t_cub3d *cube, char *line)
 	len = ft_strlen(line);
 	if (ft_strnstr(line, "NO ", len) != NULL && \
 		cube->textures_paths.north_texture_path == NULL)
-		cube->textures_paths.north_texture_path = retrieve_path(cube, line, "NO ");
+		cube->textures_paths.north_texture_path = get_path(cube, line, "NO ");
 	else if (ft_strnstr(line, "SO ", len) != NULL && \
 		cube->textures_paths.south_texture_path == NULL)
-		cube->textures_paths.south_texture_path = retrieve_path(cube, line, "SO ");
+		cube->textures_paths.south_texture_path = get_path(cube, line, "SO ");
 	else if (ft_strnstr(line, "WE ", len) != NULL && \
 		cube->textures_paths.west_texture_path == NULL)
-		cube->textures_paths.west_texture_path = retrieve_path(cube, line, "WE ");
+		cube->textures_paths.west_texture_path = get_path(cube, line, "WE ");
 	else if (ft_strnstr(line, "EA ", len) != NULL && \
 		cube->textures_paths.east_texture_path == NULL)
-		cube->textures_paths.east_texture_path = retrieve_path(cube, line, "EA ");
+		cube->textures_paths.east_texture_path = get_path(cube, line, "EA ");
 	else if (ft_strnstr(line, "F ", len) != NULL && \
 		cube->display.floor_color.color == 0x01000000)
 		retrieve_color(cube, &cube->display.floor_color.rgb, line, "F ");
@@ -47,7 +47,7 @@ void	find_texture_path_and_get_color(t_cub3d *cube, char *line)
 		error_exit_cube(cube, INVALID_PARAM, line);
 }
 
-static char	*retrieve_path(t_cub3d *cube, char *line, char *pattern)
+static char	*get_path(t_cub3d *cube, char *line, char *pattern)
 {
 	char	*path;
 	int		i;
