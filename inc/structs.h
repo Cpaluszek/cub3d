@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/08 11:29:40 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 11:30:19 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ typedef struct s_display {
 	t_int_vector	east_texture_size;
 	t_int_vector	west_texture_size;
 	int				ray_size[WIN_W];
-	int 			pos_x_in_wall[WIN_W];
+	int 			wall_pos_x[WIN_W];
 	int				maze_height;
 	int				maze_width;
 	char			ray_texture[WIN_W];

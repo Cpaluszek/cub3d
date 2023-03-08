@@ -60,13 +60,13 @@ static void	set_col_display(t_cub3d *cube, t_float_vector player_pos, \
 	&is_wall_hit_on_x_axis);
 	fill_col_display(cube, ray, is_wall_hit_on_x_axis, col);
 	if (cube->map_display.ray_texture[col] == 'N')
-		cube->map_display.pos_x_in_wall[col] = (int)(ray->relative_hit_on_wall * cube->map_display.north_texture_size.x);
+		cube->map_display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * cube->map_display.north_texture_size.x);
 	if (cube->map_display.ray_texture[col] == 'S')
-		cube->map_display.pos_x_in_wall[col] = (int)(ray->relative_hit_on_wall * cube->map_display.south_texture_size.x);
+		cube->map_display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * cube->map_display.south_texture_size.x);
 	if (cube->map_display.ray_texture[col] == 'W')
-		cube->map_display.pos_x_in_wall[col] = (int)(ray->relative_hit_on_wall * cube->map_display.west_texture_size.x);
+		cube->map_display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * cube->map_display.west_texture_size.x);
 	if (cube->map_display.ray_texture[col] == 'E')
-		cube->map_display.pos_x_in_wall[col] = (int)(ray->relative_hit_on_wall * cube->map_display.east_texture_size.x);
+		cube->map_display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * cube->map_display.east_texture_size.x);
 }
 
 static void	set_ray_parameters(t_ray *ray, t_float_vector player_pos)
