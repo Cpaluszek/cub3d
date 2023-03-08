@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 09:50:14 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/08 12:16:06 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 13:15:27 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	render(t_cub3d *cube)
 	draw_maze(cube);
 	draw_minimap(cube);
 	// Todo: draw torch
+	draw_torch(cube);
 }
 
 static void	draw_maze(t_cub3d *cube)
@@ -32,7 +33,7 @@ static void	draw_maze(t_cub3d *cube)
 	t_int_vector pos;
 
 	data = cube->mlx_data;
-	map_display = &cube->map_display;
+	map_display = &cube->display;
 	pos.x = 0;
 	while (pos.x < WIN_W)
 	{

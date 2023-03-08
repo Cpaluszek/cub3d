@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:49:06 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/01 09:40:57 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 13:30:40 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ enum	e_mlx_events
 {
 	ON_KEYDOWN = 2,
 	ON_KEYUP = 3,
+	ON_MOUSE_DOWN = 4,
+	ON_MOUSE_UP = 5,
 	ON_MOUSE_MOVE = 6,
 	ON_BUTTON_PRESS = 17
 };

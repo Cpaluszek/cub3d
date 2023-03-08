@@ -51,11 +51,11 @@ void	draw_minimap(t_cub3d *cube)
 static int	get_cell_color(t_cub3d *cube, int x, int y)
 {
 	if (x >= 0 && y >= 0 && \
-		x < cube->map_display.maze_size.x && y < cube->map_display.maze_size.y)
+		x < cube->display.maze_size.x && y < cube->display.maze_size.y)
 	{
 		if (x == (int)cube->player.pos.x && y == (int)cube->player.pos.y)
 			return (MM_PLAYER_COLOR);
-		else if (cube->map_display.grid_maze[y][x] == '1')
+		else if (cube->display.grid_maze[y][x] == '1')
 			return (MM_WALL_COLOR);
 	}
 	return (MM_BG_COLOR);

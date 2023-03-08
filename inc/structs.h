@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/08 12:11:17 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 13:30:03 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_player {
 	t_float_vector	move;
 	float			rotate;
 	float			angle;
+	int 			attack_state;
 }	t_player;
 
 typedef struct s_texture_path {
@@ -59,7 +60,10 @@ typedef struct s_mlx_data {
 	t_img_data	mlx_img;
 }	t_mlx_data;
 
+// Todo: create texture strect
 typedef struct s_display {
+	t_color			floor_color;
+	t_color			ceiling_color;
 	int				**north_texture;
 	int				**south_texture;
 	int				**west_texture;
@@ -74,8 +78,11 @@ typedef struct s_display {
 	int 			wall_pos_x[WIN_W];
 	char			ray_texture[WIN_W];
 	char			**grid_maze;
-	t_color			floor_color;
-	t_color			ceiling_color;
+	//
+	int 			**torch_idle_texture;
+	int 			**torch_attack_texture;
+	t_int_vector	torch_idle_texture_size;
+	t_int_vector	torch_attack_texture_size;
 }	t_display;
 
 typedef struct s_cub3d
@@ -86,7 +93,7 @@ typedef struct s_cub3d
 	char			**map_information;
 	t_texture_path	textures_paths;
 	t_mlx_data		mlx_data;
-	t_display		map_display;
+	t_display		display;
 	t_player		player;
 }	t_cub3d;
 

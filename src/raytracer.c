@@ -57,17 +57,17 @@ static void	set_col_display(t_cub3d *cube, t_float_vector player_pos, \
 	ray->map_pos.y = (int)player_pos.y;
 	set_ray_parameters(ray, player_pos);
 	is_a_wall_hit = 0;
-	find_the_hit_wall(cube->map_display.grid_maze, ray, &is_a_wall_hit, \
+	find_the_hit_wall(cube->display.grid_maze, ray, &is_a_wall_hit, \
 	&is_wall_hit_on_x_axis);
 	fill_col_display(cube, ray, is_wall_hit_on_x_axis, col);
-	if (cube->map_display.ray_texture[col] == 'N')
-		cube->map_display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * (float)cube->map_display.north_texture_size.x);
-	if (cube->map_display.ray_texture[col] == 'S')
-		cube->map_display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * (float)cube->map_display.south_texture_size.x);
-	if (cube->map_display.ray_texture[col] == 'W')
-		cube->map_display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * (float)cube->map_display.west_texture_size.x);
-	if (cube->map_display.ray_texture[col] == 'E')
-		cube->map_display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * (float)cube->map_display.east_texture_size.x);
+	if (cube->display.ray_texture[col] == 'N')
+		cube->display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * (float)cube->display.north_texture_size.x);
+	if (cube->display.ray_texture[col] == 'S')
+		cube->display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * (float)cube->display.south_texture_size.x);
+	if (cube->display.ray_texture[col] == 'W')
+		cube->display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * (float)cube->display.west_texture_size.x);
+	if (cube->display.ray_texture[col] == 'E')
+		cube->display.wall_pos_x[col] = (int)(ray->relative_hit_on_wall * (float)cube->display.east_texture_size.x);
 }
 
 static void	set_ray_parameters(t_ray *ray, t_float_vector player_pos)
@@ -131,23 +131,23 @@ static void	fill_col_display(t_cub3d *cube, t_ray *ray, \
 {
 	if (is_wall_hit_on_x_axis == 0)
 	{
-		cube->map_display.ray_size[col] = (int)(WIN_H / \
+		cube->display.ray_size[col] = (int)(WIN_H / \
 			(ray->closest_side_wall.x - ray->next_wall_hit.x));
 		ray->relative_hit_on_wall = (ray->closest_side_wall.x - ray->next_wall_hit.x) * ray->direction.y + cube->player.pos.y;
 		if (ray->moving_direction.x < 0)
-			cube->map_display.ray_texture[col] = 'W';
+			cube->display.ray_texture[col] = 'W';
 		else
-			cube->map_display.ray_texture[col] = 'E';
+			cube->display.ray_texture[col] = 'E';
 	}
 	else
 	{
-		cube->map_display.ray_size[col] = (int)(WIN_H / \
+		cube->display.ray_size[col] = (int)(WIN_H / \
 			(ray->closest_side_wall.y - ray->next_wall_hit.y));
 		ray->relative_hit_on_wall = (ray->closest_side_wall.y - ray->next_wall_hit.y) * ray->direction.x  + cube->player.pos.x;
 		if (ray->moving_direction.y < 0)
-			cube->map_display.ray_texture[col] = 'N';
+			cube->display.ray_texture[col] = 'N';
 		else
-			cube->map_display.ray_texture[col] = 'S';
+			cube->display.ray_texture[col] = 'S';
 	}
 	ray->relative_hit_on_wall -= roundf(ray->relative_hit_on_wall);
 	if (ray->relative_hit_on_wall < 0)

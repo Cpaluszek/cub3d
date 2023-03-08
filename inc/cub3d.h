@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:32:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/06 19:29:30 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/08 13:15:27 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define WIN_H	1080
 # define WIN_NAME	"cub3D"
 
-# define TORCH_TEX_PATH "textures/torch.xpm"
+# define TORCH_IDLE_TEX_PATH "textures/torch.xpm"
 # define TORCH_ATTACK_TEX_PATH "textures/attack_torch.xpm"
 
 # include "structs.h"
@@ -47,6 +47,7 @@ int				game_loop(t_cub3d *cube);
 void			render(t_cub3d *cube);
 void			draw_minimap(t_cub3d *cube);
 void			raytracer(t_cub3d *cube);
+void			draw_torch(t_cub3d *cube);
 
 //	--- Utils ---
 void			error_exit_cube(t_cub3d *cube, char *msg1, char *msg2);

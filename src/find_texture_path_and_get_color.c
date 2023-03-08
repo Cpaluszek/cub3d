@@ -38,11 +38,11 @@ void	find_texture_path_and_get_color(t_cub3d *cube, char *line)
 		cube->textures_paths.east_texture_path == NULL)
 		cube->textures_paths.east_texture_path = retrieve_path(cube, line, "EA ");
 	else if (ft_strnstr(line, "F ", len) != NULL && \
-		cube->map_display.floor_color.color == 0x01000000)
-		retrieve_color(cube, &cube->map_display.floor_color.rgb, line, "F ");
+		cube->display.floor_color.color == 0x01000000)
+		retrieve_color(cube, &cube->display.floor_color.rgb, line, "F ");
 	else if (ft_strnstr(line, "C ", len) != NULL && \
-		cube->map_display.ceiling_color.color == 0x01000000)
-		retrieve_color(cube, &cube->map_display.ceiling_color.rgb, line, "C ");
+		cube->display.ceiling_color.color == 0x01000000)
+		retrieve_color(cube, &cube->display.ceiling_color.rgb, line, "C ");
 	else
 		error_exit_cube(cube, INVALID_PARAM, line);
 }

@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:21:37 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/02 15:52:54 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 13:42:47 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int	button_hook(t_cub3d *cube);
 static int	key_press_hook(int key, t_cub3d *cube);
 static int	key_release_hook(int key, t_cub3d *cube);
 static int	mouse_move_hook(int x, int y, t_cub3d *cube);
+int mouse_down_hook(int button, int x, int y, t_cub3d *cube);
+int mouse_up_hook(int button, int x, int y, t_cub3d *cube);
 
 void	set_mlx_hooks(t_cub3d *cube)
 {
@@ -27,6 +29,28 @@ void	set_mlx_hooks(t_cub3d *cube)
 	mlx_hook(win_ptr, ON_KEYUP, 1L << 1, key_release_hook, cube);
 	mlx_hook(win_ptr, ON_BUTTON_PRESS, 1L << 0, button_hook, cube);
 	mlx_hook(win_ptr, ON_MOUSE_MOVE, 1L << 6, mouse_move_hook, cube);
+	mlx_hook(win_ptr, ON_MOUSE_DOWN, 1L << 2, mouse_down_hook, cube);
+	mlx_hook(win_ptr, ON_MOUSE_UP, 1L << 3, mouse_up_hook, cube);
+}
+
+int mouse_down_hook(int button, int x, int y, t_cub3d *cube)
+{
+	(void) x;
+	(void) y;
+	if (button != MOUSE_LEFT)
+		return (0);
+	cube->player.attack_state = 1;
+	return (0);
+}
+
+int mouse_up_hook(int button, int x, int y, t_cub3d *cube)
+{
+	(void) x;
+	(void) y;
+	if (button != MOUSE_LEFT)
+		return (0);
+	cube->player.attack_state = 0;
+	return (0);
 }
 
 static int	key_press_hook(int key, t_cub3d *cube)

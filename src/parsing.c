@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/03 20:14:12 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/08 12:58:20 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ static void	set_default_values(t_cub3d *cube)
 	cube->textures_paths.south_texture_path = NULL;
 	cube->textures_paths.west_texture_path = NULL;
 	cube->textures_paths.east_texture_path = NULL;
-	cube->map_display.grid_maze = NULL;
+	cube->display.grid_maze = NULL;
 	cube->map_information = NULL;
-	cube->map_display.ceiling_color.color = DEFAULT_COLOR_VALUE;
-	cube->map_display.floor_color.color = DEFAULT_COLOR_VALUE;
+	cube->display.ceiling_color.color = DEFAULT_COLOR_VALUE;
+	cube->display.floor_color.color = DEFAULT_COLOR_VALUE;
 	cube->player.pos.x = 0.0f;
 	cube->player.pos.y = 0.0f;
 }

@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:08:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/08 12:59:04 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 12:59:35 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 static void	init_player(t_player *player);
 
-// Todo: missing player parsings
 int	main(int argc, char **argv)
 {
 	t_cub3d	cube;
@@ -46,4 +45,5 @@ static void	init_player(t_player *player)
 	player->move.x = 0;
 	player->move.y = 0;
 	player->rotate = 0;
+	player->attack_state = 0;
 }
