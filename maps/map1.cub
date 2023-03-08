@@ -1,8 +1,9 @@
 
 NO ./textures/eagle.xpm
-SO ./textures/bluestone.xpm
+SO ./textures/cobble.xpm
 WE ./textures/redbrick.xpm
-EA                         ./textures/purplestone.xpm
+EA                         ./textures/dirt.xpm
+
 
 
 F             0,             0, 68

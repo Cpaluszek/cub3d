@@ -20,6 +20,7 @@ static void	init_player(t_player *player);
 // Todo: Makefile lib compilation check
 // Todo: missing player parsings
 // Todo: ./cub3d maps/ma -> ABORT
+// Todo: inclused map -> mlx is showing
 int	main(int argc, char **argv)
 {
 	t_cub3d	cube;

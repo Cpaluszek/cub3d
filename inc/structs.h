@@ -35,7 +35,6 @@ typedef struct s_player {
 	float			angle;
 }	t_player;
 
-
 // Todo: rename to texture data
 typedef struct s_map_data
 {
