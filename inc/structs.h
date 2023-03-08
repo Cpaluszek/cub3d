@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/08 14:49:13 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 14:58:54 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ typedef struct s_ray {
 	t_int_vector 	map_pos;
 	t_int_vector 	moving_direction;
 	t_float_vector	next_wall_hit;
-	t_float_vector	closest_side_wall;
+	t_float_vector	closest_wall;
 	t_float_vector	direction;
-	float 			relative_hit_on_wall;
+	float 			relative_wall_hit;
 }	t_ray;
 
 typedef struct s_player {

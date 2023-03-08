@@ -22,6 +22,7 @@ SRC_FILES		:=	main.c \
 					game_loop.c \
 					mlx_init.c \
 					mlx_hooks.c \
+					mlx_mouse_hooks.c \
 					mlx_utils.c \
 					render.c \
 					raytracer.c \

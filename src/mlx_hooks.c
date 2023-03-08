@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:21:37 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/08 13:42:47 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:06:34 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@
 static int	button_hook(t_cub3d *cube);
 static int	key_press_hook(int key, t_cub3d *cube);
 static int	key_release_hook(int key, t_cub3d *cube);
-static int	mouse_move_hook(int x, int y, t_cub3d *cube);
-int mouse_down_hook(int button, int x, int y, t_cub3d *cube);
-int mouse_up_hook(int button, int x, int y, t_cub3d *cube);
 
 void	set_mlx_hooks(t_cub3d *cube)
 {
@@ -31,26 +28,6 @@ void	set_mlx_hooks(t_cub3d *cube)
 	mlx_hook(win_ptr, ON_MOUSE_MOVE, 1L << 6, mouse_move_hook, cube);
 	mlx_hook(win_ptr, ON_MOUSE_DOWN, 1L << 2, mouse_down_hook, cube);
 	mlx_hook(win_ptr, ON_MOUSE_UP, 1L << 3, mouse_up_hook, cube);
-}
-
-int mouse_down_hook(int button, int x, int y, t_cub3d *cube)
-{
-	(void) x;
-	(void) y;
-	if (button != MOUSE_LEFT)
-		return (0);
-	cube->player.attack_state = 1;
-	return (0);
-}
-
-int mouse_up_hook(int button, int x, int y, t_cub3d *cube)
-{
-	(void) x;
-	(void) y;
-	if (button != MOUSE_LEFT)
-		return (0);
-	cube->player.attack_state = 0;
-	return (0);
 }
 
 static int	key_press_hook(int key, t_cub3d *cube)
@@ -87,19 +64,5 @@ static int	key_release_hook(int key, t_cub3d *cube)
 static int	button_hook(t_cub3d *cube)
 {
 	exit_cube(cube, SUCCESS);
-	return (0);
-}
-
-static int	mouse_move_hook(int x, int y, t_cub3d *cube)
-{
-	float	distance_from_screen_side;
-
-	(void)y;
-	if (!cube->player.move.x && !cube->player.move.y)
-		return (0);
-	distance_from_screen_side = ((float)(WIN_W / 2) - x) / WIN_W;
-	cube->player.angle += MOUSE_ROT_SPEED * -distance_from_screen_side;
-	cube->player.dir.x = cosf(cube->player.angle);
-	cube->player.dir.y = sinf(cube->player.angle);
 	return (0);
 }

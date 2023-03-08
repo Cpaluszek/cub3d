@@ -39,6 +39,9 @@ void			create_texture_array(t_cub3d *cube);
 // --- MLX ---
 enum e_result	init_mlx_data(t_mlx_data *mlx_data);
 void			set_mlx_hooks(t_cub3d *cube);
+int				mouse_move_hook(int x, int y, t_cub3d *cube);
+int				mouse_down_hook(int button, int x, int y, t_cub3d *cube);
+int 			mouse_up_hook(int button, int x, int y, t_cub3d *cube);
 
 //	--- Game Loop ---
 int				game_loop(t_cub3d *cube);

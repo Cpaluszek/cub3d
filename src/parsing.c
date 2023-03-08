@@ -23,7 +23,7 @@ static void	set_default_values(t_cub3d *cube);
 static void	parse_map_information(t_cub3d *cube, int fd_map);
 static void	check_no_gap_in_maze(t_cub3d *cube, char **map_info, char *buff);
 
-void central_parsing(t_cub3d *cube, char *map_path)
+void	central_parsing(t_cub3d *cube, char *map_path)
 {
 	int		fd_map;
 	char	*format;
@@ -55,7 +55,7 @@ static void	parse_map_information(t_cub3d *cube, int fd_map)
 {
 	char	buffer[BUF_SIZE];
 	ssize_t	nb_read;
-	char 	**map_information;
+	char	**map_information;
 
 	nb_read = read(fd_map, buffer, BUF_SIZE);
 	if (nb_read == -1)
