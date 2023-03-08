@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:32:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/08 13:15:27 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:06:13 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define MOUSE_ROT_SPEED	0.062831f
 
 //	--- Parsing ---
-void central_parsing(t_cub3d *cube, char *map_path);
+void			central_parsing(t_cub3d *cube, char *map_path);
 void			maze_validity_checking(t_cub3d *cube, char **grid_maze);
 void			interpret_map_information(t_cub3d *cube, char **map_info);
 void			find_texture_path_and_get_color(t_cub3d *cube, char *line);
@@ -41,7 +41,7 @@ enum e_result	init_mlx_data(t_mlx_data *mlx_data);
 void			set_mlx_hooks(t_cub3d *cube);
 int				mouse_move_hook(int x, int y, t_cub3d *cube);
 int				mouse_down_hook(int button, int x, int y, t_cub3d *cube);
-int 			mouse_up_hook(int button, int x, int y, t_cub3d *cube);
+int				mouse_up_hook(int button, int x, int y, t_cub3d *cube);
 
 //	--- Game Loop ---
 int				game_loop(t_cub3d *cube);

@@ -19,7 +19,7 @@ typedef struct s_float_vector {
 }	t_float_vector;
 
 typedef struct s_int_vector {
-	int x;
+	int	x;
 	int	y;
 }	t_int_vector;
 

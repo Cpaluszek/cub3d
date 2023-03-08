@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/08 14:58:54 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:17:03 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 # include "colors.h"
 
 typedef struct s_ray {
-	t_int_vector 	map_pos;
-	t_int_vector 	moving_direction;
+	t_int_vector	map_pos;
+	t_int_vector	moving_direction;
 	t_float_vector	next_wall_hit;
 	t_float_vector	closest_wall;
 	t_float_vector	direction;
-	float 			relative_wall_hit;
+	float			relative_wall_hit;
 }	t_ray;
 
 typedef struct s_player {
@@ -33,7 +33,7 @@ typedef struct s_player {
 	t_float_vector	move;
 	float			rotate;
 	float			angle;
-	int 			attack_state;
+	int				attack_state;
 }	t_player;
 
 typedef struct s_texture_path {
@@ -56,20 +56,20 @@ typedef struct s_texture {
 }	t_texture;
 
 typedef struct s_display {
-	t_int_vector 	maze_size;
+	t_int_vector	maze_size;
 	char			**grid_maze;
 	char			ray_texture[WIN_W];
 	int				ray_size[WIN_W];
-	int 			wall_pos_x[WIN_W];
+	int				wall_pos_x[WIN_W];
 	t_color			floor_color;
 	t_color			ceiling_color;
-	t_texture 		north_tex;
-	t_texture 		south_tex;
-	t_texture 		west_tex;
-	t_texture 		east_tex;
-	t_texture 		door_tex;
-	t_texture 		torch_idle_tex;
-	t_texture 		torch_attack_tex;
+	t_texture		north_tex;
+	t_texture		south_tex;
+	t_texture		west_tex;
+	t_texture		east_tex;
+	t_texture		door_tex;
+	t_texture		torch_idle_tex;
+	t_texture		torch_attack_tex;
 }	t_display;
 
 typedef struct s_cub3d

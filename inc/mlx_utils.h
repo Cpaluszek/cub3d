@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:49:06 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/08 13:31:00 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:14:23 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ typedef struct s_img_data
 }	t_img_data;
 
 typedef struct s_mlx_texture {
-	void *address;
-	char *text;
-	int bits_per_pixel;
-	int line_length;
-	int endian;
-	int width;
-	int height;
-} t_mlx_texture;
+	void	*address;
+	char	*text;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	int		width;
+	int		height;
+}	t_mlx_texture;
 
 // Todo: remove useless
 enum	e_key_codes
