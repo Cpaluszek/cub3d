@@ -36,7 +36,6 @@ void	central_parsing(t_cub3d *cube)
 	if (fd_map == -1)
 		error_exit_cube(cube, cube->map_path, strerror(errno));
 	parse_map_information(cube, fd_map);
-	create_texture_array(cube);
 }
 
 static void	set_default_values(t_cub3d *cube)
