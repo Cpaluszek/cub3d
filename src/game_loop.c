@@ -39,7 +39,7 @@ int	game_loop(t_cub3d *cube)
 		render_needed = 1;
 	}
 	if (render_needed == 1)
-		init_render(cube);
+		render(cube);
 	return (0);
 }
 

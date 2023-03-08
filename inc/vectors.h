@@ -13,7 +13,6 @@
 #ifndef VECTORS_H
 # define VECTORS_H
 
-// Todo: double or float ?
 typedef struct s_float_vector {
 	float	x;
 	float	y;

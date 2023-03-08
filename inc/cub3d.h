@@ -44,7 +44,7 @@ void			set_mlx_hooks(t_cub3d *cube);
 int				game_loop(t_cub3d *cube);
 
 //	--- Render ---
-void			init_render(t_cub3d *cube);
+void			render(t_cub3d *cube);
 void			draw_minimap(t_cub3d *cube);
 void			raytracer(t_cub3d *cube);
 

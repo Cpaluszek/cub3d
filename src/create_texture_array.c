@@ -25,7 +25,6 @@ void	create_texture_array(t_cub3d *cube)
 	cube->map_display.south_texture = load_texture(cube, mlx_ptr, cube->textures_paths.south_texture_path, &cube->map_display.south_texture_size);
 	cube->map_display.west_texture = load_texture(cube, mlx_ptr, cube->textures_paths.west_texture_path, &cube->map_display.west_texture_size);
 	cube->map_display.east_texture = load_texture(cube, mlx_ptr, cube->textures_paths.east_texture_path, &cube->map_display.east_texture_size);
-//	dprintf(1, "%d %d %d %d\n", cube->map_display.east_texture_size.x, cube->map_display.east_texture_size.x, cube->map_display.east_texture_size.x, cube->map_display.east_texture_size.x);
 }
 
 static int	**load_texture(t_cub3d *cube, void *mlx, char *texture_path, t_int_vector *size)
@@ -34,7 +33,6 @@ static int	**load_texture(t_cub3d *cube, void *mlx, char *texture_path, t_int_ve
 	int	**texture_array;
 	int 			i;
 
-//	dprintf(1, "%s\n", texture_path);
 	texture.address = mlx_xpm_file_to_image(mlx, texture_path, &texture.width, &texture.height);
 	if (texture.address == NULL) // Todo: Check conversion error
 		error_exit_cube(cube, ERR_MLX_XPM, ERR_XPM_CONV);
@@ -59,10 +57,8 @@ static int	**load_texture(t_cub3d *cube, void *mlx, char *texture_path, t_int_ve
 		while (x < texture.width)
 		{
 			texture_array[i][x] = *(int *)(texture.text + (i * texture.line_length + x * (texture.bits_per_pixel / 8)));
-//			dprintf(1, "%x ", texture_array[i][x]);
 			x++;
 		}
-//		dprintf(1, "\n");
 		i++;
 	}
 	size->x = texture.width;

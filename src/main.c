@@ -17,10 +17,9 @@
 
 static void	init_player(t_player *player);
 
-// Todo: Makefile lib compilation check
 // Todo: missing player parsings
 // Todo: ./cub3d maps/ma -> ABORT
-// Todo: inclused map -> mlx is showing
+// Todo: unclosed map -> mlx is showing
 int	main(int argc, char **argv)
 {
 	t_cub3d	cube;
@@ -41,7 +40,7 @@ int	main(int argc, char **argv)
 //	printf("%x %x\n", cube.map_display.ceiling_color.color, cube.map_display.floor_color.color);
 	init_player(&cube.player);
 	set_mlx_hooks(&cube);
-	init_render(&cube);
+	render(&cube);
 	mlx_loop_hook(cube.mlx_data.mlx, &game_loop, &cube);
 	mlx_loop(cube.mlx_data.mlx);
 	exit_cube(&cube, 0);
