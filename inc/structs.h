@@ -36,7 +36,7 @@ typedef struct s_player {
 }	t_player;
 
 
-
+// Todo: rename to texture data
 typedef struct s_map_data
 {
 	char	*north_texture_path;
