@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:32:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/08 15:06:13 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/09 10:22:54 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 
 # define TORCH_IDLE_TEX_PATH "textures/torch.xpm"
 # define TORCH_ATTACK_TEX_PATH "textures/attack_torch.xpm"
+
+# define DOOR_TEX_PATH "textures/door.xpm"
+
+# define MAZE_CHARSET "01NSEW D"
 
 # include "structs.h"
 

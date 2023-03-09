@@ -6,13 +6,16 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:29:02 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/08 12:04:26 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/09 10:30:50 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "minimap.h"
 #include <math.h>
+
+#define WALL_CHAR '1'
+#define DOOR_CHAR 'D'
 
 static void	draw_minimap_cell(t_mlx_data *data, int x, int y, int color);
 static int	get_cell_color(t_cub3d *cube, int x, int y);
@@ -55,7 +58,9 @@ static int	get_cell_color(t_cub3d *cube, int x, int y)
 	{
 		if (x == (int)cube->player.pos.x && y == (int)cube->player.pos.y)
 			return (MM_PLAYER_COLOR);
-		else if (cube->display.grid_maze[y][x] == '1')
+		else if (cube->display.grid_maze[y][x] == DOOR_CHAR)
+			return (MM_DOOR_COLOR);
+		else if (cube->display.grid_maze[y][x] == WALL_CHAR)
 			return (MM_WALL_COLOR);
 	}
 	return (MM_BG_COLOR);

@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/08 14:39:42 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/09 10:27:36 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static void	check_no_gap_in_maze(t_cub3d *cube, char **map_info, char *buff)
 	while (map_info[i])
 	{
 		j = 0;
-		while (map_info[i][j] && ft_is_inside(map_info[i][j], "01NSEW "))
+		while (map_info[i][j] && ft_is_inside(map_info[i][j], MAZE_CHARSET))
 			j++;
 		if (map_info[i][j] == '\0')
 			break ;

@@ -75,7 +75,7 @@ static void	fill_maze(t_cub3d *cube, char **grid_maze, char **map_information)
 		i = -1;
 		while (map_information[line][++i])
 		{
-			if (ft_is_inside(map_information[line][i], "01NSEW ") == 0)
+			if (ft_is_inside(map_information[line][i], MAZE_CHARSET) == 0)
 				error_exit_cube(cube, INVALID_MAZE_CHAR, map_information[line]);
 			grid_maze[line][i] = map_information[line][i];
 		}
