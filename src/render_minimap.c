@@ -14,7 +14,6 @@
 #include "minimap.h"
 #include <math.h>
 
-
 static void	draw_minimap_cell(t_mlx_data *data, int x, int y, int color);
 static int	get_cell_color(t_cub3d *cube, int x, int y);
 static void	draw_viewport(t_mlx_data *data, t_player player);

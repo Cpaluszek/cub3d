@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 15:04:58 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/09 12:56:02 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/09 14:30:26 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void	check_nearby_door(t_cub3d *cube, int x, int y);
 
 int	mouse_down_hook(int button, int x, int y, t_cub3d *cube)
 {
-	int dx;
-	int dy;
+	int	dx;
+	int	dy;
 
 	if (button != MOUSE_LEFT)
 		return (0);
@@ -34,7 +34,7 @@ int	mouse_down_hook(int button, int x, int y, t_cub3d *cube)
 	}
 	if (dy != 0)
 	{
-		check_nearby_door(cube, x, y + 1)	;
+		check_nearby_door(cube, x, y + 1);
 		check_nearby_door(cube, x, y - 1);
 	}
 	cube->player.attack_state = 1;

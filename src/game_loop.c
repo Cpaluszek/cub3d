@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 14:28:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/09 10:48:25 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/09 14:29:56 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,16 @@ static int	move_player_x(t_cub3d *cube)
 
 	wall = (int)(cube->player.pos.x + -SCREEN_DIST * \
 		cube->player.dir.y * cube->player.move.x);
-	if (ft_is_inside(cube->display.grid_maze[(int)cube->player.pos.y][wall], NO_COLLISION_CHARSET))
+	if (ft_is_inside(cube->display.grid_maze[(int)cube->player.pos.y][wall], \
+		NO_COLLISION_CHARSET))
 	{
 		dx = -SCREEN_DIST * cube->player.dir.y * cube->player.move.x;
 		cube->player.pos.x += dx;
 	}
 	wall = (int)(cube->player.pos.y + SCREEN_DIST * \
 		cube->player.dir.x * cube->player.move.x);
-	if (ft_is_inside(cube->display.grid_maze[wall][(int)cube->player.pos.x], NO_COLLISION_CHARSET))
+	if (ft_is_inside(cube->display.grid_maze[wall][(int)cube->player.pos.x], \
+		NO_COLLISION_CHARSET))
 	{
 		dy = SCREEN_DIST * cube->player.dir.x * cube->player.move.x;
 		cube->player.pos.y += dy;
@@ -78,14 +80,16 @@ static int	move_player_y(t_cub3d *cube)
 
 	wall = (int)(cube->player.pos.x + SCREEN_DIST * \
 		cube->player.dir.x * cube->player.move.y);
-	if (ft_is_inside(cube->display.grid_maze[(int)cube->player.pos.y][wall], NO_COLLISION_CHARSET))
+	if (ft_is_inside(cube->display.grid_maze[(int)cube->player.pos.y][wall], \
+		NO_COLLISION_CHARSET))
 	{
 		dx = SCREEN_DIST * cube->player.dir.x * cube->player.move.y;
 		cube->player.pos.x += dx;
 	}
 	wall = (int)(cube->player.pos.y + SCREEN_DIST * \
 		cube->player.dir.y * cube->player.move.y);
-	if (ft_is_inside(cube->display.grid_maze[wall][(int)cube->player.pos.x], NO_COLLISION_CHARSET))
+	if (ft_is_inside(cube->display.grid_maze[wall][(int)cube->player.pos.x], \
+		NO_COLLISION_CHARSET))
 	{
 		dy = SCREEN_DIST * cube->player.dir.y * cube->player.move.y;
 		cube->player.pos.y += dy;

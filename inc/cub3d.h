@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:32:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/09 10:46:39 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/09 13:15:39 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int				game_loop(t_cub3d *cube);
 void			render(t_cub3d *cube);
 void			draw_minimap(t_cub3d *cube);
 void			raytracer(t_cub3d *cube);
+void			fill_col_display(t_cub3d *cube, t_ray *ray,
+					 int is_wall_hit_on_x_axis, int col);
 void			draw_torch(t_cub3d *cube);
 
 //	--- Utils ---

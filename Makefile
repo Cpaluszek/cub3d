@@ -26,6 +26,7 @@ SRC_FILES		:=	main.c \
 					mlx_utils.c \
 					render.c \
 					raytracer.c \
+					fill_col_display.c \
 					render_minimap.c \
 					draw_torch.c
 
