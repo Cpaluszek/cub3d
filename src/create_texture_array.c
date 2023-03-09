@@ -35,6 +35,8 @@ void	create_texture_array(t_cub3d *cube)
 		TORCH_ATTACK_TEX_PATH, &cube->display.torch_attack_tex.size);
 	cube->display.torch_idle_tex.content = load_texture(cube, mlx_ptr, \
 		TORCH_IDLE_TEX_PATH, &cube->display.torch_idle_tex.size);
+	cube->display.door_tex.content = load_texture(cube, mlx_ptr, \
+		DOOR_TEX_PATH, &cube->display.door_tex.size);
 }
 
 static int	**load_texture(t_cub3d *cube, void *mlx, char *path, \

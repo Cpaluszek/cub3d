@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:27:24 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/08 15:03:19 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/09 11:06:29 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,18 @@ static void	set_col_display(t_cub3d *cube, t_float_vector player_pos, \
 	if (cube->display.ray_texture[col] == 'N')
 		cube->display.wall_pos_x[col] = (int)(ray->relative_wall_hit * \
 			(float)cube->display.north_tex.size.x);
-	if (cube->display.ray_texture[col] == 'S')
+	else if (cube->display.ray_texture[col] == 'S')
 		cube->display.wall_pos_x[col] = (int)(ray->relative_wall_hit * \
 			(float)cube->display.south_tex.size.x);
-	if (cube->display.ray_texture[col] == 'W')
+	else if (cube->display.ray_texture[col] == 'W')
 		cube->display.wall_pos_x[col] = (int)(ray->relative_wall_hit * \
 			(float)cube->display.west_tex.size.x);
-	if (cube->display.ray_texture[col] == 'E')
+	else if (cube->display.ray_texture[col] == 'E')
 		cube->display.wall_pos_x[col] = (int)(ray->relative_wall_hit * \
 			(float)cube->display.east_tex.size.x);
+	else if (cube->display.ray_texture[col] == CLOSED_DOOR_CHAR)
+		cube->display.wall_pos_x[col] = (int)(ray->relative_wall_hit * \
+			(float)cube->display.door_tex.size.x);
 }
 
 static void	set_ray_parameters(t_ray *ray, t_float_vector player_pos)
@@ -126,7 +129,8 @@ static void	find_the_hit_wall(char **grid_maze, t_ray *ray, \
 			map_pos->y += moving_direction->y;
 			*is_wall_hit_on_x_axe = 1;
 		}
-		*is_a_wall_hit = (grid_maze[map_pos->y][map_pos->x] == '1');
+		*is_a_wall_hit = ft_is_inside(grid_maze[map_pos->y][map_pos->x], \
+			COLLISION_CHARSET);
 	}
 }
 
@@ -139,7 +143,9 @@ static void	fill_col_display(t_cub3d *cube, t_ray *ray, \
 			(ray->closest_wall.x - ray->next_wall_hit.x));
 		ray->relative_wall_hit = (ray->closest_wall.x - ray->next_wall_hit.x) * \
 			ray->direction.y + cube->player.pos.y;
-		if (ray->moving_direction.x < 0)
+		if (cube->display.grid_maze[ray->map_pos.y][ray->map_pos.x] == CLOSED_DOOR_CHAR)
+			cube->display.ray_texture[col] = CLOSED_DOOR_CHAR;
+		else if (ray->moving_direction.x < 0)
 			cube->display.ray_texture[col] = 'W';
 		else
 			cube->display.ray_texture[col] = 'E';
@@ -150,7 +156,9 @@ static void	fill_col_display(t_cub3d *cube, t_ray *ray, \
 			(ray->closest_wall.y - ray->next_wall_hit.y));
 		ray->relative_wall_hit = (ray->closest_wall.y - ray->next_wall_hit.y) * \
 			ray->direction.x + cube->player.pos.x;
-		if (ray->moving_direction.y < 0)
+		if (cube->display.grid_maze[ray->map_pos.y][ray->map_pos.x] == CLOSED_DOOR_CHAR)
+			cube->display.ray_texture[col] = CLOSED_DOOR_CHAR;
+		else if (ray->moving_direction.y < 0)
 			cube->display.ray_texture[col] = 'N';
 		else
 			cube->display.ray_texture[col] = 'S';

@@ -69,6 +69,8 @@ static int	retrieve_color(t_display *map_display, int x, int y, int diff)
 			return (map_display->west_tex.content[relative_y][pos_x]);
 		else if (map_display->ray_texture[x] == 'E')
 			return (map_display->east_tex.content[relative_y][pos_x]);
+		else if (map_display->ray_texture[x] == 'D')
+			return (map_display->door_tex.content[relative_y][pos_x]);
 	}
 	return (map_display->floor_color.color);
 }
@@ -87,6 +89,8 @@ static int	get_relative_y(t_display *map_display, int x, int y, int diff)
 		y_size = map_display->west_tex.size.y;
 	else if (map_display->ray_texture[x] == 'E')
 		y_size = map_display->east_tex.size.y;
+	else if (map_display->ray_texture[x] == 'D')
+		y_size = map_display->door_tex.size.y;
 	relative_y = (int)((float)((float)(y - diff) / \
 			((float)map_display->ray_size[x])) *((float)y_size));
 	relative_y %= y_size;

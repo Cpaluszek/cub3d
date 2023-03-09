@@ -28,6 +28,7 @@ void	error_exit_cube(t_cub3d *cube, char *msg1, char *msg2)
 	exit_cube(cube, EXIT_FAILURE);
 }
 
+// Todo: Check torch and door img_clear
 void	exit_cube(t_cub3d *cube, int exit_code)
 {
 	clean_mlx(cube);
