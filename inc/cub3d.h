@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:32:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/09 10:22:54 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/09 10:45:57 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,14 @@
 
 # define DOOR_TEX_PATH "textures/door.xpm"
 
-# define MAZE_CHARSET "01NSEW D"
+# define GRID_CHARSET "01NSEW Dd"
+# define PLAYER_START_CHARSET "NSEW"
+# define MAZE_CHARSET "0NSEW"
+# define WALL_CHAR '1'
+# define EMPTY_CHAR '0'
+# define CLOSED_DOOR_CHAR 'D'
+# define OPEN_DOOR_CHAR 'd'
+# define NO_COLLISION_CHARSET "0d"
 
 # include "structs.h"
 

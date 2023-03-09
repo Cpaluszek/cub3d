@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/09 10:36:24 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/09 10:37:03 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@
 # define MM_WALL_COLOR		0xCAD3F5
 # define MM_BG_COLOR		0x363A4F
 // Todo: find a better color
-# define MM_DOOR_COLOR	0xF5BDE6
+# define MM_DOOR_COLOR	0x91D7E3
 
 #endif
