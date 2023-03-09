@@ -13,7 +13,6 @@
 #include "cub3d.h"
 #include <math.h>
 
-
 static int	move_player_x(t_cub3d *cube);
 static int	move_player_y(t_cub3d *cube);
 static int	rotate_player(t_cub3d *cube);

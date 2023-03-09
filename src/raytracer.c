@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:27:24 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/09 11:06:29 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/09 13:17:40 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,7 @@ static void	fill_col_display(t_cub3d *cube, t_ray *ray, \
 		else
 			cube->display.ray_texture[col] = 'S';
 	}
-	ray->relative_wall_hit -= roundf(ray->relative_wall_hit);
+	ray->relative_wall_hit -= (int)ray->relative_wall_hit;
 	if (ray->relative_wall_hit < 0)
 		ray->relative_wall_hit *= -1;
 }
