@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 09:57:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/10 11:05:36 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/10 14:01:32 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	clean_mlx(t_cub3d *cube)
 
 static void	free_texture(t_texture *tex)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (tex->content == NULL)
