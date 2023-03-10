@@ -20,6 +20,7 @@
 static t_int_vector	get_texture_size(t_cub3d *cube);
 static int			**get_texture_content(t_cub3d *cube);
 
+// Todo: protect against big texture
 void	draw_torch(t_cub3d *cube)
 {
 	t_mlx_data		data;

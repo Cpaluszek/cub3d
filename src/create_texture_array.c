@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:25 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/08 14:56:26 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/10 11:18:57 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static int	**fill_texture_content(t_cub3d *cube, t_mlx_texture texture)
 	int	y;
 	int	x;
 
-	texture_array = malloc(sizeof(unsigned int *) * (texture.height));
+	texture_array = malloc(sizeof(int *) * (texture.height));
 	test_failed_malloc(cube, texture_array);
 	y = -1;
 	while (++y < texture.height)
