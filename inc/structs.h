@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:51:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/08 15:17:03 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/10 10:18:51 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_display {
 
 typedef struct s_cub3d
 {
+	char			**map_info;
 	t_texture_path	textures_paths;
 	t_mlx_data		mlx_data;
 	t_display		display;

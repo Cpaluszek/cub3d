@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/10 09:53:01 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/10 10:19:34 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #define FORMAT ".cub"
 
 static void	parse_map_information(t_cub3d *cube, int fd_map);
-static void	check_no_gap_in_maze(t_cub3d *cube, char **map_info, char *buff);
+static void	check_no_gap_in_maze(t_cub3d *cube, char *buff);
 
 void	central_parsing(t_cub3d *cube, char *map_path)
 {
@@ -39,8 +39,8 @@ static void	parse_map_information(t_cub3d *cube, int fd_map)
 {
 	char	buffer[BUF_SIZE];
 	ssize_t	nb_read;
-	char	**map_information;
 
+	ft_memset(buffer, 0, BUF_SIZE);
 	nb_read = read(fd_map, buffer, BUF_SIZE);
 	if (nb_read == -1)
 	{
@@ -48,29 +48,28 @@ static void	parse_map_information(t_cub3d *cube, int fd_map)
 		error_exit_cube(cube, ERR_READ, "");
 	}
 	close(fd_map);
-	map_information = ft_split(buffer, '\n');
-	test_failed_malloc(cube, map_information);
-	check_no_gap_in_maze(cube, map_information, buffer);
-	interpret_map_information(cube, map_information);
-	ft_free_split(map_information);
+	cube->map_info = ft_split(buffer, '\n');
+	test_failed_malloc(cube, cube->map_info);
+	check_no_gap_in_maze(cube, buffer);
+	interpret_map_information(cube);
 }
 
-static void	check_no_gap_in_maze(t_cub3d *cube, char **map_info, char *buff)
+static void	check_no_gap_in_maze(t_cub3d *cube, char *buff)
 {
 	int	i;
 	int	j;
 
-	i = 0;
-	while (map_info[i])
+	i = -1;
+	while (cube->map_info[++i])
 	{
 		j = 0;
-		while (map_info[i][j] && ft_is_inside(map_info[i][j], GRID_CHARSET))
+		while (cube->map_info[i][j] && ft_is_inside(cube->map_info[i][j], \
+			GRID_CHARSET))
 			j++;
-		if (map_info[i][j] == '\0')
+		if (cube->map_info[i][j] == '\0')
 			break ;
-		i++;
 	}
-	buff = ft_strnstr(buff, map_info[i], ft_strlen(buff));
+	buff = ft_strnstr(buff, cube->map_info[i], ft_strlen(buff));
 	buff = ft_strnstr(buff, "\n\n", ft_strlen(buff));
 	if (!buff)
 		return ;

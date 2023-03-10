@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:08:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/10 09:54:25 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/10 09:55:12 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	main(int argc, char **argv)
 
 static void	set_default_values(t_cub3d *cube)
 {
+	cube->map_info = NULL;
 	cube->textures_paths.north_texture_path = NULL;
 	cube->textures_paths.south_texture_path = NULL;
 	cube->textures_paths.west_texture_path = NULL;

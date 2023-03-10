@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:32:59 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/09 13:15:39 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/10 10:18:51 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 //	--- Parsing ---
 void			central_parsing(t_cub3d *cube, char *map_path);
 void			maze_validity_checking(t_cub3d *cube, char **grid_maze);
-void			interpret_map_information(t_cub3d *cube, char **map_info);
+void			interpret_map_information(t_cub3d *cube);
 void			find_texture_path_and_get_color(t_cub3d *cube, char *line);
 void			create_texture_array(t_cub3d *cube);
 

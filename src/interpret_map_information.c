@@ -6,46 +6,46 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:24:31 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/09 10:28:30 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/10 10:18:51 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "errors.h"
 
-static void	create_maze(t_cub3d *cube, char **map_information);
+static void	create_maze(t_cub3d *cube, char **map_info);
 static void	fill_maze(t_cub3d *cube, char **grid_maze, char **map_information);
 
-void	interpret_map_information(t_cub3d *cube, char **map_info)
+void	interpret_map_information(t_cub3d *cube)
 {
 	int	i;
 
 	i = 0;
 	while (i < 6)
 	{
-		if (!map_info[i])
+		if (!cube->map_info[i])
 			error_exit_cube(cube, INVALID_PATTERN, "");
-		find_texture_path_and_get_color(cube, map_info[i]);
+		find_texture_path_and_get_color(cube, cube->map_info[i]);
 		i++;
 	}
-	if (!map_info[i])
+	if (!cube->map_info[i])
 		error_exit_cube(cube, INVALID_PATTERN, "");
-	create_maze(cube, &map_info[i]);
-	fill_maze(cube, cube->display.grid_maze, &map_info[i]);
+	create_maze(cube, &cube->map_info[i]);
+	fill_maze(cube, cube->display.grid_maze, &cube->map_info[i]);
 	maze_validity_checking(cube, cube->display.grid_maze);
 }
 
-static void	create_maze(t_cub3d *cube, char **map_information)
+static void	create_maze(t_cub3d *cube, char **map_info)
 {
 	int		i;
 	size_t	len;
 	size_t	len_max;
 
-	len_max = ft_strlen(map_information[0]);
+	len_max = ft_strlen(map_info[0]);
 	i = -1;
-	while (map_information[++i])
+	while (map_info[++i])
 	{
-		len = ft_strlen(map_information[i]);
+		len = ft_strlen(map_info[i]);
 		if (len > len_max)
 			len_max = len;
 	}
@@ -55,7 +55,7 @@ static void	create_maze(t_cub3d *cube, char **map_information)
 	test_failed_malloc(cube, cube->display.grid_maze);
 	cube->display.grid_maze[i] = NULL;
 	i = -1;
-	while (map_information[++i])
+	while (map_info[++i])
 	{
 		cube->display.grid_maze[i] = malloc(sizeof(char) * (len_max + 1));
 		test_failed_malloc(cube, cube->display.grid_maze[i]);
