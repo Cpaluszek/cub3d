@@ -2,7 +2,7 @@
 NO ./textures/mossy.xpm
 SO ./textures/redbrick.xpm
 WE ./textures/wood.xpm
-EA ./textures/colorstone.xpm
+EA ./textures/colorstone.xp
 
 F 0,0,68
 C 51,204,255
