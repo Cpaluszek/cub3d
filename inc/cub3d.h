@@ -63,7 +63,7 @@ void			render(t_cub3d *cube);
 void			draw_minimap(t_cub3d *cube);
 void			raytracer(t_cub3d *cube);
 void			fill_col_display(t_cub3d *cube, t_ray *ray,
-					 int is_wall_hit_on_x_axis, int col);
+					int is_wall_hit_on_x_axis, int col);
 void			draw_torch(t_cub3d *cube);
 
 //	--- Utils ---
