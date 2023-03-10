@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/09 10:28:30 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/10 10:49:43 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 #include "errors.h"
 #include "cub3d.h"
 
-#define BUF_SIZE 1000000
-#define DEFAULT_COLOR_VALUE 0x01000000
+#define BUFF_SIZE 1000000
 #define FORMAT ".cub"
 
-static void	set_default_values(t_cub3d *cube);
 static void	parse_map_information(t_cub3d *cube, int fd_map);
 static void	check_no_gap_in_maze(t_cub3d *cube, char **map_info, char *buff);
 
@@ -28,7 +26,6 @@ void	central_parsing(t_cub3d *cube, char *map_path)
 	int		fd_map;
 	char	*format;
 
-	set_default_values(cube);
 	format = ft_strnstr(map_path, FORMAT, ft_strlen(map_path));
 	if (!format || format[4] != '\0')
 		error_exit_cube(cube, ERR_FORMAT, "");
@@ -38,26 +35,14 @@ void	central_parsing(t_cub3d *cube, char *map_path)
 	parse_map_information(cube, fd_map);
 }
 
-static void	set_default_values(t_cub3d *cube)
-{
-	cube->textures_paths.north_texture_path = NULL;
-	cube->textures_paths.south_texture_path = NULL;
-	cube->textures_paths.west_texture_path = NULL;
-	cube->textures_paths.east_texture_path = NULL;
-	cube->display.grid_maze = NULL;
-	cube->display.ceiling_color.color = DEFAULT_COLOR_VALUE;
-	cube->display.floor_color.color = DEFAULT_COLOR_VALUE;
-	cube->player.pos.x = 0.0f;
-	cube->player.pos.y = 0.0f;
-}
-
 static void	parse_map_information(t_cub3d *cube, int fd_map)
 {
-	char	buffer[BUF_SIZE];
+	char	buffer[BUFF_SIZE];
 	ssize_t	nb_read;
 	char	**map_information;
 
-	nb_read = read(fd_map, buffer, BUF_SIZE);
+	ft_memset(buffer, 0, BUFF_SIZE);
+	nb_read = read(fd_map, buffer, BUFF_SIZE);
 	if (nb_read == -1)
 	{
 		close(fd_map);
