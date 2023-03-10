@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 09:57:28 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/08 13:15:27 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/10 11:00:37 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "errors.h"
 
 static void	clean_mlx(t_cub3d *cube);
+static void	free_texture(t_texture *tex);
 
 void	test_failed_malloc(t_cub3d *cube, void *content)
 {
@@ -37,6 +38,13 @@ void	exit_cube(t_cub3d *cube, int exit_code)
 	ft_free(cube->textures_paths.south_texture_path);
 	ft_free(cube->textures_paths.west_texture_path);
 	ft_free(cube->textures_paths.east_texture_path);
+	free_texture(&cube->display.north_tex);
+	free_texture(&cube->display.south_tex);
+	free_texture(&cube->display.east_tex);
+	free_texture(&cube->display.west_tex);
+	free_texture(&cube->display.torch_attack_tex);
+	free_texture(&cube->display.torch_idle_tex);
+	free_texture(&cube->display.door_tex);
 	exit(exit_code);
 }
 
@@ -52,4 +60,21 @@ static void	clean_mlx(t_cub3d *cube)
 	if (mlx_data.mlx != NULL)
 		mlx_destroy_display(mlx_data.mlx);
 	ft_free(mlx_data.mlx);
+}
+
+static void	free_texture(t_texture *tex)
+{
+	int i;
+
+	i = 0;
+	if (tex->content == NULL)
+		return ;
+	while (i < tex->size.y)
+	{
+		if (tex->content[i] == NULL)
+			break ;
+		free(tex->content[i]);
+		i++;
+	}
+	free(tex->content);
 }

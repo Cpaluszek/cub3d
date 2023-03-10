@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:08:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/10 10:53:52 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/10 11:03:49 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,13 @@ static void	set_default_values(t_cub3d *cube)
 	cube->display.grid_maze = NULL;
 	cube->display.ceiling_color.color = DEFAULT_COLOR_VALUE;
 	cube->display.floor_color.color = DEFAULT_COLOR_VALUE;
+	cube->display.north_tex.content = NULL;
+	cube->display.south_tex.content = NULL;
+	cube->display.east_tex.content = NULL;
+	cube->display.west_tex.content = NULL;
+	cube->display.torch_idle_tex.content = NULL;
+	cube->display.torch_attack_tex.content = NULL;
+	cube->display.door_tex.content = NULL;
 	cube->mlx_data.mlx = NULL;
 	cube->mlx_data.mlx_win = NULL;
 	cube->mlx_data.mlx_img.img = NULL;
