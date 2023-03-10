@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:41:15 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/10 10:49:43 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/10 10:49:49 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static void	parse_map_information(t_cub3d *cube, int fd_map)
 {
 	char	buffer[BUFF_SIZE];
 	ssize_t	nb_read;
-	char	**map_information;
 
 	ft_memset(buffer, 0, BUFF_SIZE);
 	nb_read = read(fd_map, buffer, BUFF_SIZE);
@@ -49,11 +48,10 @@ static void	parse_map_information(t_cub3d *cube, int fd_map)
 		error_exit_cube(cube, ERR_READ, "");
 	}
 	close(fd_map);
-	map_information = ft_split(buffer, '\n');
-	test_failed_malloc(cube, map_information);
-	check_no_gap_in_maze(cube, map_information, buffer);
-	interpret_map_information(cube, map_information);
-	ft_free_split(map_information);
+	cube->map_info = ft_split(buffer, '\n');
+	test_failed_malloc(cube, cube->map_info);
+	check_no_gap_in_maze(cube, cube->map_info, buffer);
+	interpret_map_information(cube, cube->map_info);
 }
 
 static void	check_no_gap_in_maze(t_cub3d *cube, char **map_info, char *buff)

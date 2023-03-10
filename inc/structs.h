@@ -74,6 +74,7 @@ typedef struct s_display {
 
 typedef struct s_cub3d
 {
+	char			**map_info;
 	t_texture_path	textures_paths;
 	t_mlx_data		mlx_data;
 	t_display		display;
