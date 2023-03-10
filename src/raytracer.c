@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:27:24 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/09 14:41:18 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:47:52 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ static void	set_col_display(t_cub3d *cube, t_float_vector player_pos, \
 		cube->display.wall_pos_x[col] = (int)(ray->relative_wall_hit * \
 			(float)cube->display.north_tex.size.x);
 	else if (cube->display.ray_texture[col] == 'S')
-		cube->display.wall_pos_x[col] = (int)(ray->relative_wall_hit * \
+		cube->display.wall_pos_x[col] = (int)((1.0 - ray->relative_wall_hit) * \
 			(float)cube->display.south_tex.size.x);
 	else if (cube->display.ray_texture[col] == 'W')
-		cube->display.wall_pos_x[col] = (int)(ray->relative_wall_hit * \
+		cube->display.wall_pos_x[col] = (int)((1.0 - ray->relative_wall_hit) * \
 			(float)cube->display.west_tex.size.x);
 	else if (cube->display.ray_texture[col] == 'E')
 		cube->display.wall_pos_x[col] = (int)(ray->relative_wall_hit * \

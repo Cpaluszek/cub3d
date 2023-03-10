@@ -93,6 +93,8 @@ static int	get_relative_y(t_display *map_display, int x, int y, int diff)
 		y_size = map_display->door_tex.size.y;
 	relative_y = (int)((float)((float)(y - diff) / \
 			((float)map_display->ray_size[x])) *((float)y_size));
+	if (relative_y < 0)
+		relative_y = -relative_y;
 	relative_y %= y_size;
 	return (relative_y);
 }

@@ -1,13 +1,13 @@
 
-NO ./textures/code.xpm
-SO ./textures/wallpaper.xpm
-WE ./textures/redbrick.xpm
-EA                         ./textures/dirt.xpm
+SO ./textures/clion.xpm
+EA ./textures/code.xpm
+NO ./textures/htop.xpm
+WE                         ./textures/mandelbrot.xpm
 
 
 
-F             0,             0, 68
-C 51,     204,     255
+C 54,     58,     79
+F 54,     58,     79
 
 
 11111111111111111   11111
