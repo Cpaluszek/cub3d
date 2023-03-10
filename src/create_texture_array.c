@@ -69,7 +69,7 @@ static int	**fill_texture_content(t_cub3d *cube, t_mlx_texture texture)
 	texture_array = malloc(sizeof(unsigned int *) * (texture.height));
 	test_failed_malloc(cube, texture_array);
 	y = -1;
-	while (++y < texture.width)
+	while (++y < texture.height)
 	{
 		texture_array[y] = malloc(sizeof(int) * (texture.width));
 		test_failed_malloc(cube, texture_array[y]);
