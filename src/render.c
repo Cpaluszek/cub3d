@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 09:50:14 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/09 13:11:49 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/21 10:03:38 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	draw_maze(t_cub3d *cube);
 static int	retrieve_color(t_display *map_display, int x, int y, int diff);
 static int	get_relative_y(t_display *map_display, int x, int y, int diff);
+static int	get_texture_pixel(t_display *map_display, int y, int pos_x, int x);
 
 void	render(t_cub3d *cube)
 {
@@ -61,17 +62,28 @@ static int	retrieve_color(t_display *map_display, int x, int y, int diff)
 	if (diff < 0 || y < (WIN_H - diff))
 	{
 		relative_y = get_relative_y(map_display, x, y, diff);
-		if (map_display->ray_texture[x] == 'N')
-			return (map_display->north_tex.content[relative_y][pos_x]);
-		else if (map_display->ray_texture[x] == 'S')
-			return (map_display->south_tex.content[relative_y][pos_x]);
-		else if (map_display->ray_texture[x] == 'W')
-			return (map_display->west_tex.content[relative_y][pos_x]);
-		else if (map_display->ray_texture[x] == 'E')
-			return (map_display->east_tex.content[relative_y][pos_x]);
-		else if (map_display->ray_texture[x] == 'D')
-			return (map_display->door_tex.content[relative_y][pos_x]);
+		return (get_texture_pixel(map_display, relative_y, pos_x, x));
 	}
+	return (map_display->floor_color.color);
+}
+
+static int	get_texture_pixel(t_display *map_display, int y, int pos_x, int x)
+{
+	if (map_display->ray_texture[x] == 'N')
+		return (map_display->north_tex.content[y][pos_x
+			% map_display->north_tex.size.x]);
+	else if (map_display->ray_texture[x] == 'S')
+		return (map_display->south_tex.content[y][pos_x
+			% map_display->south_tex.size.x]);
+	else if (map_display->ray_texture[x] == 'W')
+		return (map_display->west_tex.content[y][pos_x
+			% map_display->west_tex.size.x]);
+	else if (map_display->ray_texture[x] == 'E')
+		return (map_display->east_tex.content[y][pos_x
+			% map_display->east_tex.size.x]);
+	else if (map_display->ray_texture[x] == 'D')
+		return (map_display->door_tex.content[y][pos_x
+			% map_display->door_tex.size.x]);
 	return (map_display->floor_color.color);
 }
 

@@ -22,7 +22,6 @@
 # define MM_VIEWPORT_COLOR	0xED8796
 # define MM_WALL_COLOR		0xCAD3F5
 # define MM_BG_COLOR		0x363A4F
-// Todo: find a better color
 # define MM_DOOR_COLOR	0x91D7E3
 
 #endif

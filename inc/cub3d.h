@@ -27,7 +27,7 @@
 
 # define GRID_CHARSET "01NSEW Dd"
 # define PLAYER_START_CHARSET "NSEW"
-# define MAZE_CHARSET "0NSEW"
+# define MAZE_CHARSET "0NSEWD"
 # define WALL_CHAR '1'
 # define EMPTY_CHAR '0'
 # define CLOSED_DOOR_CHAR 'D'
