@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 13:16:26 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/03/08 14:27:23 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/03/21 09:44:30 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	draw_torch(t_cub3d *cube)
 		pos.x = -1;
 		while (++pos.x < texture_size.x * SCALE)
 		{
+			if (pos.x + TORCH_POS_Y >= WIN_W || pos.y + TORCH_POS_Y >= WIN_H)
+				continue ;
 			pixel_color = texture_content[pos.y / SCALE][pos.x / SCALE];
 			if (pixel_color != TORCH_BG_COLOR)
 				my_mlx_pixel_put(&data.mlx_img, pos.x + TORCH_POS_X, \
